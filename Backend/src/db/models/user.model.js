@@ -12,4 +12,4 @@ const userSchema = new Schema(
         pathImage: String,
 });
 
-export const User = model('users', userSchema);
+export default User = model('users', userSchema);
