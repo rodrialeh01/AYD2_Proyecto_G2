@@ -1,3 +1,4 @@
+import User from "../db/models/user.model.js";
 export const signUp = async (req, res) => {
     
     try {
@@ -8,6 +9,17 @@ export const signUp = async (req, res) => {
         if (!name || !username || !email || !age || !specialty || !password) {
             return res.response(null, 'Missing fields', 400);
         }
+
+        User.create({
+            name: name,
+            username: username,
+            email: email,
+            age: age,
+            specialty: specialty,
+            webSite: webSite,
+            password: password
+        })
+
 
         res.response(null, 'User created', 200);
         

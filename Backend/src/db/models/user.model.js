@@ -11,5 +11,5 @@ const userSchema = new Schema(
         birthday: Date,
         pathImage: String,
 });
-
-export default User = model('users', userSchema);
+const User = model('users', userSchema);
+export default User;
