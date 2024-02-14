@@ -1,4 +1,7 @@
 import Product from "../db/models/product.model.js";
+import ProductRepository from "../repositories/productRepository.js";
+
+const productRepository = new ProductRepository();
 
 export const createProduct = async (req, res) => {
     try {
@@ -27,6 +30,16 @@ export const createProduct = async (req, res) => {
         res.response(null, "Product created successfully", 200);
 
 
+    } catch (error) {
+        console.error(error);
+        res.response(null, error.message, 500);
+    }
+}
+
+export const seeAllProducts = async (req, res) => {
+    try {
+        const products = await productRepository.obtenerTodos();
+        res.response(products, "Products found", 200);
     } catch (error) {
         console.error(error);
         res.response(null, error.message, 500);
