@@ -1,5 +1,5 @@
 import ProductRepository from "../repositories/productRepository.js";
-
+import validator from "validator";
 const productRepository = new ProductRepository();
 
 export const createProduct = async (req, res) => {
@@ -17,7 +17,7 @@ export const createProduct = async (req, res) => {
             res.response(null, "Price must be greater than 0", 400);
         }
 
-        if (validator.isMongoId(String(idUser))) {
+        if (!validator.isMongoId(String(idUser))) {
             res.response(null, "Invalid idUser", 400);
         }
 
@@ -55,11 +55,11 @@ export const updateProduct = async (req, res) => {
             res.response(null, "Price must be greater than 0", 400);
         }
 
-        if (validator.isMongoId(String(idUser))) {
+        if (!validator.isMongoId(String(idUser))) {
             res.response(null, "Invalid idUser", 400);
         }
 
-        if (validator.isMongoId(String(id))) {
+        if (!validator.isMongoId(String(id))) {
             res.response(null, "Invalid product id", 400);
         }
 
