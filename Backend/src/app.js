@@ -7,6 +7,7 @@ import testHandler from "./routes/test.routes.js";
 import error404Handler from "./routes/404.routes.js";
 import authHandler from "./routes/auth.routes.js";
 import reviewHandler from "./routes/review.routes.js";
+import productHandler from "./routes/product.routes.js";
 
 const app = express();
 
@@ -20,7 +21,6 @@ connect();
 
 app.use(testHandler);
 app.use("/auth", authHandler);
-app.use("/review", reviewHandler);
 app.use(error404Handler);
 
 export default app;
