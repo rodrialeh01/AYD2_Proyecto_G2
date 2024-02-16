@@ -1,23 +1,35 @@
 import mongoose from 'mongoose';
 import { MDBConfig } from '../config/credentials.js';
 
-export const connect = () => {
+class databaseConnection {
+    static instance = null;
 
-    let url = `mongodb://${MDBConfig.host}:${MDBConfig.port}/${MDBConfig.database}`;
-
-    if (MDBConfig.user && MDBConfig.password) {
-        // mongodb://root:root@localhost:27017/?authMechanism=DEFAULT
-        url = `mongodb://${MDBConfig.user}:${MDBConfig.password}@${MDBConfig.host}:${MDBConfig.port}/${MDBConfig.database}?authSource=admin`;
+    constructor() {
+        if (!databaseConnection.instance) {
+            this._connect();
+            databaseConnection.instance = this;
+        }
+        return databaseConnection.instance;
     }
 
-    try {
+    _connect() {
+        let url = `mongodb://${MDBConfig.host}:${MDBConfig.port}/${MDBConfig.databaseConnection}`;
+
+        if (MDBConfig.user && MDBConfig.password && MDBConfig.local) {
+            url = `mongodb://${MDBConfig.user}:${MDBConfig.password}@${MDBConfig.host}:${MDBConfig.port}/${MDBConfig.database}?authSource=admin`;
+        } else if(!MDBConfig.local) {
+            url = `mongodb+srv://${MDBConfig.user}:${MDBConfig.password}@${MDBConfig.host}/${MDBConfig.database}`;
+        }
+
         mongoose.connect(url, {
             useNewUrlParser: true,
             useUnifiedTopology: true
+        }).then(() => {
+            console.log('Database connected');
+        }).catch((error) => {
+            console.error('Database connection failed', error);
         });
-        console.log('Database connected');
-    } catch (error) {
-        console.log('Database connection failed');
-        console.log(error);
     }
-};
+}
+
+export default databaseConnection;

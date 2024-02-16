@@ -1,7 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import cors from "cors";
-import { connect } from "./db/dbConnection.js";
+import databaseConnection from "./db/dbConnection.js";
 import responseMiddleware from "./middlewares/response.js";
 import testHandler from "./routes/test.routes.js";
 import error404Handler from "./routes/404.routes.js";
@@ -17,10 +17,12 @@ app.use(morgan("dev"));
 app.use(cors());
 app.use(responseMiddleware);
 
-connect(); 
+new databaseConnection();
 
 app.use(testHandler);
 app.use("/auth", authHandler);
+app.use("/products", productHandler);
+app.use("/review", reviewHandler);
 app.use(error404Handler);
 
 export default app;
