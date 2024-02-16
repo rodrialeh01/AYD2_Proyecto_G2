@@ -1,3 +1,4 @@
+import e from 'cors';
 import mongoose, { Schema, model } from 'mongoose';
 
 const reviewSchema = new Schema(
@@ -12,4 +13,5 @@ const reviewSchema = new Schema(
     }
 );
 
-export default Review = model('reviews', reviewSchema);
+const Review = model('reviews', reviewSchema);
+export default Review;
