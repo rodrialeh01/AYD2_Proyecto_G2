@@ -7,7 +7,8 @@ export const MDBConfig = {
     user: process.env.MDB_USER,
     password: process.env.MDB_PASSWORD,
     database: process.env.MDATABASE,
-    port: process.env.MDB_PORT
+    port: process.env.MDB_PORT,
+    local: process.env.MDB_IS_LOCAL.toLowerCase() === 'true'
 };
 
 export const bucketConfig = {

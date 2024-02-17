@@ -1,5 +1,5 @@
+import validator from "validator";
 import ProductRepository from "../repositories/productRepository.js";
-
 const productRepository = new ProductRepository();
 
 export const createProduct = async (req, res) => {
@@ -17,7 +17,7 @@ export const createProduct = async (req, res) => {
             res.response(null, "Price must be greater than 0", 400);
         }
 
-        if (validator.isMongoId(String(idUser))) {
+        if (!validator.isMongoId(String(idUser))) {
             res.response(null, "Invalid idUser", 400);
         }
 
@@ -55,11 +55,11 @@ export const updateProduct = async (req, res) => {
             res.response(null, "Price must be greater than 0", 400);
         }
 
-        if (validator.isMongoId(String(idUser))) {
+        if (!validator.isMongoId(String(idUser))) {
             res.response(null, "Invalid idUser", 400);
         }
 
-        if (validator.isMongoId(String(id))) {
+        if (!validator.isMongoId(String(id))) {
             res.response(null, "Invalid product id", 400);
         }
 
@@ -85,6 +85,21 @@ export const seeAllProducts = async (req, res) => {
     try {
         const products = await productRepository.obtenerTodos();
         res.response(products, "Products found", 200);
+    } catch (error) {
+        console.error(error);
+        res.response(null, error.message, 500);
+    }
+}
+
+export const seeProductById = async (req, res) => {
+    try {
+        const { id } = req.params;
+        if (!validator.isMongoId(String(id))) {
+            res.response(null, "Invalid product id", 400);
+        }
+
+        const product = await productRepository.getProductById(id);
+        res.response(product, "Product found", 200);
     } catch (error) {
         console.error(error);
         res.response(null, error.message, 500);
