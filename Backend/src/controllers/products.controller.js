@@ -105,3 +105,18 @@ export const seeProductById = async (req, res) => {
         res.response(null, error.message, 500);
     }
 }
+
+export const getProductsByVendor = async (req, res) => {
+    try {
+        const { id } = req.params;
+        if (!validator.isMongoId(String(id))) {
+            res.response(null, "Invalid idUser", 400);
+        }
+
+        const products = await productRepository.getProductsByVendor(id);
+        res.response(products, "Products found", 200);
+    } catch (error) {
+        console.error(error);
+        res.response(null, error.message, 500);
+    }
+}
