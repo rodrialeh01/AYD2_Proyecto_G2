@@ -23,7 +23,6 @@ export const createReview = async (req, res) => {
       return;
     }
 
-    // rating must be a number between 1 and 5
     if (!validator.isInt(rating.toString(), {min: 1, max: 5})) {
       res.response(null, 'Invalid rating', 400);
       return;
@@ -72,6 +71,142 @@ export const getReviewsByProductId = async (req, res) => {
     }
 
     res.response(reviews, 'Reviews found', 200);
+
+  } catch (error) {
+    res.response(null, error.message, 500);
+  }
+};
+
+export const updateReview = async (req, res) => {
+  try {
+    const {idReview} = req.params;
+    const {comment, rating} = req.body;
+
+    if (!idReview || !comment || !rating) {
+      res.response(null, 'Missing fields', 400);
+      return;
+    }
+
+    if (!validator.isMongoId(idReview)) {
+      res.response(null, 'Invalid review id', 400);
+      return;
+    }
+
+    if (!validator.isInt(rating.toString(), {min: 1, max: 5})) {
+      res.response(null, 'Invalid rating', 400);
+      return;
+    }
+
+    const review = {
+      comment,
+      rating
+    };
+
+    console.log(review);
+
+    const r = await reviewRepository.updateReview(idReview, review);
+
+    if (!r) {
+      throw new Error('Review not updated');
+    }
+
+    res.response(req.body, 'Review updated', 200);
+
+  } catch (error) {
+    res.response(null, error.message, 500);
+  }
+};
+
+export const updateComment = async (req, res) => {
+  try {
+    const {idReview} = req.params;
+    const {comment} = req.body;
+
+    if (!idReview || !comment) {
+      res.response(null, 'Missing fields', 400);
+      return;
+    }
+
+    if (!validator.isMongoId(idReview)) {
+      res.response(null, 'Invalid review id', 400);
+      return;
+    }
+
+    const review = {
+      comment
+    };
+
+    const r = await reviewRepository.updateReview(idReview, review);
+
+    if (!r) {
+      throw new Error('Review not updated');
+    }
+
+    res.response(req.body, 'Review updated', 200);
+
+  } catch (error) {
+    res.response(null, error.message, 500);
+  }
+};
+
+export const updateRating = async (req, res) => {
+  try {
+    const {idReview} = req.params;
+    const {rating} = req.body;
+
+    if (!idReview || !rating) {
+      res.response(null, 'Missing fields', 400);
+      return;
+    }
+
+    if (!validator.isMongoId(idReview)) {
+      res.response(null, 'Invalid review id', 400);
+      return;
+    }
+
+    if (!validator.isInt(rating.toString(), {min: 1, max: 5})) {
+      res.response(null, 'Invalid rating', 400);
+      return;
+    }
+
+    const review = {
+      rating
+    };
+
+    const r = await reviewRepository.updateReview(idReview, review);
+
+    if (!r) {
+      throw new Error('Review not updated');
+    }
+
+    res.response(req.body, 'Review updated', 200);
+
+  } catch (error) {
+    res.response(null, error.message, 500);
+  }
+};
+
+export const deleteReview = async (req, res) => {
+  try {
+    const {idReview} = req.params;
+
+    if (!idReview) {
+      res.response(null, 'Missing fields', 400);
+      return;
+    }
+
+    if (!validator.isMongoId(idReview)) {
+      res.response(null, 'Invalid review id', 400);
+      return;
+    }
+
+    const r = await reviewRepository.deleteReview(idReview);
+
+    if (!r) {
+      throw new Error('Review not deleted');
+    }
+
+    res.response(null, 'Review deleted', 200);
 
   } catch (error) {
     res.response(null, error.message, 500);
