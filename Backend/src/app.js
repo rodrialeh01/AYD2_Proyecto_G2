@@ -1,13 +1,14 @@
+import cors from "cors";
 import express from "express";
 import morgan from "morgan";
-import cors from "cors";
 import databaseConnection from "./db/dbConnection.js";
 import responseMiddleware from "./middlewares/response.js";
-import testHandler from "./routes/test.routes.js";
 import error404Handler from "./routes/404.routes.js";
 import authHandler from "./routes/auth.routes.js";
-import reviewHandler from "./routes/review.routes.js";
 import productHandler from "./routes/product.routes.js";
+import purchaseHandler from "./routes/purchase.routes.js";
+import reviewHandler from "./routes/review.routes.js";
+import testHandler from "./routes/test.routes.js";
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use(testHandler);
 app.use("/auth", authHandler);
 app.use("/products", productHandler);
 app.use("/review", reviewHandler);
+app.use("/purchase", purchaseHandler);
 app.use(error404Handler);
 
 export default app;
