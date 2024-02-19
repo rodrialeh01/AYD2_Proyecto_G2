@@ -212,3 +212,45 @@ export const deleteReview = async (req, res) => {
     res.response(null, error.message, 500);
   }
 };
+
+export const getAllReviews = async (req, res) => {
+  try {
+    const reviews = await reviewRepository.getAllReviews();
+
+    if (!reviews) {
+      res.response(null, 'Reviews not found', 404);
+    }
+
+    res.response(reviews, 'Reviews found', 200);
+
+  } catch (error) {
+    res.response(null, error.message, 500);
+  }
+}
+
+export const deleteReview = async (req, res) => {
+  try {
+    const {id} = req.params;
+
+    if (!id) {
+      res.response(null, 'Missing fields', 400);
+      return;
+    }
+
+    if (!validator.isMongoId(id)) {
+      res.response(null, 'Invalid review id', 400);
+      return;
+    }
+
+    const r = await reviewRepository.deleteReview(id);
+
+    if (!r) {
+      throw new Error('Review not deleted');
+    }
+
+    res.response(null, 'Review deleted', 200);
+
+  } catch (error) {
+    res.response(null, error.message, 500);
+  }
+};

@@ -16,7 +16,11 @@ class ReviewRepository {
   async deleteReview(idReview) {
     return await Review.findByIdAndDelete(idReview);
   }
+  
 
+  async getAllReviews() {
+    return await Review.find({}).populate('idUser').populate('idProduct');
+  }
 }
 
 export default ReviewRepository;

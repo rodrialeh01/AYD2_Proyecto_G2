@@ -27,6 +27,11 @@ class ProductRepository {
     async getProductsByVendor(idUser) {
         return await Product.find( {idUser: String("65cbf0042efb66288c71e1b2")} );
     }
+
+    async deleteProduct(id) {
+        return await Product.findByIdAndDelete(id);
+    }
+        
 }
 
 export default ProductRepository;

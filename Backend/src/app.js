@@ -8,7 +8,8 @@ import authHandler from "./routes/auth.routes.js";
 import productHandler from "./routes/product.routes.js";
 import purchaseHandler from "./routes/purchase.routes.js";
 import reviewHandler from "./routes/review.routes.js";
-import testHandler from "./routes/test.routes.js";
+import productHandler from "./routes/product.routes.js";
+import userHandler from "./routes/user.routes.js";
 
 const app = express();
 
@@ -24,7 +25,8 @@ app.use(testHandler);
 app.use("/auth", authHandler);
 app.use("/products", productHandler);
 app.use("/review", reviewHandler);
-app.use("/purchase", purchaseHandler);
+app.use("/users", userHandler);
 app.use(error404Handler);
+
 
 export default app;
