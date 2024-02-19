@@ -120,3 +120,22 @@ export const getProductsByVendor = async (req, res) => {
         res.response(null, error.message, 500);
     }
 }
+
+export const deleteProduct = async (req, res) => {
+    try {
+        const { id } = req.params;
+        if (!validator.isMongoId(String(id))) {
+            res.response(null, "Invalid product id", 400);
+        }
+
+        const r = await productRepository.deleteProduct(id);
+        if (!r) {
+            throw new Error("Product not deleted");
+        }
+
+        res.response(null, "Product deleted", 200);
+    } catch (error) {
+        console.error(error);
+        res.response(null, error.message, 500);
+    }
+}
