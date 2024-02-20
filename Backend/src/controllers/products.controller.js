@@ -31,7 +31,7 @@ export const createProduct = async (req, res) => {
         }
 
         productRepository.crearProducto(producto);
-        res.response(r, "Product created successfully", 201);
+        res.response(null, "Product created successfully", 201);
     } catch (error) {
         console.error(error);
         res.response(null, error.message, 500);
