@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Sidebar from './Navigation/Sidebar';
-import Home from './pages/client/Home';
+import Product from './pages/client/Product';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -9,7 +9,7 @@ function App() {
     <>
       <div className='flex'>
         <Sidebar />
-        <Home />
+        <Product />
       </div>
     </>
   )
