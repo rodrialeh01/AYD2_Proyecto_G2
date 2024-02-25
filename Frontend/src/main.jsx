@@ -6,6 +6,6 @@ import CreatePContainer from './components/vendor/CreatePContainer.jsx'
 import ListPContainer from './components/vendor/ListPContainer.jsx'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <ListPContainer />
+    <CreatePContainer />
   </React.StrictMode>,
 )

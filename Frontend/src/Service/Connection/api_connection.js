@@ -15,6 +15,11 @@ export const getProducts = async (id) => {
 export const uploadImage = async (image) => {
     console.log([...image.entries()]);
     
+    const response = await instance.post('products/addImage', image, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    });
 }
 
 // Crear Producto

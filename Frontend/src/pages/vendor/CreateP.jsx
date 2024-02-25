@@ -1,6 +1,6 @@
 import React from "react";
 
-const CreateP = ({ product, handleChange, handleSubmit }) => {
+const CreateP = ({ product, handleChange, handleSubmit, handleFormData }) => {
   return (
     <>
       <form>
@@ -30,7 +30,8 @@ const CreateP = ({ product, handleChange, handleSubmit }) => {
                   id="inline-full-name"
                   type="file"
                   name="pathImage"
-                  onChange={handleChange}
+                  accept="image/*"
+                  onChange={handleFormData}
                   required
                 ></input>
               </div>

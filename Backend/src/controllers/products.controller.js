@@ -141,13 +141,10 @@ export const deleteProduct = async (req, res) => {
     }
 }
 
-export const addImage = async (req, res) => {
+export const uploadImage = async (req, res) => {
     try {
-        const { buffer, originalname } = req.file;
-        const fileExtension = originalname.split(".").pop();
-
-        const {key: id_image, location: pathImage} = await saveObject(buffer, fileExtension );
-        res.response({id_image, pathImage}, "Image uploaded", 200);
+        console.log(req.file);
+        
     } catch (error) {
         console.error(error);
         res.response(null, error.message, 500);

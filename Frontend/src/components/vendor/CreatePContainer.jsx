@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import CreateP from "../../pages/vendor/CreateP";
 import Sidebar from "../../Navigation/Sidebar";
+import Service from "../../Service/Service";
+
 const CreatePContainer = () => {
   const [product, setProduct] = useState({
     pathImage: "",
@@ -21,10 +23,11 @@ const CreatePContainer = () => {
   };
 
   const handleFormData = async (e) => {
-    e.preventDefault();
+    const file = e.target.files[0];
     const formData = new FormData();
-    formData.append("pathImage", product.pathImage);
+    formData.append("image", file);
     
+    const response = await Service.uploadImage(formData);
   }
 
   const handleSubmit = (e) => {
@@ -52,6 +55,7 @@ const CreatePContainer = () => {
                   product={product}
                   handleChange={handleChange}
                   handleSubmit={handleSubmit}
+                  handleFormData={handleFormData}
                 />
               </div>
             </div>
