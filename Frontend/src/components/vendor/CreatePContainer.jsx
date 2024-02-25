@@ -1,0 +1,57 @@
+import React, { useState } from "react";
+import CreateP from "../../pages/vendor/CreateP";
+
+const CreatePContainer = () => {
+  const [product, setProduct] = useState({
+    pathImage: "",
+    name: "",
+    description: "",
+    price: "",
+    stock: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setProduct((prev) => {
+      return {
+        ...prev,
+        [name]: value,
+      };
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(product);
+  };
+
+  return (
+    <>
+      <div className="h-full w-full overflow-y-auto bg-gradient-to-r from-purple/90 to-white ">
+        <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto outline-none focus:outline-none ">
+          <div className="flex justify-center items-center h-screen w-full border-white border-l-2 ">
+            <div className=" relative w-7/12 my-6 mx-auto ">
+              {/*content*/}
+              <div className="border-2 rounded-r-lg shadow-lg relative flex flex-col w-full bg-gray-200 outline-silver border-black/75">
+                {/*header*/}
+                <div className=" flex text-black items-start justify-between p-5 border-b border-solid border-white rounded-t">
+                  <h3 className="text-2xl font-semibold inline-flex items-center">
+                    Registrar un nuevo producto
+                  </h3>
+                </div>
+                {/*body*/}
+                <CreateP
+                  product={product}
+                  handleChange={handleChange}
+                  handleSubmit={handleSubmit}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default CreatePContainer;
