@@ -1,5 +1,4 @@
 import Product from "../db/models/product.model.js";
-import validator from "validator";
 
 class ProductRepository {
     async obtenerTodos() {
@@ -20,6 +19,19 @@ class ProductRepository {
         return await Product.findByIdAndUpdate(id, producto, { new: true });
 
     }
+
+    async getProductById(id) {
+        return await Product.findById(id);
+    }
+
+    async getProductsByVendor(idUser) {
+        return await Product.find( {idUser: String("65cbf0042efb66288c71e1b2")} );
+    }
+
+    async deleteProduct(id) {
+        return await Product.findByIdAndDelete(id);
+    }
+        
 }
 
 export default ProductRepository;

@@ -212,3 +212,18 @@ export const deleteReview = async (req, res) => {
     res.response(null, error.message, 500);
   }
 };
+
+export const getAllReviews = async (req, res) => {
+  try {
+    const reviews = await reviewRepository.getAllReviews();
+
+    if (!reviews) {
+      res.response(null, 'Reviews not found', 404);
+    }
+
+    res.response(reviews, 'Reviews found', 200);
+
+  } catch (error) {
+    res.response(null, error.message, 500);
+  }
+}
