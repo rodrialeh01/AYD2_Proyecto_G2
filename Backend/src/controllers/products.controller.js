@@ -5,6 +5,7 @@ const productRepository = new ProductRepository();
 export const createProduct = async (req, res) => {
     try {
         const { pathImage, name, description, price, stock, idUser } = req.body;
+        
         if (!pathImage || !name || !description || !price || !stock || !idUser) {
             res.response(null, "All fields are required", 400);
         }
@@ -134,6 +135,19 @@ export const deleteProduct = async (req, res) => {
         }
 
         res.response(null, "Product deleted", 200);
+    } catch (error) {
+        console.error(error);
+        res.response(null, error.message, 500);
+    }
+}
+
+export const addImage = async (req, res) => {
+    try {
+        const { buffer, originalname } = req.file;
+        const fileExtension = originalname.split(".").pop();
+
+        const {key: id_image, location: pathImage} = await saveObject(buffer, fileExtension );
+        res.response({id_image, pathImage}, "Image uploaded", 200);
     } catch (error) {
         console.error(error);
         res.response(null, error.message, 500);

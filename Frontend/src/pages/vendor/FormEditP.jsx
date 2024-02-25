@@ -1,6 +1,6 @@
 import React from "react";
 
-const CreateP = ({ product, handleChange, handleSubmit }) => {
+const FormEditP = ({ product, handleChange, handleSubmit }) => {
   return (
     <>
       <form>
@@ -138,4 +138,4 @@ const CreateP = ({ product, handleChange, handleSubmit }) => {
   );
 };
 
-export default CreateP;
+export default FormEditP;
