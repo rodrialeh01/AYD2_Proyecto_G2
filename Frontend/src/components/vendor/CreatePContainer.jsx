@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import CreateP from "../../pages/vendor/CreateP";
 import Sidebar from "../../Navigation/Sidebar";
+import Service from "../../Service/Service";
+import toast, { Toaster } from "react-hot-toast";
+
 const CreatePContainer = () => {
   const [product, setProduct] = useState({
     pathImage: "",
@@ -8,6 +11,7 @@ const CreatePContainer = () => {
     description: "",
     price: "",
     stock: "",
+    idUser: "65cbf0042efb66288c71e1b2",
   });
 
   const handleChange = (e) => {
@@ -22,19 +26,65 @@ const CreatePContainer = () => {
 
   const handleFormData = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("pathImage", product.pathImage);
-    
-  }
+    try {
+      const file = e.target.files[0];
+      const formData = new FormData();
+      formData.append("image", file);
 
-  const handleSubmit = (e) => {
+      const response = await Service.uploadImage(formData);
+      setProduct((prev) => {
+        return {
+          ...prev,
+          pathImage: response.data.data.Location,
+        };
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(product);
+
+    try {
+      let response = await Service.createProduct(product);
+      console.log(response);
+      if (response.message === "Product created successfully") {
+        toast.success("Producto Guardado Correctamente", {
+          position: "upper-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
+
+      setProduct({
+        pathImage: "",
+        name: "",
+        description: "",
+        price: "",
+        stock: "",
+        idUser: "65cbf0042efb66288c71e1b2",
+      });
+
+      setTimeout(() => {
+        window.location.reload();
+      }
+      , 1000);
+
+
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <>
       <div className="h-5/6 w-full overflow-y-auto bg-gray-100 ">
+      <Toaster />
         <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto outline-none focus:outline-none ">
           <Sidebar />
           <div className="flex justify-center items-center w-full border-white border-l-2 ">
@@ -52,6 +102,7 @@ const CreatePContainer = () => {
                   product={product}
                   handleChange={handleChange}
                   handleSubmit={handleSubmit}
+                  handleFormData={handleFormData}
                 />
               </div>
             </div>

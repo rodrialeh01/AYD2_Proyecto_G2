@@ -13,8 +13,14 @@ export const getProducts = async (id) => {
 
 // añadir la imagen al bucket:
 export const uploadImage = async (image) => {
-    console.log([...image.entries()]);
-    
+    //console.log([...image.entries()]);
+
+    const response = await instance.post('products/addImage', image, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    });
+    return response;
 }
 
 // Crear Producto
@@ -28,7 +34,7 @@ export const createProduct = async (product) => {
 }
 
 // Editar Producto
-export const editProduct = async (product) => {
+export const editProduct = async (id, product) => {
     const response = await instance.patch(`products/update/${id}`, product,{
         headers: {
             'Content-Type': 'application/json'
