@@ -7,7 +7,7 @@ import { SidebarDataClient } from './SidebarData';
 const Sidebar = () => {
     const [open, setOpen] = useState(false);
     return (
-        <div className={`bg-purple-900 h-screen p-5 pt-8 ${open ? 'w-72': 'w-20'} duration-300 relative `}>
+        <div className={`bg-purple h-screen p-5 pt-8 ${open ? 'w-72': 'w-20'} duration-300 relative `}>
             <BsArrowLeftShort className={`bg-white text-purple-900 text-3xl rounded-full absolute -right-3 top-9 border border-purple-900 cursor-pointer ${!open && 'rotate-180'}`}
             onClick={() => setOpen(!open)}/>
             <div className='inline-flex'>
