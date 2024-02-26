@@ -17,6 +17,7 @@ export default {
         silver: "#CBCBCB",
         white: "#FFFFFF",
         strongPurple: '#8312b8',
+        lightpurple200: '#b782f5'
       }
     }
   },
