@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Review from '../../components/client/Review'
 
 const Product = () => {
 
@@ -44,6 +45,9 @@ const Product = () => {
                 </div>
             </div>
         </div>
+
+        <Review />
+
     </div>
   )
 }
