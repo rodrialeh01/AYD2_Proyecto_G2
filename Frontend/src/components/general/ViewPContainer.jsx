@@ -1,0 +1,50 @@
+import React from "react";
+import { useState } from "react";
+import Sidebar from "../../Navigation/Sidebar";
+import ViewP from "../../pages/general/ViewP";
+const ViewPContainer = () => {
+  const [profile, setProfile] = useState({
+    name: "",
+    email: "",
+    password: "",
+    cui: 0,
+    role: 0,
+    verified: "",
+    birthday: "2021-10-10",
+  });
+
+  return (
+    <>
+      <div className="h-5/6 w-full overflow-y-auto bg-gray-100 ">
+        <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto outline-none focus:outline-none ">
+          <Sidebar />
+          <div className="flex justify-center items-center w-full border-white border-l-2 ">
+            <div className=" relative w-7/12 my-6 mx-auto ">
+              {/*content*/}
+              <div className="border-2 rounded-r-lg shadow-lg relative flex flex-col w-full bg-gray-200 outline-silver border-black/75">
+                {/*header*/}
+                <div className=" flex text-black items-start justify-between p-5 border-b border-solid border-white rounded-t">
+                  <h3 className="text-2xl font-semibold inline-flex items-center">
+                    PERFIL
+                  </h3>
+                </div>
+                {/*body*/}
+                <ViewP perfil={profile} />
+                <div className="flex items-center justify-end p-1 border-t border-solid border-slate-200 rounded-b">
+                  <button
+                    className="text-black bg-green-500 hover:bg-green-900 transition duration-300 ease-in-out rounded font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    type="submit"
+                  >
+                    Editar
+                  </button>
+                </div>
+                {/*footer*/}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+export default ViewPContainer;
