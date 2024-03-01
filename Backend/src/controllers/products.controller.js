@@ -1,10 +1,13 @@
 import validator from "validator";
 import ProductRepository from "../repositories/productRepository.js";
+import { saveObj } from '../config/objectHandler.js';
+
 const productRepository = new ProductRepository();
 
 export const createProduct = async (req, res) => {
     try {
         const { pathImage, name, description, price, stock, idUser } = req.body;
+        
         if (!pathImage || !name || !description || !price || !stock || !idUser) {
             res.response(null, "All fields are required", 400);
         }
@@ -31,7 +34,7 @@ export const createProduct = async (req, res) => {
         }
 
         productRepository.crearProducto(producto);
-        res.response(r, "Product created successfully", 201);
+        res.response(null, "Product created successfully", 201);
     } catch (error) {
         console.error(error);
         res.response(null, error.message, 500);
@@ -139,3 +142,20 @@ export const deleteProduct = async (req, res) => {
         res.response(null, error.message, 500);
     }
 }
+
+export const uploadImage = async (req, res) => {
+    
+    try {
+        const { buffer, originalname } = req.file;
+        const fileExtension = originalname.split('.').pop();
+
+        const { Key, Location } = await saveObj(buffer, fileExtension);
+        
+        res.response({ Key, Location }, "Imagen subida correctamente")
+
+    } catch (error) {
+        console.log(error);
+        res.response(null, error.message, 500);
+    }
+
+};
