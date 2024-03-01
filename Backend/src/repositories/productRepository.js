@@ -31,6 +31,10 @@ class ProductRepository {
     async deleteProduct(id) {
         return await Product.findByIdAndDelete(id);
     }
+
+    async uploadImage(image) {
+        console.log(image);
+    }
         
 }
 

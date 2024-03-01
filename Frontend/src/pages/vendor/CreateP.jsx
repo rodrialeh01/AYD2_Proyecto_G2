@@ -1,12 +1,12 @@
 import React from "react";
 
-const CreateP = ({ product, handleChange, handleSubmit }) => {
+const CreateP = ({ product, handleChange, handleSubmit, handleFormData }) => {
   return (
     <>
       <form>
-        <div className="flex items-center justify-center p-5 border-b border-solid border-white rounded-t bg-silver">
+        <div className="flex items-center justify-center p-5 rounded-t bg-silver">
           <img
-            className="object-contain w-64 h-64 border border-8 border-dashed "
+            className="object-contain w-32 h-32 border border-8 border-dashed "
             src={product.pathImage}
             alt="preview"
           ></img>
@@ -20,17 +20,18 @@ const CreateP = ({ product, handleChange, handleSubmit }) => {
                   className="block text-black font-bold md:text-left mb-1 md:mb-0 pr-4"
                   htmlFor="inline-full-name"
                 >
-                  Link de la imagen:
+                  Carga la imagen:
                 </label>
               </div>
               <div className="w-full mr-[250px]">
                 <input
                   data-test-id="cypress-input-petName"
-                  className="bg-white appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                  className="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                   id="inline-full-name"
-                  type="text"
+                  type="file"
                   name="pathImage"
-                  onChange={handleChange}
+                  accept="image/*"
+                  onChange={handleFormData}
                   required
                 ></input>
               </div>

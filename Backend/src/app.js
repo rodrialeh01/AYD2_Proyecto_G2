@@ -21,7 +21,7 @@ app.use(responseMiddleware);
 
 new databaseConnection();
 
-app.use(testHandler);
+app.use("/test", testHandler);
 app.use("/auth", authHandler);
 app.use("/products", productHandler);
 app.use("/review", reviewHandler);

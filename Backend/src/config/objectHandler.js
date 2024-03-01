@@ -8,10 +8,10 @@ const s3 = new AWS.S3({
     region: bucketConfig.region
 });
 
-export const saveObj = async (obj, extension, tipoObjeto) => {
+export const saveObj = async (obj, extension) => {
     const params = {
         Bucket: bucketConfig.name,
-        Key: tipoObjeto+uuidv4()+"."+extension,
+        Key: "Images/"+uuidv4()+"."+extension,
         Body: obj,
         ACL: 'public-read'
     };
