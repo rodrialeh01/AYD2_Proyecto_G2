@@ -41,3 +41,15 @@ export const editProduct = async (id, product) => {
         }});
     return response.data;
 }
+
+// Obtener Todos los productos
+export const getAllProducts = async () => {
+    const response = await instance.get('products/all');
+    return response.data;
+}
+
+//Obtener un producto
+export const getProduct = async (id) => {
+    const response = await instance.get(`products/see/${id}`);
+    return response.data;
+}

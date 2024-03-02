@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
-import ListP from "../../pages/vendor/ListP";
-import Sidebar from "../../Navigation/Sidebar";
+import React, { useEffect, useState } from "react";
 import Service from "../../Service/Service";
 import FormEditP from "../../pages/vendor/FormEditP";
+import ListP from "../../pages/vendor/ListP";
 
 const ListPContainer = () => {
   const [products, setProducts] = useState([]);
@@ -83,8 +82,7 @@ const ListPContainer = () => {
 
   return (
     <>
-      <div className="flex h-screen flex bg-gray-100 ">
-        <Sidebar />
+      <div className="flex-1 h-screen  bg-gray-100 ">
 
         {loading ? (
           <div className="flex justify-center items-center w-full">

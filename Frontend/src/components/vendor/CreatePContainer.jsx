@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import CreateP from "../../pages/vendor/CreateP";
-import Sidebar from "../../Navigation/Sidebar";
-import Service from "../../Service/Service";
 import toast, { Toaster } from "react-hot-toast";
+import Service from "../../Service/Service";
+import CreateP from "../../pages/vendor/CreateP";
 
 const CreatePContainer = () => {
   const [product, setProduct] = useState({
@@ -85,8 +84,7 @@ const CreatePContainer = () => {
     <>
       <div className="h-5/6 w-full overflow-y-auto bg-gray-100 ">
       <Toaster />
-        <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto outline-none focus:outline-none ">
-          <Sidebar />
+        <div className="justify-center items-center flex-1 overflow-x-hidden overflow-y-auto outline-none focus:outline-none ">
           <div className="flex justify-center items-center w-full border-white border-l-2 ">
             <div className=" relative w-7/12 my-6 mx-auto ">
               {/*content*/}
