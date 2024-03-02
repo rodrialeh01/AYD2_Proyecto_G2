@@ -13,11 +13,11 @@ class databaseConnection {
     }
 
     _connect() {
-        let url = `mongodb://${MDBConfig.host}:${MDBConfig.port}/${MDBConfig.databaseConnection}`;
+        let url = `mongodb://${MDBConfig.host}:${MDBConfig.port}/${MDBConfig.database}`;
 
         if (MDBConfig.user && MDBConfig.password && MDBConfig.local) {
             url = `mongodb://${MDBConfig.user}:${MDBConfig.password}@${MDBConfig.host}:${MDBConfig.port}/${MDBConfig.database}?authSource=admin`;
-        } else if(!MDBConfig.local) {
+        } else if (!MDBConfig.local) {
             url = `mongodb+srv://${MDBConfig.user}:${MDBConfig.password}@${MDBConfig.host}/${MDBConfig.database}`;
         }
 

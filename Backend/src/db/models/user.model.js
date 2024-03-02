@@ -8,8 +8,7 @@ const userSchema = new Schema(
         cui: String,
         role: Number,
         verified: Boolean,
-        birthday: Date,
-        pathImage: String,
+        birthday: Date
 });
 
 const User = model('users', userSchema);

@@ -15,7 +15,7 @@ export const bucketConfig = {
     name: process.env.BUCKET_NAME,
     region: process.env.BUCKET_REGION,
     id: process.env.BUCKET_ID,
-    key: process.env.BUCKET_ID
+    key: process.env.BUCKET_KEY
 }
 
 export const API_PORT = process.env.API_PORT || 4000;
