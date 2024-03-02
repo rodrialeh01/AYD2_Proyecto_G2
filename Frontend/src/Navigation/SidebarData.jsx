@@ -31,3 +31,16 @@ export const SidebarDataVendor = [
         icon: <RiIcons.RiShoppingBag2Fill />
     }
 ]
+
+export const SidebarDataAdmin = [
+    {
+        title: 'Usuarios',
+        path: '/admin/users',
+        icon: <RiIcons.RiUserFill />
+    },
+    {
+        title: 'Productos',
+        path: '/admin/products',
+        icon: <RiIcons.RiShoppingBag2Fill />
+    }
+]
