@@ -1,4 +1,4 @@
-import { FaStar } from "react-icons/fa";
+import { FaStar, FaRegStarHalf, FaRegStar } from "react-icons/fa";
 import { FiEdit, FiTrash } from "react-icons/fi";
 import { useState } from "react";
 
@@ -26,7 +26,6 @@ function Review() {
   const renderStars = (rating) => {
     let stars = [];
     for (let i = 0; i < 5; i++) {
-      // stars.push(<span key={i} className={i < rating ? 'text-yellow-500' : 'text-gray-300'}>⭐</span>);
       stars.push(
         <span
           key={i}
@@ -44,6 +43,7 @@ function Review() {
       <h2 className="text-2xl font-bold text-black mb-4">Valoraciones</h2>
       <div className="space-y-6">
         {comments.map((comment, index) => (
+          <>
           <div
             key={index}
             className="bg-white p-4 rounded-lg text-black relative"
@@ -85,6 +85,8 @@ function Review() {
             </div>
             <p className="mb-4">{comment.comment}</p>
           </div>
+          <hr />
+          </>
         ))}
       </div>
     </div>
