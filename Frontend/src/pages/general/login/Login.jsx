@@ -2,24 +2,25 @@ import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css"
+import { useUser } from "../../../userCtx/User";
 
 export default function Login() {
-  // const { logged, setLogged } = useUser();
-  // const [input, setInput] = useState({
-  //   email_user: "",
-  //   pass_user: "",
-  // });
+  const { logged, setLogged } = useUser();
+  const [input, setInput] = useState({
+    email_user: "",
+    pass_user: "",
+  });
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   if (logged) {
-  //     if (JSON.parse(localStorage.getItem("data_user")).rol === 0)
-  //       navigate("/petcare/profile");
-  //     else 
-  //     navigate("/user/profile");
-  //   }
-  // }, [logged]);
+  useEffect(() => {
+    if (logged) {
+      if (JSON.parse(localStorage.getItem("data_user")).rol === 0)
+        navigate("/petcare/profile");
+      else 
+      navigate("/user/profile");
+    }
+  }, [logged]);
 
   // const handleInputChange = (event) => {
   //   setInput({
