@@ -34,7 +34,7 @@
 ### GitFlow
 
 ---
-![alt text](../img/gitflow.png "Git Flow")
+![alt text](../img/gitflow.JPG "Git Flow")
 ---
 
 ### Proceso de creación de flujo
@@ -85,18 +85,22 @@ Al centro podemos visualizar todas las peticiones que se realizarán por parte d
 ## Diagrama UML (clases)
 Muestra como están todas las clases y qué detalles tienen, como atributos, funciones y sus propiedades.
 
-![1](../img/uml_d.png)
+![1](../img/DiagramaDeClases.png)
 
 ## Diagrama de Componentes
 El diagrama de componentes muestra los servicios del proyecto y como están interconectados.
 Así como los servicios que van a estar en cada uno de ellos.
 
-![CD](../img/components_d.png)
+![CD](../img/componentes.jpg)
 
 ## Diagrama de Despliegue
 
-![alt text](../img/package_d.png)
+![alt text](../img/despliegue.png)
 
+## Diagrama Patrones
+
+![alt text](../img/DiagramaPD1.png)
+![alt text](../img/DiagramaPD2.png)
 
 # Diagrama Entidad Relación
 El siguiente diagrama es una representacion de la entidad relacion que se utilizara para la base de datos que se empleara en el proyecto.
@@ -214,25 +218,49 @@ El siguiente diagrama es una representacion de la entidad relacion que se utiliz
 
 ## **Módulo de Usuario**
 -  **Ingreso al módulo “administrador ó root”**
-  El root le fue asignado el rol de administrador del sitio de servicios de viajes bus guatemala el cual tendrá a cargo diversas  tareas y funciones dentro del sitio. Para poder acceder a todas estas funciones y llevar a cabo su rol como administrador el “root” debe pasar por el proceso de seguridad del sitio, que valide que el tenga los **permisos** para acceder a este módulo.
-
+  
+    El root le fue asignado el rol de administrador del sitio de servicios de viajes bus guatemala el cual tendrá a cargo diversas  tareas y funciones dentro del sitio. Para poder acceder a todas estas funciones y llevar a cabo su rol como administrador el “root” debe pasar por el proceso de seguridad del sitio, que valide que el tenga los **permisos** para acceder a este módulo.
+    
     El “root” debe loguearse para validar sus datos y poder tener acceso al módulo de administrador. Para ello debe ingresar su correo electrónico o nombre de usuario y contraseña que fueron registrados en la base de datos que lo acreditan como administrador del sitio.
-
+    
     Al validarse que los datos ingresados son correctos el sitio redirigirá al módulo de administración a “root” para la página de quien presta servicios corporativos, empresariales, locales, festivos en distintas líneas de servicio de clases en cada bus según lo solicitado por la app web.
     
 - **Ingreso al módulo de usuario**
   
+  Un cliente que juega el rol de usuario como cliente de la aplicacion podrá tener acceso a la informacion sobre los productos disponibles, sus productos comprados, su perfil.
+
+  Para tener acceso a su información el cliente debe loguearse para validar sus datos y poder tener acceso al módulo de servicios. Para ello debe ingresar su correo electrónico o nombre de usuario y contraseña con el que el  administrador del sitio la  registró en el sitio.
+
+    Al validarse que los datos ingresados son correctos el sitio redirigirá al módulo de servicios.
     
 - **Recuperación o cambio de contraseña**
   
+  Un usuario que juega un rol dentro de la aplicacion y se encuentra registrado en el nuevo sitio de compras, ha olvidado su contraseña para ingresar al sitio.
+
+    Al darle clic sobre el enlace de recuperar contraseña, el usuario deberá ingresar su nombre de usuario o correo con el que está registrado en el sitio para recibir el enlace en el correo electrónico que le permita a el usuario cambiar de contraseña.
+
+    Al ingresar a su correo y entrar al enlace el usuario ingresa su nueva y contraseña y con ello podrá ingresar a su perfil en el sistema.
    
 
 - **Página principal e ingreso a módulos de acceso público**
   
+  Si una persona particular tiene el interés de conocer más acerca de un producto que se encuentra dentro de la plataforma y validar que se tiene disponible, su precio y descripcion.
+
+  Ahora tiene la oportunidad de tener acceso de una manera más accesible a esta información y la de otros casos. Para ello debe ingresar al nuevo sitio de MarketPlace y podrá tener acceso a distinta información de acceso público de la aplicación.
     
 
 ## **Módulo de Empresa**
-- 
+- **Registro de vendedor y productos disponibles en la plataforma**
+
+    Una persona en particular ha notado que las personas en la actualidad compran mas por internet y ulitilizar las aplicacion de MarketPlace para realizar dicha acción. 
+
+
+- **Busqueda de productos**
+
+    Realizar sus opracion en la misma, y se desea ver los detalles de los productos que se desean adquirir o ya se compraron, dentro de la pagina. 
+
+    Al ingresar al apartado de busqueda y colocar el nombre del producto a la venta de mostraran todos los productos que esten relaciondados con la busqueda, en dicha pagina se mostraran los productos y en ellos su discripcion.
+
 
 
 
@@ -245,7 +273,7 @@ Se utilizó un tablero en Trello en dónde se manjaron los bloques de Desarrollo
 Cada tarea dentro de los bloques tendrá su descripción y se mostrará si está terminado, en proceso o por empezar.
 
 
-![alt text](../img/scrum_board.png)
+![alt text](../img/Sprint1.png)
 
 
 
