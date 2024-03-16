@@ -25,7 +25,7 @@ class ProductRepository {
     }
 
     async getProductsByVendor(idUser) {
-        return await Product.find( {idUser: String("65cbf0042efb66288c71e1b2")} );
+        return await Product.find( {idUser: String(idUser)} );
     }
 
     async deleteProduct(id) {

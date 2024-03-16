@@ -2,12 +2,27 @@ import React, { useState } from 'react';
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BsArrowLeftShort, BsSearch } from "react-icons/bs";
 import { RiWalkFill } from "react-icons/ri";
-import { SidebarDataClient } from './SidebarData';
+import { useNavigate } from 'react-router-dom';
+import { useUser } from '../userCtx/User/';
 
-const Sidebar = () => {
+const Sidebar = ({data}) => {
     const [open, setOpen] = useState(false);
+    const { logged, setLogged } = useUser();
+    const navigate = useNavigate();
+
+    const handleNavigate = (path) => {
+        navigate(path);
+    }
+
+    const Logout = () => {
+        localStorage.removeItem("data_user");
+        setLogged(false);
+        navigate("/");
+    }
+
     return (
-        <div className={`bg-purple h-screen p-5 pt-8 ${open ? 'w-72': 'w-20'} duration-300 relative `}>
+        <div className='flex'>
+        <div className={`bg-purple h-screen p-5 pt-8 ${open ? 'w-72': 'w-20'} duration-300 scrollbar-hide h-screen overflow-y-auto overflow-x-hidden relative`}>
             <BsArrowLeftShort className={`bg-white text-purple text-3xl rounded-full absolute -right-3 top-9 border border-purple cursor-pointer ${!open && 'rotate-180'}`}
             onClick={() => setOpen(!open)}/>
             <div className='inline-flex'>
@@ -20,9 +35,9 @@ const Sidebar = () => {
             </div>
 
             <ul className='pt-2'>
-                {SidebarDataClient.map((item, index) => {
+                {data.map((item, index) => {
                     return (
-                        <li key={index} className='text-gray-300 text-sm flex items-center gap-x-4 cursos-pointer p-2 hover:bg-lightpurple200 hover:text-black rounded-md mt-2'>
+                        <li key={index} className='text-gray-300 text-sm flex items-center gap-x-4 cursos-pointer p-2 hover:bg-lightpurple200 hover:text-black rounded-md mt-2 hover:cursor-pointer' onClick={() => handleNavigate(item.path)}>
                             <span className='text-2xl block float-left'>
                                 {item.icon}
                             </span>
@@ -30,13 +45,14 @@ const Sidebar = () => {
                         </li>
                     );
                 })}
-                <li className='text-gray-300 text-sm flex items-center gap-x-4 cursos-pointer p-2 hover:bg-lightpurple200 hover:text-black rounded-md mt-2'>
+                <li className='text-gray-300 text-sm flex items-center gap-x-4 cursos-pointer p-2 hover:bg-lightpurple200 hover:text-black rounded-md mt-2' onClick={Logout}>
                     <span className='text-2xl block float-left'>
                         <RiWalkFill/>
                     </span>
                     <span className={`text-base font-medium flex-1 duration-300 ${!open && 'hidden'}`}>Cerrar Sesión</span>
                 </li>
             </ul>
+        </div>
         </div>
     );
 }

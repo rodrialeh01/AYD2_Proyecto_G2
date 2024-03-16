@@ -13,6 +13,7 @@ export default {
         h_black: "#121112",
         darkPurple: '#17124a',
         purple: '#663CFF',
+        hoverPurple: '#734dfa',
         lightPurple: "#984AF0",
         silver: "#CBCBCB",
         white: "#FFFFFF",
@@ -25,4 +26,3 @@ export default {
     require('tailwind-scrollbar-hide')
   ],
 }
-

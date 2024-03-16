@@ -41,3 +41,119 @@ export const editProduct = async (id, product) => {
         }});
     return response.data;
 }
+
+// Obtener Todos los productos
+export const getAllProducts = async () => {
+    const response = await instance.get('products/all');
+    return response.data;
+}
+
+//Obtener un producto
+export const getProduct = async (id) => {
+    const response = await instance.get(`products/see/${id}`);
+    return response.data;
+}
+
+//Eliminar Producto
+export const deleteProduct = async (id) => {
+    const response = await instance.delete(`products/delete/${id}`);
+    return response.data;
+}
+
+//Compra:
+//Crear Compra
+export const createPurchase = async (purchase) => {
+    const response = await instance.post('purchase/create', purchase, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    return response.data;
+}
+
+//USUARIOS:
+//Crear Usuario
+export const registrarUsuario = async (usuario) => {
+    const response = await instance.post('auth/sign/up', usuario, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    return response.data;
+}
+
+// LOGIN
+// Iniciar Sesión
+export const login = async (usuario) => {
+    const response = await instance.post('auth/sign/in', usuario, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    console.log(response);
+    return response;
+}
+
+// Obtener Usuario
+export const getUser = async (id) => {
+    const response = await instance.get(`users/get/${id}`);
+    return response.data;
+}
+
+// Obtener todos los usuarios
+export const getAllUsers = async () => {
+    const response = await instance.get('users/all');
+    return response.data;
+}
+
+// Eliminar Usuario
+export const deleteUser = async (id) => {
+    const response = await instance.delete(`users/delete/${id}`);
+    return response.data;
+}
+
+// recuperarPassword
+export const recuperarPassword = async (email) => {
+    const response = await instance.post(`auth/forgot/password/${email}`);
+    return response;
+}
+
+// REVIEW
+// Obtener Reviews
+export const getReviews = async (id) => {
+    const response = await instance.get(`review/get/${id}`);
+    return response.data;
+}
+
+// Crear Review
+export const createReview = async (review) => {
+    const response = await instance.post('review/create', review, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    console.log(response);
+    return response.data;
+}
+
+// Delete Review
+export const deleteReview = async (id) => {
+    const response = await instance.delete(`review/delete/${id}`);
+    return response.data;
+}
+
+// Actualizar Review
+export const updateReview = async (id, review) => {
+    const response = await instance.put(`review/update/${id}`, review, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    return response.data;
+}
+
+// Reviews
+export const getAllRevies = async () => {
+    const response = await instance.get('review/all');
+    return response.data;
+}

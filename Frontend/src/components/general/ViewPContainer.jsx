@@ -1,8 +1,13 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Sidebar from "../../Navigation/Sidebar";
 import ViewP from "../../pages/general/ViewP";
+import Service from "../../Service/Service";
+
 const ViewPContainer = () => {
+  
+  const [loading, setLoading] = useState(true);
+  const usuario = JSON.parse(localStorage.getItem("data_user"));
   const [profile, setProfile] = useState({
     name: "",
     email: "",
@@ -12,12 +17,48 @@ const ViewPContainer = () => {
     verified: "",
     birthday: "2021-10-10",
   });
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        let res = await Service.getUser(usuario.id);
+        console.log(res.data);
+
+        //parse date:
+        const fecha = new Date(res.data.birthday);
+        let formattedDate = fecha.toLocaleDateString("es-ES", {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+        });
+        
+        const tempDate = formattedDate.split("/");
+        formattedDate = tempDate[2] + "-" + tempDate[0] + "-" + tempDate[1];
+
+
+
+        res.data.birthday = formattedDate;
+
+        console.log(res.data.birthday);
+
+        setProfile(res.data)
+
+        
+        setLoading(false);
+        
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, [loading]);
+
 
   return (
     <>
-      <div className="h-5/6 w-full overflow-y-auto bg-gray-100 ">
+
+
+      <div className="h-screen w-full overflow-y-auto bg-gray-100 ">
         <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto outline-none focus:outline-none ">
-          <Sidebar />
           <div className="flex justify-center items-center w-full border-white border-l-2 ">
             <div className=" relative w-7/12 my-6 mx-auto ">
               {/*content*/}
@@ -29,7 +70,10 @@ const ViewPContainer = () => {
                   </h3>
                 </div>
                 {/*body*/}
-                <ViewP perfil={profile} />
+
+                {
+                  loading ?(null) : (<ViewP perfil={profile} />)
+                }
                 <div className="flex items-center justify-end p-1 border-t border-solid border-slate-200 rounded-b">
                   <button
                     className="text-black bg-green-500 hover:bg-green-900 transition duration-300 ease-in-out rounded font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
