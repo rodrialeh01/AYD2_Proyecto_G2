@@ -14,7 +14,7 @@ class UserRepository {
         }
     }
     
-    async getUserById(id) {
+    async getUserByID(id) {
         return await User.findById(id);
     }
 }

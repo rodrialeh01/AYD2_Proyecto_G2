@@ -6,14 +6,20 @@ import CreatePContainer from '../components/vendor/CreatePContainer';
 import ListPContainer from '../components/vendor/ListPContainer';
 import HomeProducts from '../pages/client/HomeProducts';
 import Product from '../pages/client/Product';
+import SignUp from '../pages/general/SignUp';
+import Login from '../pages/general/login/Login';
+import ProductAdmin from '../pages/admin/ProductAdmin';
+import Users from '../pages/admin/Users';
+import HomeReviews from '../pages/admin/HomeReviews';
+import ViewPContainer from '../components/general/ViewPContainer'
 export const router = createBrowserRouter([
     {
         path: '/',
-        element: null
+        element: <Login />
     },
     {
-        path: '/register',
-        element: <div>Registrar</div>
+        path: '/signup',
+        element: <SignUp/>
     },
     {
         path:'/client',
@@ -26,6 +32,10 @@ export const router = createBrowserRouter([
             {
                 path: 'product/:id',
                 element: <Product/>
+            },
+            {
+                path: 'profile',
+                element: <ViewPContainer />
             }
         ]
     },
@@ -40,6 +50,10 @@ export const router = createBrowserRouter([
             {
                 path: 'myproducts',
                 element: <ListPContainer/>
+            },
+            {
+                path: 'profile',
+                element: <ViewPContainer />
             }
         ]
     },
@@ -49,11 +63,20 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: 'users',
-                element: <div>Users</div>
+                element: <Users/>
             },
             {
                 path: 'products',
-                element: <div>Products</div>
+                element: <ProductAdmin/>
+            }
+            ,
+            {
+                path: 'reviews',
+                element: <HomeReviews/>
+            },
+            {
+                path: 'profile',
+                element: <ViewPContainer />
             }
         ]
     }

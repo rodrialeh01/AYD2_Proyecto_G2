@@ -4,13 +4,15 @@ import Service from "../../Service/Service";
 import CreateP from "../../pages/vendor/CreateP";
 
 const CreatePContainer = () => {
+  const usuario = JSON.parse(localStorage.getItem("data_user"));
+
   const [product, setProduct] = useState({
     pathImage: "",
     name: "",
     description: "",
     price: "",
     stock: "",
-    idUser: "65cbf0042efb66288c71e1b2",
+    idUser: usuario.id,
   });
 
   const handleChange = (e) => {

@@ -21,6 +21,10 @@ class ReviewRepository {
   async getAllReviews() {
     return await Review.find({}).populate('idUser').populate('idProduct');
   }
+
+  async getReviewById(idReview) {
+    return await Review.findById(idReview).populate('idUser').populate('idProduct');
+  }
 }
 
 export default ReviewRepository;

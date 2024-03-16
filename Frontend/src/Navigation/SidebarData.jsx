@@ -9,7 +9,7 @@ export const SidebarDataClient = [
     },
     {
         title: 'Perfil',
-        path: '/profile',
+        path: '/client/profile',
         icon: <RiIcons.RiUserFill />
     }
 ]
@@ -22,7 +22,7 @@ export const SidebarDataVendor = [
     },
     {
         title: 'Perfil',
-        path: '/profile',
+        path: '/vendor/profile',
         icon: <RiIcons.RiUserFill />
     },
     {
@@ -42,5 +42,10 @@ export const SidebarDataAdmin = [
         title: 'Productos',
         path: '/admin/products',
         icon: <RiIcons.RiShoppingBag2Fill />
+    },
+    {
+        title: 'Reviews',
+        path: '/admin/reviews',
+        icon: <RiIcons.RiStarFill />
     }
 ]
