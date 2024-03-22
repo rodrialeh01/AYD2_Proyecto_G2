@@ -80,3 +80,37 @@ export const getDetailedPurchase = async (req, res) => {
         res.response(null, error.message, 500);
     }
 };
+
+export const getIngresos = async (req, res) => {
+    try {
+        const { idVendor } = req.params;
+        if (!validator.isMongoId(String(idVendor))) {
+            res.response(null, "Invalid idUser", 400);
+        }
+
+        const purchases = await purchaseRepository.getPurchasesByIDVendor(idVendor);
+        let total = 0;
+        let repEnviar = [];
+
+        for (const purchase of purchases) {
+            const product = await productRepository.getProductById(purchase.product);
+            
+            repEnviar.push({
+                producto: product.name,
+                totalProducto: product.price * purchase.quantity,
+            });
+
+            total += product.price * purchase.quantity;
+        }
+
+        
+        res.response({productos: repEnviar, total}, "Ingresos found", 200);
+        
+        
+    } catch (error) {
+        console.error(error);
+        res.response(null, error.message, 500);
+    }
+}
+
+
