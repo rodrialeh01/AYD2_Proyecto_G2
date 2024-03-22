@@ -29,6 +29,11 @@ export const SidebarDataVendor = [
         title: 'Mis Productos',
         path: '/vendor/myproducts',
         icon: <RiIcons.RiShoppingBag2Fill />
+    },
+    {
+        title: 'Información',
+        path: '/vendor/info',
+        icon: <RiIcons.RiMoneyDollarCircleFill />
     }
 ]
 

@@ -68,7 +68,7 @@ const CreatePContainer = () => {
         description: "",
         price: "",
         stock: "",
-        idUser: "65cbf0042efb66288c71e1b2",
+        idUser: usuario.id,
       });
 
       setTimeout(() => {

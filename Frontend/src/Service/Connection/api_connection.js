@@ -157,3 +157,9 @@ export const getAllRevies = async () => {
     const response = await instance.get('review/all');
     return response.data;
 }
+
+// vista de ventas de un vendedor
+export const getVendorPurchases = async (idVendor) => {
+    const response = await instance.get(`purchase/getDetailedPurchase/${idVendor}`);
+    return response.data;
+}

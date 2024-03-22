@@ -1,8 +1,11 @@
 import validator from "validator";
 import PurchaseRepository from "../repositories/PurchaseRepository.js";
 import ProductRepository from "../repositories/productRepository.js";
+import UserRepository from "../repositories/UserRepository.js";
+
 const purchaseRepository = new PurchaseRepository();
 const productRepository = new ProductRepository();
+const userRepository = new UserRepository();
 
 export const createPurchase = async (req, res) => {
     try {
@@ -32,3 +35,48 @@ export const createPurchase = async (req, res) => {
         res.response(null, error.message, 500);
     }
 }
+
+export const getPurchases = async (req, res) => {
+    try {
+        const { idVendor } = req.params;
+        if (!validator.isMongoId(String(idVendor))) {
+            res.response(null, "Invalid idUser", 400);
+        }
+
+        const purchases = await purchaseRepository.getPurchasesByIDVendor(idVendor);
+        res.response(purchases, "Purchases found", 200);
+    } catch (error) {
+        console.error(error);
+        res.response(null, error.message, 500);
+    }
+};
+
+export const getDetailedPurchase = async (req, res) => {
+    try {
+        const { idVendor } = req.params;
+        if (!validator.isMongoId(String(idVendor))) {
+            res.response(null, "Invalid idUser", 400);
+        }
+
+
+        const purchases = await purchaseRepository.getPurchasesByIDVendor(idVendor);
+        const detailedPurchases = [];
+        //mix purchases with products:
+        for (const purchase of purchases) {
+            const product = await productRepository.getProductById(purchase.product);
+            const user = await userRepository.getUserByID(purchase.user);
+            detailedPurchases.push({
+                purchase: purchase,
+                userName: user.name,
+                productName: product.name,
+                total: purchase.price * purchase.quantity
+            });
+        }
+
+        res.response(detailedPurchases, "Purchases found", 200);
+
+    } catch (error) {
+        console.error(error);
+        res.response(null, error.message, 500);
+    }
+};

@@ -12,7 +12,9 @@ class PurchaseRepository {
                 const purchase = new Purchase({
                     user: idUser,
                     product: product._id,
-                    quantity: quantity
+                    quantity: quantity,
+                    price: product.price,
+                    vendorId: product.idUser
                 })
                 await purchase.save();
 
@@ -24,6 +26,16 @@ class PurchaseRepository {
         } catch (error) {
             console.error(error);
             return res.response(null, error.message, 500);
+        }
+    }
+
+    async getPurchasesByIDVendor(idVendor) {
+        try {
+            const purchases = await Purchase.find({ vendorId: String(idVendor) });
+            return purchases;
+        } catch (error) {
+            console.error(error);
+            
         }
     }
 }

@@ -12,6 +12,9 @@ import ProductAdmin from '../pages/admin/ProductAdmin';
 import Users from '../pages/admin/Users';
 import HomeReviews from '../pages/admin/HomeReviews';
 import ViewPContainer from '../components/general/ViewPContainer'
+import InfoContainer from '../components/vendor/InfoContainer';
+import IncomeContainer from '../components/vendor/IncomePContainer';
+import SellsContainer from '../components/vendor/SellsContainer';
 export const router = createBrowserRouter([
     {
         path: '/',
@@ -54,7 +57,18 @@ export const router = createBrowserRouter([
             {
                 path: 'profile',
                 element: <ViewPContainer />
+            },{
+                path: 'info',
+                element: <InfoContainer/>
+            },{
+                path: 'ingresos',
+                element: <IncomeContainer/>
+            },
+            {
+                path: 'ventas',
+                element: <SellsContainer/>
             }
+
         ]
     },
     {
