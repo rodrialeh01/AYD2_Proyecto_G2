@@ -38,6 +38,17 @@ class PurchaseRepository {
             
         }
     }
+
+    async getPurchasesByDate(fechaI, fechaF) {
+        try {
+            const purchases = await Purchase.find({ createdAt: { $gte: fechaI, $lte: fechaF } });
+            return purchases;
+        } catch (error) {
+            console.error(error);
+            
+        }
+    }
+    
 }
 
 export default PurchaseRepository;

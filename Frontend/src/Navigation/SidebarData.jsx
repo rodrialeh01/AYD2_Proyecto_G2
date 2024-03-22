@@ -52,5 +52,10 @@ export const SidebarDataAdmin = [
         title: 'Reviews',
         path: '/admin/reviews',
         icon: <RiIcons.RiStarFill />
+    },
+    {
+        title: 'Reportes',
+        path: '/admin/reports',
+        icon: <RiIcons.RiFileList2Fill />
     }
 ]

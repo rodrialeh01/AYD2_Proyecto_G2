@@ -113,4 +113,55 @@ export const getIngresos = async (req, res) => {
     }
 }
 
+export const getVentasRango = async (req, res) => {
+    try {
+        const { fechaI, fechaF } = req.query;
+        
+        if (!fechaI || !fechaF) {
+            res.response(null, "All fields are required", 400);
+        }
+        //turn string to date
+        const [yearI, monthI, dayI] = fechaI.split("-");
+        const fechaIs = new Date(yearI, monthI - 1, dayI);
+
+        const [yearF, monthF, dayF] = fechaF.split("-");
+        const fechaFs = new Date(yearF, monthF - 1, dayF);
+
+        console.log(fechaIs, fechaFs);
+        let enviarRespuesta = [];
+
+        const purchases = await purchaseRepository.getPurchasesByDate(fechaIs, fechaFs);
+        for (const purchase of purchases) {
+            const product = await productRepository.getProductById(purchase.product);
+            const date = new Date(purchase.createdAt);
+            //format: yyyy-mm-dd
+            const formattedDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+
+            const user = await userRepository.getUserByID(purchase.user);
+            const vendor = await userRepository.getUserByID(purchase.vendorId);
+            let resp = {}
+            if (vendor != null) {
+                resp = {
+                    userName: user.name,
+                    vendorName: vendor.name,
+                    productName: product.name,
+                    price: purchase.price,
+                    quantity: purchase.quantity,
+                    total: purchase.price * purchase.quantity,
+                    date: formattedDate
+                }
+
+                enviarRespuesta.push(resp);
+            }
+
+
+        }
+
+        res.response(enviarRespuesta, "Ventas found", 200);
+        
+    } catch (error) {
+        console.error(error);
+        res.response(null, error.message, 500);
+    }
+}
 

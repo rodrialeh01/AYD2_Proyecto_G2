@@ -15,6 +15,9 @@ import ViewPContainer from '../components/general/ViewPContainer'
 import InfoContainer from '../components/vendor/InfoContainer';
 import IncomeContainer from '../components/vendor/IncomePContainer';
 import SellsContainer from '../components/vendor/SellsContainer';
+import ReportContainer from '../components/admin/ReportsContainer';
+import Report1Container from '../components/admin/Report1Container';
+
 export const router = createBrowserRouter([
     {
         path: '/',
@@ -91,6 +94,13 @@ export const router = createBrowserRouter([
             {
                 path: 'profile',
                 element: <ViewPContainer />
+            },
+            {
+                path: 'reports',
+                element: <ReportContainer/>
+            },{
+                path: 'report1',
+                element: <Report1Container/>
             }
         ]
     }
