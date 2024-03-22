@@ -29,6 +29,11 @@ export const SidebarDataVendor = [
         title: 'Mis Productos',
         path: '/vendor/myproducts',
         icon: <RiIcons.RiShoppingBag2Fill />
+    },
+    {
+        title: 'Información',
+        path: '/vendor/info',
+        icon: <RiIcons.RiMoneyDollarCircleFill />
     }
 ]
 
@@ -47,5 +52,10 @@ export const SidebarDataAdmin = [
         title: 'Reviews',
         path: '/admin/reviews',
         icon: <RiIcons.RiStarFill />
+    },
+    {
+        title: 'Reportes',
+        path: '/admin/reports',
+        icon: <RiIcons.RiFileList2Fill />
     }
 ]
