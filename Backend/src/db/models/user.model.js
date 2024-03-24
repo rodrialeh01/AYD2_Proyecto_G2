@@ -1,9 +1,8 @@
-import { Schema, model } from 'mongoose';
 import bcrypt from 'bcrypt';
-
+import { Schema, model } from 'mongoose';
 const userSchema = new Schema(
     {
-        name: { type: String, required: true, minlength: 3, maxlength: 30 },
+        name: { type: String, required: true, minlength: 3, maxlength: 50 },
         email: {
             type: String,
             required: true,
