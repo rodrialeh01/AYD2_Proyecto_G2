@@ -6,14 +6,26 @@ import CreatePContainer from '../components/vendor/CreatePContainer';
 import ListPContainer from '../components/vendor/ListPContainer';
 import HomeProducts from '../pages/client/HomeProducts';
 import Product from '../pages/client/Product';
+import SignUp from '../pages/general/SignUp';
+import Login from '../pages/general/login/Login';
+import ProductAdmin from '../pages/admin/ProductAdmin';
+import Users from '../pages/admin/Users';
+import HomeReviews from '../pages/admin/HomeReviews';
+import ViewPContainer from '../components/general/ViewPContainer'
+import InfoContainer from '../components/vendor/InfoContainer';
+import IncomeContainer from '../components/vendor/IncomePContainer';
+import SellsContainer from '../components/vendor/SellsContainer';
+import ReportContainer from '../components/admin/ReportsContainer';
+import Report1Container from '../components/admin/Report1Container';
+
 export const router = createBrowserRouter([
     {
         path: '/',
-        element: null
+        element: <Login />
     },
     {
-        path: '/register',
-        element: <div>Registrar</div>
+        path: '/signup',
+        element: <SignUp/>
     },
     {
         path:'/client',
@@ -26,6 +38,10 @@ export const router = createBrowserRouter([
             {
                 path: 'product/:id',
                 element: <Product/>
+            },
+            {
+                path: 'profile',
+                element: <ViewPContainer />
             }
         ]
     },
@@ -40,7 +56,22 @@ export const router = createBrowserRouter([
             {
                 path: 'myproducts',
                 element: <ListPContainer/>
+            },
+            {
+                path: 'profile',
+                element: <ViewPContainer />
+            },{
+                path: 'info',
+                element: <InfoContainer/>
+            },{
+                path: 'ingresos',
+                element: <IncomeContainer/>
+            },
+            {
+                path: 'ventas',
+                element: <SellsContainer/>
             }
+
         ]
     },
     {
@@ -49,11 +80,27 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: 'users',
-                element: <div>Users</div>
+                element: <Users/>
             },
             {
                 path: 'products',
-                element: <div>Products</div>
+                element: <ProductAdmin/>
+            }
+            ,
+            {
+                path: 'reviews',
+                element: <HomeReviews/>
+            },
+            {
+                path: 'profile',
+                element: <ViewPContainer />
+            },
+            {
+                path: 'reports',
+                element: <ReportContainer/>
+            },{
+                path: 'report1',
+                element: <Report1Container/>
             }
         ]
     }

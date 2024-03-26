@@ -8,7 +8,7 @@ export const createReview = async (req, res) => {
   try {
     const {idUser, idProduct, comment, rating} = req.body;
 
-    if (!idUser || !idProduct || !comment || !rating) {
+    if (!idUser || !idProduct || !comment) {
       res.response(null, 'Missing fields', 400);
       return;
     }
@@ -23,7 +23,7 @@ export const createReview = async (req, res) => {
       return;
     }
 
-    if (!validator.isInt(rating.toString(), {min: 1, max: 5})) {
+    if (!validator.isInt(rating.toString(), {min: 0, max: 5})) {
       res.response(null, 'Invalid rating', 400);
       return;
     }
@@ -35,15 +35,17 @@ export const createReview = async (req, res) => {
       rating
     };
 
-    console.log(review);
-
     const r = await reviewRepository.createReview(review);
 
     if (!r) {
       throw new Error('Review not created');
     }
 
-    res.response(req.body, 'Review created', 200);
+    // obtener el id de la review creada
+    const reviewCreated = await reviewRepository.getReviewById(r._id);
+    // console.log(reviewCreated);
+
+    res.response(reviewCreated, 'Review created', 200);
 
   } catch (error) {
     res.response(null, error.message, 500);
@@ -110,7 +112,9 @@ export const updateReview = async (req, res) => {
       throw new Error('Review not updated');
     }
 
-    res.response(req.body, 'Review updated', 200);
+    const reviewUpdated = await reviewRepository.getReviewById(idReview);
+
+    res.response(reviewUpdated, 'Review updated', 200);
 
   } catch (error) {
     res.response(null, error.message, 500);

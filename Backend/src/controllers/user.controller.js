@@ -32,3 +32,21 @@ export const deleteUser = async (req, res) => {
     }
 }
 
+export const getUser = async (req, res) => {
+    try {
+        const { id } = req.params;
+        if (!validator.isMongoId(String(id))) {
+            res.response(null, "Invalid user id", 400);
+        }
+
+        const user = await userRepository.getUserByID(id);
+        if (!user) {
+            throw new Error("User not found");
+        }
+
+        res.response(user, "User found", 200);
+    } catch (error) {
+        console.error(error);
+        res.response(null, error.message, 500);
+    }
+}
