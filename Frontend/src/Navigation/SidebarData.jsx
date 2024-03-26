@@ -11,6 +11,11 @@ export const SidebarDataClient = [
         title: 'Perfil',
         path: '/client/profile',
         icon: <RiIcons.RiUserFill />
+    },
+    {
+        title: 'Mi Carrito',
+        path: '/client/shoppingcart',
+        icon: <RiIcons.RiShoppingCart2Fill />
     }
 ]
 

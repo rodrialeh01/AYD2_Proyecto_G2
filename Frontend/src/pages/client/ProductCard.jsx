@@ -1,7 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Service from "../../Service/Service";
 
 const ProductCard = ({product}) => {
+    const [vendedor, setVendedor] = useState('');
+    
+    useEffect(() => {
+        Service.getUser(product.idUser)
+        .then((res) => {
+            const data = res.data
+            setVendedor(data.name)
+        })
+    },[])
+
     return (
         <>
             <div class="relative m-10 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
@@ -11,10 +22,12 @@ const ProductCard = ({product}) => {
                 </a>
                 <div class="mt-4 px-5 pb-5">
                     <a >
-                    <h5 class="text-xl tracking-tight text-slate-900">{product.name}</h5>
+                    <h5 class="text-xl tracking-tight text-slate-900 font-semibold">{product.name}</h5>
                     <p>{product.description}</p>
                     </a>
                     <div class="mt-2 mb-5 flex items-center justify-between">
+                    <p className=""><span className="font-bold text-slate-900">Vendedor: </span>{vendedor}</p>
+
                     <p>
                         <span class="text-3xl font-bold text-slate-900">Q{product.price}</span>
                         {/*<span class="text-sm text-slate-900 line-through">$699</span>*/}

@@ -2,21 +2,22 @@ import { createBrowserRouter } from 'react-router-dom';
 import LayoutPrivateAdmin from '../Layout/LayoutPrivateAdmin';
 import LayoutPrivateClient from '../Layout/LayoutPrivateClient';
 import LayoutPrivateVendor from '../Layout/LayoutPrivateVendor';
+import Report1Container from '../components/admin/Report1Container';
+import ReportContainer from '../components/admin/ReportsContainer';
+import ViewPContainer from '../components/general/ViewPContainer';
 import CreatePContainer from '../components/vendor/CreatePContainer';
+import IncomeContainer from '../components/vendor/IncomePContainer';
+import InfoContainer from '../components/vendor/InfoContainer';
 import ListPContainer from '../components/vendor/ListPContainer';
-import HomeProducts from '../pages/client/HomeProducts';
-import Product from '../pages/client/Product';
-import SignUp from '../pages/general/SignUp';
-import Login from '../pages/general/login/Login';
+import SellsContainer from '../components/vendor/SellsContainer';
+import HomeReviews from '../pages/admin/HomeReviews';
 import ProductAdmin from '../pages/admin/ProductAdmin';
 import Users from '../pages/admin/Users';
-import HomeReviews from '../pages/admin/HomeReviews';
-import ViewPContainer from '../components/general/ViewPContainer'
-import InfoContainer from '../components/vendor/InfoContainer';
-import IncomeContainer from '../components/vendor/IncomePContainer';
-import SellsContainer from '../components/vendor/SellsContainer';
-import ReportContainer from '../components/admin/ReportsContainer';
-import Report1Container from '../components/admin/Report1Container';
+import HomeProducts from '../pages/client/HomeProducts';
+import Product from '../pages/client/Product';
+import ShoppingCart from '../pages/client/ShoppingCart';
+import SignUp from '../pages/general/SignUp';
+import Login from '../pages/general/login/Login';
 
 export const router = createBrowserRouter([
     {
@@ -42,6 +43,10 @@ export const router = createBrowserRouter([
             {
                 path: 'profile',
                 element: <ViewPContainer />
+            },
+            {
+                path: 'shoppingcart',
+                element: <ShoppingCart />
             }
         ]
     },

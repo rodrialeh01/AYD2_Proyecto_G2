@@ -19,6 +19,7 @@ const Product = () => {
     const [description, setDescription] = useState('')
     const [precio, setPrecio] = useState('')
     const [cantidad, setCantidad] = useState('')
+    const [vendedor, setVendedor] = useState('')
     
     useEffect(() => {
         Service.getProduct(id)
@@ -28,6 +29,10 @@ const Product = () => {
             setDescription(res.data.description)
             setPrecio(res.data.price)
             setCantidad(res.data.stock)
+            Service.getUser(res.data.idUser)
+            .then((res2) => {
+                setVendedor(res2.data.name)
+            })
         })
         .catch((error) =>{
             console.log(error)
@@ -84,18 +89,24 @@ const Product = () => {
                     <span className='text-violet-600 font-semibold'>TodoCompras</span>
                     <h1 className='text-3xl font-bold text-black'>{name}</h1>
                 </div>
+                <p className='font-semibold text-black'>Vendedor: <span className={`font-normal`}>{vendedor}</span></p>
                 <p className='text-gray-700'>
                     {description}
                 </p>
-                <p className='font-semibold text-black'>Cantidad: <span className={`font-normal ${cantidad > 0 ? 'text-black' : 'text-red-700'}`}>{cantidad > 0 ? cantidad : 'NO HAY STOCK'}</span></p>
+                <p className='font-semibold text-black'>Cantidad Disponible: <span className={`font-normal ${cantidad > 0 ? 'text-black' : 'text-red-700'}`}>{cantidad > 0 ? cantidad : 'NO HAY STOCK'}</span></p>
                 <h6 className='text-lg font-semibold text-black'>Q {precio}</h6>
                 <div className='flex flex-row items-center gap-12'>
                     <div className='flex flex-row items-center'>
-                        <button className='bg-gray-200 py-2 px-5 rounded-lg text-violet-800 text-3xl' onClick={() => setAmount((prev) => prev>1?prev -1:prev)}>-</button>
+                        <button className={`bg-gray-200 py-2 px-5 rounded-lg text-violet-800 text-3xl`} disabled={cantidad === 0} onClick={() => setAmount((prev) => prev>1?prev -1:prev)}>-</button>
                         <span className='py-4 px-6 rounded-lg text-black'>{amount}</span>
-                        <button className='bg-gray-200 py-2 px-4 rounded-lg text-violet-800 text-3xl' onClick={() => setAmount((prev) => prev + 1)}>+</button>
+                        <button className='bg-gray-200 py-2 px-4 rounded-lg text-violet-800 text-3xl' disabled={cantidad === 0} onClick={() => setAmount((prev) => prev<cantidad?prev + 1:prev)}>+</button>
                     </div>
-                    <button className='bg-violet-800 text-white font-semibold py-3 px-16 rounded-xl h-full' onClick={comprar}>Comprar</button>
+                    <button className='bg-violet-800 text-white font-semibold py-3 px-16 rounded-xl h-full flex items-center' onClick={comprar} disabled={cantidad===0}>
+                        <svg xmlns="http://www.w3.org/2000/svg" className="mr-2 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                        <span>Agregar al Carrito</span>
+                    </button>
                 </div>
             </div>
         </div>

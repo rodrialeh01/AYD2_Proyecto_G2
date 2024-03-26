@@ -83,6 +83,7 @@ export default function Login() {
         };
         console.log(savedData)
         localStorage.setItem("data_user", JSON.stringify(savedData));
+        localStorage.setItem("carrito_user", JSON.stringify([]));
         setLogged(true);
         toast.success("Inicio de sesión exitoso", {
           position: "bottom-right",
