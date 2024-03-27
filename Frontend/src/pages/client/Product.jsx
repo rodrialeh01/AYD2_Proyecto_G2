@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { useCarrito } from '../../Context/Carrito';
 import Service from '../../Service/Service';
 import Review from '../../components/client/Review';
+import { ProductShopping } from '../../models/productShopping';
 
 const Product = () => {
 
@@ -20,6 +22,7 @@ const Product = () => {
     const [precio, setPrecio] = useState('')
     const [cantidad, setCantidad] = useState('')
     const [vendedor, setVendedor] = useState('')
+    const { carrito, actualizarCarrito } = useCarrito();
     
     useEffect(() => {
         Service.getProduct(id)
@@ -40,35 +43,67 @@ const Product = () => {
     }, []);
 
     const [amount, setAmount] = useState(1)
+    const navigate = useNavigate();
     const comprar = () => {
-        const id_user = JSON.parse(localStorage.getItem('data_user')).id
-        console.log(id_user)
-        const data = {
-            idUser: id_user,
-            idProduct: id,
-            quantity: amount
+        if(existeProductoenCarrito){
+            if(!validarNoPasaStock(carrito, id, amount)){
+                Swal.fire({
+                    title: "No se puede agregar al carrito",
+                    text: "No hay suficiente stock",
+                    icon: "error"
+                });
+                return;
+            }
+
+            for(let i = 0; i < carrito.length; i++){
+                if(carrito[i].id_producto === id){
+                    carrito[i].cantidad_producto += amount;
+                    actualizarCarrito(carrito);
+                    Swal.fire({
+                        title: "Gracias por tu compra!",
+                        text: "Sigue comprando!",
+                        icon: "success"
+                    });
+                    setTimeout(() => {
+                        navigate('/client/shoppingcart');
+                    }, 1000);
+                    return;
+                }
+            }
         }
-        Service.createPurchase(data)
-        .then((res) => {
-            Swal.fire({
-                title: "Gracias por tu compra!",
-                text: "Sigue comprando!",
-                icon: "success"
-              });
-            setTimeout(() => {
-            const navigate = useNavigate();
-            navigate('/client/home');
-            }, 2000);
-        })
-        .catch((err) => {
-            console.log(err)
-            Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Algo ocurrió que no se pudo realizar la compra!",
-                footer: '<span>Intenta de nuevo más tarde</span>'
-              });
-        })
+        const productoAgregado = new ProductShopping(id, name, description, amount, precio, pathImage)
+        carrito.push(productoAgregado);
+        actualizarCarrito(carrito);
+        Swal.fire({
+            title: "Gracias por tu compra!",
+            text: "Sigue comprando!",
+            icon: "success"
+            });
+        setTimeout(() => {
+        navigate('/client/shoppingcart');
+        }, 1000);
+    }
+
+    const existeProductoenCarrito = () => {
+        for(let i = 0; i < carrito.length; i++){
+            if(carrito[i].id_producto === id){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    const validarNoPasaStock = (carrito,idProducto, cantidad_nueva) =>{
+        for(let i = 0; i < carrito.length; i++){
+            if(carrito[i].id_producto === idProducto){
+                const total_cantidad = carrito[i].cantidad_producto + cantidad_nueva;
+                if(total_cantidad > cantidad){
+                    return false;
+                }
+                return true;
+            }
+        }
+        return true;
     }
 
   return (

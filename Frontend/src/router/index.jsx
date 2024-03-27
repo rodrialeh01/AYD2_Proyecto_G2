@@ -13,6 +13,7 @@ import SellsContainer from '../components/vendor/SellsContainer';
 import HomeReviews from '../pages/admin/HomeReviews';
 import ProductAdmin from '../pages/admin/ProductAdmin';
 import Users from '../pages/admin/Users';
+import Checkout from '../pages/client/Checkout';
 import HomeProducts from '../pages/client/HomeProducts';
 import Product from '../pages/client/Product';
 import ShoppingCart from '../pages/client/ShoppingCart';
@@ -47,6 +48,10 @@ export const router = createBrowserRouter([
             {
                 path: 'shoppingcart',
                 element: <ShoppingCart />
+            },
+            {
+                path: 'checkout/:cost',
+                element: <Checkout/>
             }
         ]
     },

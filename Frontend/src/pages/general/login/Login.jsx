@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
+import { useUser } from "../../../Context/User";
 import Service from "../../../Service/Service";
-import { useUser } from "../../../userCtx/User";
 import "./Login.css";
 
 export default function Login() {
