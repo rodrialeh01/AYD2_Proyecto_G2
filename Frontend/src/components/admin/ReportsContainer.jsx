@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import Service from "../../Service/Service";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router";
 
 const ReportContainer = () => {
@@ -42,6 +41,33 @@ const ReportContainer = () => {
                     <button
                       className="m-2 bg-[#007ac2] hover:bg-blue-800 transition duration-300 ease-in-out text-white font-bold py-2 px-4 rounded"
                       onClick={() => navigate("/admin/report1")}
+                    >
+                      Ver
+                    </button>
+                  </div>
+                </div>
+              </div>
+              {/*FIN CARD*/}
+              {/*INICIO CARD*/}
+              <div className="h-auto max-w-xs bg-white shadow-lg shadow-gray-500/50 rounded-lg overflow-hidden transition-all ease-out duration-300 hover:scale-105 p-2 m-3 flex flex-col items-center">
+                <div className="flex items-center justify-center">
+                  <img
+                    src="https://www.kulander.net/my-images/blog/cover/full/meodosdepa-31e530b5be69f5ebe02b.jpg"
+                    alt="Imagen de Perfil"
+                    className="w-64 h-64 rounded-lg object-contain object-center border-2 border-gray-300 bg-gray-200"
+                  />
+                </div>
+                <div className="flex items-center justify-center py-4">
+                  <h1 className="text-xl font-semibold text-gray-800 text-center">
+                    Reporte de Métodos de Pago
+                  </h1>
+                </div>
+
+                <div className="flex items-center justify-center">
+                  <div className=" flex w-[500px] justify-center items-center text-white font-bold py-2 px-4 rounded-full mx-1">
+                    <button
+                      className="m-2 bg-[#007ac2] hover:bg-blue-800 transition duration-300 ease-in-out text-white font-bold py-2 px-4 rounded"
+                      onClick={() => navigate("/admin/report2")}
                     >
                       Ver
                     </button>

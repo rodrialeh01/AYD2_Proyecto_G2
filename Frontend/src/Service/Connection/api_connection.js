@@ -190,3 +190,10 @@ export const getReport1 = async (fechaI, fechaF) => {
     });
     return response.data;
 }
+
+//OBTENER TODOS LOS PAGOS
+
+export const getPays = async () => {
+    const response = await instance.get('pays')
+    return response.data;
+}

@@ -12,6 +12,7 @@ import ListPContainer from '../components/vendor/ListPContainer';
 import SellsContainer from '../components/vendor/SellsContainer';
 import HomeReviews from '../pages/admin/HomeReviews';
 import ProductAdmin from '../pages/admin/ProductAdmin';
+import Report2 from '../pages/admin/Report2';
 import Users from '../pages/admin/Users';
 import Checkout from '../pages/client/Checkout';
 import HomeProducts from '../pages/client/HomeProducts';
@@ -108,9 +109,14 @@ export const router = createBrowserRouter([
             {
                 path: 'reports',
                 element: <ReportContainer/>
-            },{
+            },
+            {
                 path: 'report1',
                 element: <Report1Container/>
+            },
+            {
+                path: 'report2',
+                element: <Report2/>
             }
         ]
     }
