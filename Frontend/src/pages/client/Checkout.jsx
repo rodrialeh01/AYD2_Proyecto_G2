@@ -125,6 +125,7 @@ const Checkout = () => {
                 text: "Gracias por tu compra!, puedes seguir navegando para otra compra",
                 icon: "success"
             });
+            actualizarCarrito([])
             setTimeout(() => {
                 navigate('/client/home');
             }, 1000);

@@ -109,7 +109,7 @@ const Product = () => {
     }
 
   return (
-    <div className='max-w-7xl text-white mx-auto p-8'>
+    <div className='max-w-7xl text-white mx-auto p-8 overflow-y-scroll scrollbar-hide h-screen'>
         <div className='flex flex-col justify-between lg:flex-row gap-16 lg:items-center'>
             <div className='flex flex-col gap-6 lg:wl2/4'>
                 <img src={pathImage} alt="" className='w-full h-auto lg:h-120 object-cover rounded-xl'/>
