@@ -1,7 +1,7 @@
 import Purchase from '../db/models/purchase.model.js';
 
 class PurchaseRepository {
-    async createPurchase(idUser, product, quantity) {
+    async createPurchase(idUser, product, quantity, email, phone) {
         try{
             if(product.stock > 0){
                 const cantidad = product.stock - quantity;
@@ -14,7 +14,9 @@ class PurchaseRepository {
                     product: product._id,
                     quantity: quantity,
                     price: product.price,
-                    vendorId: product.idUser
+                    vendorId: product.idUser,
+                    email: email,
+                    phone: phone
                 })
                 await purchase.save();
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BsPaypal } from "react-icons/bs";
 import { useNavigate, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { useCarrito } from '../../Context/Carrito';
 import Service from "../../Service/Service";
 import { Desencriptar } from "../../utils";
 
@@ -20,6 +21,7 @@ const Checkout = () => {
     const [securityCode, setSecurityCode] = useState("")
     const [cardName, setCardName] = useState("")
     const { cost } = useParams()
+    const { carrito, actualizarCarrito } = useCarrito();
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -88,20 +90,54 @@ const Checkout = () => {
             });
             return;
         }
-        const data = {
-            email: email,
-            telefono: telefono,
-            direccion: direccion,
-            nombre: nombre,
-            nit: nit,
-            cardNumber: cardNumber,
-            mes: mes,
-            anio: anio,
-            securityCode: securityCode,
-            cardName: cardName
+        const purchases = [];
+        const user = JSON.parse(localStorage.getItem("data_user"))
+        for(let i = 0; i < carrito.length; i++){
+            purchases.push({
+                "idUser": user.id,
+                "idProduct": carrito[i].id_producto,
+                "price":carrito[i].precio_producto,
+                "quantity": carrito[i].cantidad_producto,
+                "idVendor": carrito[i].id_vendedor
+            })
         }
-
-
+        console.log(purchases)
+        const data = {
+            purchases,
+            email: email,
+            phone: telefono,
+            address: direccion,
+            nit: nit,
+            name: nombre,
+            method: 1,
+            amount: Number(total),
+            card_number: cardNumber,
+            card_name: cardName,
+            month: Number(mes),
+            year: Number(anio),
+            cvv: securityCode
+        }
+        Service.createPurchasesWithPay(data)
+        .then((res) => {
+            console.log(res);
+            Swal.fire({
+                title: "Compra realizada con éxito!",
+                text: "Gracias por tu compra!, puedes seguir navegando para otra compra",
+                icon: "success"
+            });
+            setTimeout(() => {
+                navigate('/client/home');
+            }, 1000);
+        })
+        .catch((err) => {
+            console.log(err);
+            Swal.fire({
+                title: "Hubo un error en tu compra!",
+                text: "No se pudo procesar tu compra, intenta nuevamente más tarde",
+                icon: "error"
+            });
+            console.log(err)
+        })
     }
 
     const pagoPorPaypal = () => {
@@ -113,13 +149,48 @@ const Checkout = () => {
             });
             return;
         }
-        const data = {
-            email: email,
-            telefono: telefono,
-            direccion: direccion,
-            nombre: nombre,
-            nit: nit
+        const purchases = [];
+        const user = JSON.parse(localStorage.getItem("data_user"))
+        for(let i = 0; i < carrito.length; i++){
+            purchases.push({
+                "idUser": user.id,
+                "idProduct": carrito[i].id_producto,
+                "price":carrito[i].precio_producto,
+                "quantity": carrito[i].cantidad_producto,
+                "idVendor": carrito[i].id_vendedor
+            })
         }
+        console.log(purchases)
+        const data = {
+            purchases,
+            email: email,
+            phone: telefono,
+            address: direccion,
+            nit: nit,
+            name: nombre,
+            method: 2,
+            amount: Number(total)
+        }
+        Service.createPurchasesWithPay(data)
+        .then((res) => {
+            console.log(res);
+            Swal.fire({
+                title: "Compra realizada con éxito!",
+                text: "Gracias por tu compra!, puedes seguir navegando para otra compra",
+                icon: "success"
+            });
+            setTimeout(() => {
+                navigate('/client/home');
+            }, 1000);
+        })
+        .catch((err) => {
+            Swal.fire({
+                title: "Hubo un error en tu compra!",
+                text: "No se pudo procesar tu compra, intenta nuevamente más tarde",
+                icon: "error"
+            });
+            console.log(err)
+        })
     }
 
     return (
@@ -134,9 +205,9 @@ const Checkout = () => {
                     <div><label for="direccion" class="text-xs font-semibold text-black">Dirección</label><input type="text" id="direccion" name="direccion" placeholder="1 Calle 1-58, Zona 1, Antigua Guatemala" class="mt-1 block w-full rounded border-gray-300 bg-gray-50 py-3 px-4 text-sm placeholder-gray-400 shadow-sm outline-none transition focus:ring-2 focus:ring-purple" value={direccion} onChange={onChangeDireccion} /></div>
                     <div><label for="nombre" class="text-xs font-semibold text-black">Nombre (Para Facturación)</label><input type="text" id="nombre" name="nombre" placeholder="Jhon Doe" class="mt-1 block w-full rounded border-gray-300 bg-gray-50 py-3 px-4 text-sm placeholder-gray-400 shadow-sm outline-none transition focus:ring-2 focus:ring-purple" value={nombre} onChange={onChangeNombre}/></div>
                     <div><label for="nit" class="text-xs font-semibold text-black">NIT (Para Facturación)</label><input type="text" id="nit" name="nit" placeholder="1234Ñ" class="mt-1 block w-full rounded border-gray-300 bg-gray-50 py-3 px-4 text-sm placeholder-gray-400 shadow-sm outline-none transition focus:ring-2 focus:ring-purple" value={nit} onChange={onChangeNit}/></div>
-                    <div class="relative"><label for="card-number" class="text-xs font-semibold text-black">Número de Tarjeta</label><input type="text" id="card-number" name="card-number" placeholder="1234-5678-XXXX-XXXX" class="block w-full rounded border-gray-300 bg-gray-50 py-3 px-4 pr-10 text-sm placeholder-gray-400 shadow-sm outline-none transition focus:ring-2 focus:ring-purple" value={cardNumber} onChange={onChangeCardNumber} /></div>
+                    <div class="relative"><label for="card-number" class="text-xs font-semibold text-black">Número de Tarjeta (Obligatorio si paga con tarjeta)</label><input type="text" id="card-number" name="card-number" placeholder="1234-5678-XXXX-XXXX" class="block w-full rounded border-gray-300 bg-gray-50 py-3 px-4 pr-10 text-sm placeholder-gray-400 shadow-sm outline-none transition focus:ring-2 focus:ring-purple" value={cardNumber} onChange={onChangeCardNumber} /></div>
                     <div>
-                        <p class="text-xs font-semibold text-black">Fecha de expiración</p>
+                        <p class="text-xs font-semibold text-black">Fecha de expiración (Obligatorio si paga con tarjeta)</p>
                         <div class="mr-6 flex flex-wrap">
                         <div class="my-1">
                             <label for="mes" class="sr-only">Mes</label><input type="text" id="mes" name="mes" placeholder="Mes" class="block w-36 rounded border-gray-300 bg-gray-50 py-3 px-4 text-sm placeholder-gray-400 shadow-sm outline-none transition focus:ring-2 focus:ring-purple" value={mes} onChange={onChangeMes}/>
@@ -148,7 +219,7 @@ const Checkout = () => {
                         </div>
                     </div>
                     <div>
-                        <p class="text-xs font-semibold text-black">Nombre del Propietario de la Tarjeta</p>
+                        <p class="text-xs font-semibold text-black">Nombre del Propietario de la Tarjeta (Obligatorio si paga con tarjeta)</p>
                         <label for="card-name" class="sr-only">Nombre en la tarjeta</label><input type="text" id="card-name" name="card-name" placeholder="Nombre en la tarjeta" class="mt-1 block w-full rounded border-gray-300 bg-gray-50 py-3 px-4 text-sm placeholder-gray-400 shadow-sm outline-none transition focus:ring-2 focus:ring-purple" value={cardName} onChange={onChangeCardName} />
                     </div>
                     </form>

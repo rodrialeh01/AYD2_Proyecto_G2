@@ -71,6 +71,16 @@ export const createPurchase = async (purchase) => {
     return response.data;
 }
 
+//PAGAR COMPRA
+export const createPurchasesWithPay = async(data) => {
+    const response = await instance.post('purchase/pay', data, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    return response.data;
+}
+
 //USUARIOS:
 //Crear Usuario
 export const registrarUsuario = async (usuario) => {

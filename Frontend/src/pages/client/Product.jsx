@@ -22,6 +22,7 @@ const Product = () => {
     const [precio, setPrecio] = useState('')
     const [cantidad, setCantidad] = useState('')
     const [vendedor, setVendedor] = useState('')
+    const [idVendedor, setIdVendedor] = useState('');
     const { carrito, actualizarCarrito } = useCarrito();
     
     useEffect(() => {
@@ -32,6 +33,7 @@ const Product = () => {
             setDescription(res.data.description)
             setPrecio(res.data.price)
             setCantidad(res.data.stock)
+            setIdVendedor(res.data.idUser)
             Service.getUser(res.data.idUser)
             .then((res2) => {
                 setVendedor(res2.data.name)
@@ -60,7 +62,7 @@ const Product = () => {
                     carrito[i].cantidad_producto += amount;
                     actualizarCarrito(carrito);
                     Swal.fire({
-                        title: "Gracias por tu compra!",
+                        title: "Producto Agregado a tu Carrito!",
                         text: "Sigue comprando!",
                         icon: "success"
                     });
@@ -71,7 +73,7 @@ const Product = () => {
                 }
             }
         }
-        const productoAgregado = new ProductShopping(id, name, description, amount, precio, pathImage)
+        const productoAgregado = new ProductShopping(id, name, description, amount, precio, pathImage, idVendedor)
         carrito.push(productoAgregado);
         actualizarCarrito(carrito);
         Swal.fire({
