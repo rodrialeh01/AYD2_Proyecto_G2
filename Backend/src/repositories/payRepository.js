@@ -34,6 +34,10 @@ class PayRepository {
             return res.response(null, error.message, 500);
         }
     }
+
+    async getPays(){
+        return Pay.find({})
+    }
 }
 
 export default PayRepository;
