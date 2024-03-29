@@ -3,7 +3,7 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BsArrowLeftShort, BsSearch } from "react-icons/bs";
 import { RiWalkFill } from "react-icons/ri";
 import { useNavigate } from 'react-router-dom';
-import { useUser } from '../userCtx/User/';
+import { useUser } from '../Context/User';
 
 const Sidebar = ({data}) => {
     const [open, setOpen] = useState(false);
@@ -16,6 +16,7 @@ const Sidebar = ({data}) => {
 
     const Logout = () => {
         localStorage.removeItem("data_user");
+        localStorage.removeItem("carrito_user");
         setLogged(false);
         navigate("/");
     }

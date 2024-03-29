@@ -1,11 +1,13 @@
 import validator from "validator";
-import PurchaseRepository from "../repositories/PurchaseRepository.js";
+import PayRepository from "../repositories/payRepository.js";
 import ProductRepository from "../repositories/productRepository.js";
+import PurchaseRepository from "../repositories/PurchaseRepository.js";
 import UserRepository from "../repositories/UserRepository.js";
 
 const purchaseRepository = new PurchaseRepository();
 const productRepository = new ProductRepository();
 const userRepository = new UserRepository();
+const payRepository = new PayRepository();
 
 export const createPurchase = async (req, res) => {
     try {
@@ -32,6 +34,87 @@ export const createPurchase = async (req, res) => {
         res.response(r, "Purchase created successfully", 201);
     } catch (error) {
         console.error(error);
+        res.response(null, error.message, 500);
+    }
+}
+
+export const createPurchasesWithPay = async (req, res) => {
+    try {
+        const { purchases, email, phone, address,nit, name, method, amount, card_number, card_name, month, year, cvv } = req.body;
+        // SE USARA METHOD 1 SI ES PAGO POR TARJETA Y METHOD 2 SI ES PAGO POR PAYPAL
+        if(!purchases || !email || !phone || !address || !nit || !name || !method || !amount){
+            res.response(null, "All fields are required", 400);
+        }
+
+        if (!validator.isNumeric(String(phone))) {
+            res.response(null, "Phone must be a number", 400);
+        }
+
+        if (!validator.isNumeric(String(method))) {
+            res.response(null, "Method must be a number", 400);
+        }
+
+        if (!validator.isNumeric(String(amount))) {
+            res.response(null, "Amount must be a number", 400);
+        }
+
+        if(!validator.isEmail(email)){
+            return res.response(null, "Invalid email", 400);
+        }
+
+        if(!Array.isArray(purchases)){
+            return res.response(null, "Purchases is a invalid array", 400);
+        }
+
+        if(method === 1){
+            if(!card_name || !card_number || !month || !year || !cvv){
+                res.response(null, "All fields are required", 400);
+            }
+            if(!validator.isNumeric(String(card_number))){
+                return res.response(null, "Card number is a invalid Number", 400)
+            }
+
+            if(!validator.isNumeric(String(year))) {
+                return res.response(null, "Year is a invalid Number", 400)
+            }
+
+            if(!validator.isNumeric(String(month))) {
+                return res.response(null, "Month is a invalid Number", 400)
+            }
+
+            if(!validator.isNumeric(String(cvv))) {
+                return res.response(null, "CVV is a invalid Number", 400)
+            }
+        }
+
+        await Promise.all(purchases.map(async (p, index) => {
+            if (!validator.isMongoId(String(p.idUser))) {
+                res.response(null, "Invalid idClient", 400);
+            }
+
+            if(!validator.isMongoId(String(p.idProduct))) {
+                res.response(null, "Invalid idProduct", 400);
+            }
+
+            if (!validator.isNumeric(String(p.quantity))) {
+                res.response(null, "Quantity must be a number", 400);
+            }
+
+            if (!validator.isNumeric(String(p.price))) {
+                res.response(null, "Price must be a number", 400);
+            }
+            
+            const product = await productRepository.getProductById(p.idProduct);
+            const compraproducto = await purchaseRepository.createPurchase(p.idUser, product, p.quantity, email, phone)
+            console.log(compraproducto._id)
+            const pago = await payRepository.crearPago(compraproducto._id, method, amount,address,nit, name, card_number, card_name, month, year, cvv)
+            if(!pago){
+                throw new Error("Purchase and Pay not created");
+            }
+        }));
+        res.response(null, "Compra y Pago hecho con éxito", 200)
+    }catch(error){
+        console.error(error.message);
         res.response(null, error.message, 500);
     }
 }
