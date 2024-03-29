@@ -1,9 +1,10 @@
 import { Router } from "express";
 import { createReview, deleteReview, getReviewsByProductId, updateComment, updateRating, updateReview,getAllReviews } from "../controllers/review.controller.js";
+import fileHandler from '../middlewares/file.js';
 
 const router = Router();
 
-router.post("/create", createReview);
+router.post("/create", fileHandler.single('image'), createReview);
 router.get("/get/:idProduct", getReviewsByProductId);
 router.put("/update/:idReview", updateReview);
 router.patch("/update/comment/:idReview", updateComment);

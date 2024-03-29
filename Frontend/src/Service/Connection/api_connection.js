@@ -139,7 +139,7 @@ export const getReviews = async (id) => {
 export const createReview = async (review) => {
     const response = await instance.post('review/create', review, {
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'multipart/form-data'
         }
     });
     console.log(response);

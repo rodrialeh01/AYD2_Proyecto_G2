@@ -85,7 +85,7 @@ const RatingStats = ({ comments }) => {
     <div className="my-7">
     <div className="flex items-center gap-2 text-black">
       <div className="flex flex-col items-start gap-2 mr-5">
-        <div className="text-4xl font-bold">{averageRating}</div>
+        <div className="text-4xl font-bold">{averageRating.toFixed(2)}</div>
         <div className="flex gap-1">{renderStars(averageRating)}</div>
         <div className="text-sm">{`${totalRatings} valoraciones`}</div>
       </div>

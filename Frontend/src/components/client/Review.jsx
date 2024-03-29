@@ -1,4 +1,4 @@
-import { FaStar, FaRegStarHalf, FaRegStar } from "react-icons/fa";
+import { FaStar, FaRegStarHalf, FaRegStar, FaRegImage  } from "react-icons/fa";
 import { FiEdit, FiTrash } from "react-icons/fi";
 import { useEffect, useState } from "react";
 import Service from "../../Service/Service";
@@ -15,6 +15,15 @@ function Review({ id }) {
   const [editRating, setEditRating] = useState(0);
   const [editComment, setEditComment] = useState("");
   const [editId, setEditId] = useState(null);
+
+  const [image, setImage] = useState(null);
+  const handleFileInputChange = (e) => {
+    setImage(e.target.files[0]);
+  };
+
+  const handleImageUpload = () => {
+    document.getElementById('fileInput').click();
+  };
 
   // Función para abrir el modal de edición
   const handleEdit = (id) => {
@@ -69,13 +78,23 @@ function Review({ id }) {
       comment: comment,
       idProduct: id,
       idUser: usuario.id,
+      image: image,
     };
-    Service.createReview(rev).then((newReview) => {
+
+    const formData = new FormData();
+    formData.append("rating", rev.rating);
+    formData.append("comment", rev.comment);
+    formData.append("idProduct", rev.idProduct);
+    formData.append("idUser", rev.idUser);
+    formData.append("image", rev.image);
+
+    Service.createReview(formData).then((newReview) => {
       setComments([...comments, newReview.data]);
       console.log(newReview);
       setShowModal(false);
       setRating(0);
       setComment("");
+      setImage(null);
       toast.success("Valoración agregada con éxito");
     });
   };
@@ -128,13 +147,22 @@ function Review({ id }) {
     }
   };
 
+  const [showFullImage, setShowFullImage] = useState(false);
+
+  const toggleFullImage = () => {
+    setShowFullImage(!showFullImage);
+  };
+
   return (
     <>
       <Toaster position="bottom-right" reverseOrder={false} gutter={8} />
       <div className="mt-10">
         <h2 className="text-2xl font-bold text-black mb-4">Valoraciones</h2>
 
-        <RatingStats comments={comments}/>
+        {/* Verficar que hayan reviews antes */}
+        {comments.length !== 0 && (
+          <RatingStats comments={comments}/>
+        )}
 
         <button
           className="bg-violet-800 text-white font-semibold py-3 px-16 rounded-xl h-full"
@@ -144,10 +172,10 @@ function Review({ id }) {
         </button>
 
         {showModal && (
-          <div className="fixed inset-0 bg-black  text-black bg-opacity-50 flex justify-center items-center z-50">
-            <div className="bg-white p-5 rounded-lg">
-              <h3 className="text-lg font-semibold">Deja tu valoración</h3>
-              <div className="flex my-2">
+          <div className="fixed inset-0 bg-black  text-black bg-opacity-50 flex justify-center items-center z-50  ">
+            <div className="bg-white p-5 rounded-lg w-1/3">
+              <h3 className="text-2xl font-semibold">Deja tu valoración</h3>
+              <div className="flex my-2 text-2xl">
                 {renderStars(rating, handleRatingChange)}
               </div>
               <textarea
@@ -156,6 +184,33 @@ function Review({ id }) {
                 value={comment}
                 onChange={handleCommentChange}
               ></textarea>
+              
+
+        <input
+          type="file"
+          id="fileInput"
+          accept="image/*"
+          onChange={handleFileInputChange}
+          className="hidden"
+        />
+
+        {/* Botón personalizado para cargar imágenes */}
+        <button
+          type="button"
+          onClick={handleImageUpload}
+          className="bg-yellow-500 hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4 cursor-pointer flex items-center gap-2"
+        >
+          <FaRegImage />
+          <span>Cargar Imagen</span>
+        </button>
+
+        {image && (
+          <div className="mt-4">
+            <img src={URL.createObjectURL(image)} alt="Preview" className="max-w-full max-h-40 rounded" />
+          </div>
+        )}
+            
+        <br />
               <button
                 className="bg-violet-800 text-white font-semibold py-2 px-4 rounded"
                 onClick={handleSubmit}
@@ -201,10 +256,10 @@ function Review({ id }) {
           </div>
         )}
 
-        <div className="space-y-6">
+        <div className="space-y-6 pt-5">
           {comments.map((comment, index) => (
             <>
-              <div key={index} className=" p-4 rounded-lg text-black relative">
+              <div key={index} className=" pt-3 rounded-lg text-black relative">
                 <div className="absolute top-2 right-2 flex gap-2">
                   {/* <button
                 aria-label="Editar comentario"
@@ -267,6 +322,33 @@ function Review({ id }) {
                 </div>
                 <p className="mb-0">{comment.comment}</p>
               </div>
+              
+
+              {comment.image && !showFullImage && (
+                <div className="flex justify-start">
+                  <img
+                    src={comment.image}
+                    alt="Imagen de la review"
+                    className="max-w-full max-h-20 rounded cursor-pointer"
+                    onClick={toggleFullImage}
+                  />
+                </div>
+              )}
+
+              {/* Vista de la imagen a pantalla completa */}
+              {comment.image && showFullImage && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75">
+                  <div className="max-w-4xl w-full h-auto">
+                    <img
+                      src={comment.image}
+                      alt="Imagen de la review"
+                      className="w-full h-auto rounded-lg"
+                      onClick={toggleFullImage}
+                    />
+                  </div>
+                </div>
+              )}
+              
               <hr />
             </>
           ))}
