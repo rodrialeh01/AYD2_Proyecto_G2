@@ -3,6 +3,7 @@ import { FiEdit, FiTrash } from "react-icons/fi";
 import { useEffect, useState } from "react";
 import Service from "../../Service/Service";
 import toast, { Toaster } from "react-hot-toast";
+import RatingStats from "./RatingStats";
 
 function Review({ id }) {
   const [comments, setComments] = useState([]);
@@ -132,6 +133,9 @@ function Review({ id }) {
       <Toaster position="bottom-right" reverseOrder={false} gutter={8} />
       <div className="mt-10">
         <h2 className="text-2xl font-bold text-black mb-4">Valoraciones</h2>
+
+        <RatingStats comments={comments}/>
+
         <button
           className="bg-violet-800 text-white font-semibold py-3 px-16 rounded-xl h-full"
           onClick={() => setShowModal(true)}
