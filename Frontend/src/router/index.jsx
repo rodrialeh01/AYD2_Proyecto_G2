@@ -20,6 +20,7 @@ import Product from '../pages/client/Product';
 import ShoppingCart from '../pages/client/ShoppingCart';
 import SignUp from '../pages/general/SignUp';
 import Login from '../pages/general/login/Login';
+import Report3 from '../pages/admin/Report3';
 
 export const router = createBrowserRouter([
     {
@@ -117,6 +118,10 @@ export const router = createBrowserRouter([
             {
                 path: 'report2',
                 element: <Report2/>
+            },
+            {
+                path: 'report3',
+                element: <Report3/>
             }
         ]
     }

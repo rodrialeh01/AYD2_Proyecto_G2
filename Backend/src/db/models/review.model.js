@@ -1,4 +1,3 @@
-import e from 'cors';
 import mongoose, { Schema, model } from 'mongoose';
 
 const reviewSchema = new Schema(

@@ -146,6 +146,11 @@ export const createReview = async (review) => {
     return response.data;
 }
 
+export const getReportReview = async () => {
+    const response = await instance.get('/review/report');
+    return response.data;
+}
+
 // Delete Review
 export const deleteReview = async (id) => {
     const response = await instance.delete(`review/delete/${id}`);

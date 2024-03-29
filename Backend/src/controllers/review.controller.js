@@ -249,3 +249,18 @@ export const getAllReviews = async (req, res) => {
     res.response(null, error.message, 500);
   }
 }
+
+export const getReportReviews = async (req, res) => {
+  try {
+    const reviews = await reviewRepository.getReportReviews();
+
+    if (!reviews) {
+      res.response(null, 'Reviews not found', 404);
+    }
+
+    res.response(reviews, 'Reviews found', 200);
+
+  } catch (error) {
+    res.response(null, error.message, 500);
+  }
+};
