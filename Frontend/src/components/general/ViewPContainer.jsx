@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import Sidebar from "../../Navigation/Sidebar";
 import ViewP from "../../pages/general/ViewP";
+import FormEditP from "../../pages/general/FormEditP";
 const ViewPContainer = () => {
   const [profile, setProfile] = useState({
     name: "",
@@ -11,6 +12,7 @@ const ViewPContainer = () => {
     role: 0,
     verified: "",
     birthday: "2021-10-10",
+    pathImage: "",
   });
 
   return (

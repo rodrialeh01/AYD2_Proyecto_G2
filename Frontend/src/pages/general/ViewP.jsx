@@ -92,6 +92,23 @@ const ViewP = ({perfil}) => {
                 ></input>
               </div>
             </div>
+            <div className="md:flex md:items-center mb-6">
+              <div className="">
+                <label
+                  className="block text-black font-bold md:text-left mb-1 md:mb-0 pr-4"
+                  htmlFor="inline-full-name"
+                >
+                  Fotografia:
+                </label>
+              </div>
+              <div className="flex items-center justify-center">
+                <img
+                  src={{perfil}.perfil.pathImage}
+                  alt="Imagen del usuario"
+                  className="object-contain w-48 h-48 rounded-lg"
+                />
+              </div>
+            </div>
            
             
           </div>
