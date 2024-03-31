@@ -37,14 +37,7 @@ export const getUser = async (req, res) => {
         const { id } = req.params;
         if (!validator.isMongoId(String(id))) {
             res.response(null, "Invalid user id", 400);
-<<<<<<< HEAD
-        }
 
-        const user = await userRepository.getUserByID(id);
-        if (!user) {
-            throw new Error("User not found");
-        }
-=======
         }
 
         const user = await userRepository.getUserByID(id);
@@ -89,7 +82,6 @@ export const updateInfoUser = async (req, res) => {
             res.response(userUpdated, 'User updated successfully', 200);
 
         }   
->>>>>>> feature#ABCO
 
         res.response(user, "User found", 200);
     } catch (error) {
@@ -97,8 +89,6 @@ export const updateInfoUser = async (req, res) => {
         res.response(null, error.message, 500);
     }
 }
-<<<<<<< HEAD
-=======
 
 export const uploadImage = async (req, res) => {
     
@@ -116,4 +106,3 @@ export const uploadImage = async (req, res) => {
     }
 
 };
->>>>>>> feature#ABCO
