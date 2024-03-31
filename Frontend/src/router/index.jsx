@@ -21,6 +21,8 @@ import ShoppingCart from '../pages/client/ShoppingCart';
 import SignUp from '../pages/general/SignUp';
 import Login from '../pages/general/login/Login';
 import Report3 from '../pages/admin/Report3';
+import CrearAdmin from '../pages/admin/CrearAdmin';
+import Report5 from '../pages/admin/Report5';
 
 export const router = createBrowserRouter([
     {
@@ -104,6 +106,10 @@ export const router = createBrowserRouter([
                 element: <HomeReviews/>
             },
             {
+                path: 'createadmin',
+                element: <CrearAdmin/>
+            },
+            {
                 path: 'profile',
                 element: <ViewPContainer />
             },
@@ -122,6 +128,10 @@ export const router = createBrowserRouter([
             {
                 path: 'report3',
                 element: <Report3/>
+            },
+            {
+                path: 'report5',
+                element: <Report5/>
             }
         ]
     }

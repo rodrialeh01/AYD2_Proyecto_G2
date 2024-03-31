@@ -54,6 +54,16 @@ export const SidebarDataAdmin = [
         icon: <RiIcons.RiShoppingBag2Fill />
     },
     {
+        title: 'Crear Admin',
+        path: '/admin/createadmin',
+        icon: <RiIcons.RiAdminFill />
+    },
+    {
+        title: 'Perfil',
+        path: '/admin/profile',
+        icon: <RiIcons.RiUserFill />
+    },
+    {
         title: 'Reviews',
         path: '/admin/reviews',
         icon: <RiIcons.RiStarFill />
