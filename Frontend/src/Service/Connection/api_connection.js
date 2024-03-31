@@ -202,3 +202,9 @@ export const getPays = async () => {
     const response = await instance.get('pays')
     return response.data;
 }
+
+//Top 10 vendedores con más ventas
+export const getTop10Sellers = async () => {
+    const response = await instance.get('purchase/getTop10Sellers');
+    return response.data;
+}
