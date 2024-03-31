@@ -3,11 +3,13 @@ import PayRepository from "../repositories/payRepository.js";
 import ProductRepository from "../repositories/productRepository.js";
 import PurchaseRepository from "../repositories/PurchaseRepository.js";
 import UserRepository from "../repositories/UserRepository.js";
+import { LogBack } from '../log/bitacora.js';
 
 const purchaseRepository = new PurchaseRepository();
 const productRepository = new ProductRepository();
 const userRepository = new UserRepository();
 const payRepository = new PayRepository();
+const logB = LogBack.getInstance();
 
 export const createPurchase = async (req, res) => {
     try {
@@ -156,6 +158,8 @@ export const getDetailedPurchase = async (req, res) => {
             });
         }
 
+        logB.addBitacora(`Se han encontrado ${detailedPurchases.length} compras detalladas.`);
+
         res.response(detailedPurchases, "Purchases found", 200);
 
     } catch (error) {
@@ -186,7 +190,7 @@ export const getIngresos = async (req, res) => {
             total += product.price * purchase.quantity;
         }
 
-        
+        logB.addBitacora(`Se han encontrado ${repEnviar.length} ingresos.`);
         res.response({productos: repEnviar, total}, "Ingresos found", 200);
         
         
@@ -239,7 +243,7 @@ export const getVentasRango = async (req, res) => {
 
 
         }
-
+        logB.addBitacora(`Se han encontrado ${enviarRespuesta.length} ventas en el rango de fechas.`);
         res.response(enviarRespuesta, "Ventas found", 200);
         
     } catch (error) {
@@ -248,3 +252,39 @@ export const getVentasRango = async (req, res) => {
     }
 }
 
+export const getTop10Sellers = async (req, res) => {
+    //Obtener todas las ventas
+    try {
+        const purchases = await purchaseRepository.getAllPurchases();
+        let salesByVendor = {};
+
+
+        purchases.forEach(purchase => {
+            const vendorId = purchase.vendorId;
+            if (salesByVendor[vendorId]) {
+                salesByVendor[vendorId] +=  purchase.quantity;
+            } else {
+                salesByVendor[vendorId] = purchase.quantity;
+            }
+        });
+
+        const salesArray = Object.entries(salesByVendor);
+
+        salesArray.sort((a, b) => b[1] - a[1]);
+
+        const top10 = salesArray.slice(0, 10);
+
+        const topSellersInfo = await Promise.all(top10.map(async ([vendorId, quantity]) => {
+            const vendor = await userRepository.getUserByID(vendorId);
+            return {
+                vendorName: vendor.name,
+                quantity
+            }
+        }));
+
+        res.response(topSellersInfo, "Top 10 sellers found", 200);
+    } catch (error) {
+        console.error(error);
+        res.response(null, error.message, 500);
+    }
+}

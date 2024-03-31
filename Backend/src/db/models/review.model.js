@@ -1,4 +1,3 @@
-import e from 'cors';
 import mongoose, { Schema, model } from 'mongoose';
 
 const reviewSchema = new Schema(
@@ -7,6 +6,7 @@ const reviewSchema = new Schema(
         idProduct: {type : mongoose.Schema.Types.ObjectId, ref: 'products'},
         comment: String,
         rating: Number,
+        image: String
     },
     {
         timestamps: true,

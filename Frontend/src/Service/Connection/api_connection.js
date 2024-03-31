@@ -139,10 +139,15 @@ export const getReviews = async (id) => {
 export const createReview = async (review) => {
     const response = await instance.post('review/create', review, {
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'multipart/form-data'
         }
     });
     console.log(response);
+    return response.data;
+}
+
+export const getReportReview = async () => {
+    const response = await instance.get('/review/report');
     return response.data;
 }
 
@@ -195,5 +200,11 @@ export const getReport1 = async (fechaI, fechaF) => {
 
 export const getPays = async () => {
     const response = await instance.get('pays')
+    return response.data;
+}
+
+//Top 10 vendedores con más ventas
+export const getTop10Sellers = async () => {
+    const response = await instance.get('purchase/getTop10Sellers');
     return response.data;
 }

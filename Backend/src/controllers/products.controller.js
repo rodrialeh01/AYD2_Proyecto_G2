@@ -1,8 +1,10 @@
 import validator from "validator";
 import ProductRepository from "../repositories/productRepository.js";
 import { saveObj } from '../config/objectHandler.js';
+import { LogBack } from '../log/bitacora.js';
 
 const productRepository = new ProductRepository();
+const logB = LogBack.getInstance();
 
 export const createProduct = async (req, res) => {
     try {
@@ -33,8 +35,9 @@ export const createProduct = async (req, res) => {
             idUser
         }
 
-        productRepository.crearProducto(producto);
-        res.response(null, "Product created successfully", 201);
+        const p = await productRepository.crearProducto(producto);
+        logB.addBitacora(`Se añadió el nuevo producto con ID: ${p._id}`);
+        res.response(p, "Product created successfully", 201);
     } catch (error) {
         console.error(error);
         res.response(null, error.message, 500);
@@ -75,7 +78,7 @@ export const updateProduct = async (req, res) => {
             stock,
             idUser
         }
-
+        logB.addBitacora(`El producto: ${id} se ha actualizado.`);
         productRepository.updateProduct(id, producto);
         res.response(null, "Product updated successfully", 200);
     } catch (error) {
@@ -87,6 +90,7 @@ export const updateProduct = async (req, res) => {
 export const seeAllProducts = async (req, res) => {
     try {
         const products = await productRepository.obtenerTodos();
+        logB.addBitacora(`Se han encontrado ${products.length} productos.`);
         res.response(products, "Products found", 200);
     } catch (error) {
         console.error(error);
@@ -101,6 +105,7 @@ export const seeProductById = async (req, res) => {
             res.response(null, "Invalid product id", 400);
         }
 
+        logB.addBitacora(`Se ha buscado el producto con ID: ${id}`);
         const product = await productRepository.getProductById(id);
         res.response(product, "Product found", 200);
     } catch (error) {
@@ -116,6 +121,7 @@ export const getProductsByVendor = async (req, res) => {
             res.response(null, "Invalid idUser", 400);
         }
 
+        logB.addBitacora(`Se han buscado los productos del vendedor con ID: ${id}`);
         const products = await productRepository.getProductsByVendor(id);
         res.response(products, "Products found", 200);
     } catch (error) {
@@ -136,6 +142,7 @@ export const deleteProduct = async (req, res) => {
             throw new Error("Product not deleted");
         }
 
+        logB.addBitacora(`Se ha eliminado el producto con ID: ${id}`);
         res.response(null, "Product deleted", 200);
     } catch (error) {
         console.error(error);
@@ -150,7 +157,7 @@ export const uploadImage = async (req, res) => {
         const fileExtension = originalname.split('.').pop();
 
         const { Key, Location } = await saveObj(buffer, fileExtension);
-        
+        logB.addBitacora(`Se ha subido la imagen con nombre: ${Key}`);
         res.response({ Key, Location }, "Imagen subida correctamente")
 
     } catch (error) {

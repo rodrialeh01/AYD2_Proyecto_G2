@@ -2,8 +2,12 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Sidebar from "../../Navigation/Sidebar";
 import ViewP from "../../pages/general/ViewP";
+<<<<<<< HEAD
 import Service from "../../Service/Service";
 
+=======
+import FormEditP from "../../pages/general/FormEditP";
+>>>>>>> feature#ABCO
 const ViewPContainer = () => {
   
   const [loading, setLoading] = useState(true);
@@ -16,6 +20,7 @@ const ViewPContainer = () => {
     role: 0,
     verified: "",
     birthday: "2021-10-10",
+    pathImage: "",
   });
   useEffect(() => {
     const fetchData = async () => {

@@ -1,12 +1,21 @@
 import validator from "validator";
 import ReviewRepository from "../repositories/reviewRepository.js";
-import User from "../db/models/user.model.js";
+import { folderBucket } from "../config/constants.js";
+import { saveObj } from "../config/objectHandler.js";
 
 const reviewRepository = new ReviewRepository();
 
 export const createReview = async (req, res) => {
   try {
     const {idUser, idProduct, comment, rating} = req.body;
+    let buffer = null;
+    let originalname = null;
+
+    if(req.file)
+    {
+      buffer = req.file.buffer;
+      originalname = req.file.originalname;
+    }
 
     if (!idUser || !idProduct || !comment) {
       res.response(null, 'Missing fields', 400);
@@ -28,11 +37,20 @@ export const createReview = async (req, res) => {
       return;
     }
 
+    let image = "";
+
+    if (buffer) {
+      const extension = originalname.split('.').pop();
+      const { Location } = await saveObj(buffer, extension, folderBucket.reviews);
+      image = Location;
+    }
+
     const review = {
       idUser,
       idProduct,
       comment,
-      rating
+      rating,
+      image
     };
 
     const r = await reviewRepository.createReview(review);
@@ -231,3 +249,18 @@ export const getAllReviews = async (req, res) => {
     res.response(null, error.message, 500);
   }
 }
+
+export const getReportReviews = async (req, res) => {
+  try {
+    const reviews = await reviewRepository.getReportReviews();
+
+    if (!reviews) {
+      res.response(null, 'Reviews not found', 404);
+    }
+
+    res.response(reviews, 'Reviews found', 200);
+
+  } catch (error) {
+    res.response(null, error.message, 500);
+  }
+};

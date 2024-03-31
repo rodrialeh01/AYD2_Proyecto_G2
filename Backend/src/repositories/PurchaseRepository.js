@@ -1,4 +1,7 @@
 import Purchase from '../db/models/purchase.model.js';
+import { Bitacora } from '../bitacora/bitacora.js';
+
+const bitacora = Bitacora.getInstance();
 
 class PurchaseRepository {
     async createPurchase(idUser, product, quantity, email, phone) {
@@ -34,6 +37,7 @@ class PurchaseRepository {
     async getPurchasesByIDVendor(idVendor) {
         try {
             const purchases = await Purchase.find({ vendorId: String(idVendor) });
+            bitacora.addBitacora("GET",'Obtener compras del vendedor con ID: ' + idVendor );
             return purchases;
         } catch (error) {
             console.error(error);
@@ -44,6 +48,18 @@ class PurchaseRepository {
     async getPurchasesByDate(fechaI, fechaF) {
         try {
             const purchases = await Purchase.find({ createdAt: { $gte: fechaI, $lte: fechaF } });
+            bitacora.addBitacora("GET",'Obtener compras por fecha');
+            return purchases;
+        } catch (error) {
+            console.error(error);
+            
+        }
+    }
+
+    async getAllPurchases() {
+        try {
+            const purchases = await Purchase.find();
+            bitacora.addBitacora("GET",'Obtener todas las compras');
             return purchases;
         } catch (error) {
             console.error(error);
