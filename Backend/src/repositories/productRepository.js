@@ -7,7 +7,8 @@ class ProductRepository {
 
     async crearProducto(producto) {
         try {
-            return await Product.create(producto);
+            const newP = await Product.create(producto);
+            return newP;
         } catch (error) {
             console.error(error);
             return res.response(null, error.message, 500);
