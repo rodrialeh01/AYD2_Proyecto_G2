@@ -69,6 +69,34 @@ Los tag se crean desde la rama main, los utilizamos para marcar las nuevas versi
 
 ___Release/x.y.z -> Main -> x.y.z (Tag)___
 
+# Mockups
+## Vendedor
+
+### Registro de Productos
+![mockup](./img/mockup1.png)
+### Vista de Productos
+![mockup](./img/mockup2.png)
+### Edición de Productos
+![mockup](./img/mockup3.png)
+### Vista de Perfil
+![mockup](./img/mockup4.png)
+### Información
+![mockup](./img/mockup5.png)
+### Vista de Ventas
+![mockup](./img/mockup6.png)
+### Vista de Ingresos
+![mockup](./img/mockup7.png)
+
+
+## Usuario
+
+
+
+## Administrador
+
+### Reporte de Ventas en un rango determinado de tiempo
+![mockup](./img/mockup8.png)
+
 
 # Arquitectura
 ![alt text](../img/arquitectura.JPG)

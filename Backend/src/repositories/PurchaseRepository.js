@@ -1,7 +1,7 @@
 import Purchase from '../db/models/purchase.model.js';
 
 class PurchaseRepository {
-    async createPurchase(idUser, product, quantity) {
+    async createPurchase(idUser, product, quantity, email, phone) {
         try{
             if(product.stock > 0){
                 const cantidad = product.stock - quantity;
@@ -12,7 +12,11 @@ class PurchaseRepository {
                 const purchase = new Purchase({
                     user: idUser,
                     product: product._id,
-                    quantity: quantity
+                    quantity: quantity,
+                    price: product.price,
+                    vendorId: product.idUser,
+                    email: email,
+                    phone: phone
                 })
                 await purchase.save();
 
@@ -26,6 +30,37 @@ class PurchaseRepository {
             return res.response(null, error.message, 500);
         }
     }
+
+    async getPurchasesByIDVendor(idVendor) {
+        try {
+            const purchases = await Purchase.find({ vendorId: String(idVendor) });
+            return purchases;
+        } catch (error) {
+            console.error(error);
+            
+        }
+    }
+
+    async getPurchasesByDate(fechaI, fechaF) {
+        try {
+            const purchases = await Purchase.find({ createdAt: { $gte: fechaI, $lte: fechaF } });
+            return purchases;
+        } catch (error) {
+            console.error(error);
+            
+        }
+    }
+
+    async getAllPurchases() {
+        try {
+            const purchases = await Purchase.find();
+            return purchases;
+        } catch (error) {
+            console.error(error);
+            
+        }
+    }
+    
 }
 
 export default PurchaseRepository;

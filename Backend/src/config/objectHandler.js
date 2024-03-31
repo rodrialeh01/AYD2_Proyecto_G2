@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import { bucketConfig } from './credentials.js';
+import { folderBucket } from './constants.js';
 import AWS from 'aws-sdk';
 
 const s3 = new AWS.S3({
@@ -8,10 +9,10 @@ const s3 = new AWS.S3({
     region: bucketConfig.region
 });
 
-export const saveObj = async (obj, extension) => {
+export const saveObj = async (obj, extension, folder=folderBucket.products) => {
     const params = {
         Bucket: bucketConfig.name,
-        Key: "Images/"+uuidv4()+"."+extension,
+        Key: folder+uuidv4()+"."+extension,
         Body: obj,
         ACL: 'public-read'
     };
