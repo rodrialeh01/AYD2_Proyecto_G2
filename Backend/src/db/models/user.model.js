@@ -11,6 +11,7 @@ const userSchema = new Schema(
             unique: true
         },
         password: { type: String, required: true, minlength: 3, maxlength: 1024 },
+        code: { type: String, required: true, minlength: 6, maxlength: 1024 },
         cui: { type: String, required: true, minlength: 13, maxlength: 13 },
         role: Number,
         verified: Boolean,

@@ -50,6 +50,16 @@ class PurchaseRepository {
             
         }
     }
+
+    async getAllPurchases() {
+        try {
+            const purchases = await Purchase.find();
+            return purchases;
+        } catch (error) {
+            console.error(error);
+            
+        }
+    }
     
 }
 

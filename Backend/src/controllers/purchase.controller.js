@@ -248,3 +248,39 @@ export const getVentasRango = async (req, res) => {
     }
 }
 
+export const getTop10Sellers = async (req, res) => {
+    //Obtener todas las ventas
+    try {
+        const purchases = await purchaseRepository.getAllPurchases();
+        let salesByVendor = {};
+
+
+        purchases.forEach(purchase => {
+            const vendorId = purchase.vendorId;
+            if (salesByVendor[vendorId]) {
+                salesByVendor[vendorId] +=  purchase.quantity;
+            } else {
+                salesByVendor[vendorId] = purchase.quantity;
+            }
+        });
+
+        const salesArray = Object.entries(salesByVendor);
+
+        salesArray.sort((a, b) => b[1] - a[1]);
+
+        const top10 = salesArray.slice(0, 10);
+
+        const topSellersInfo = await Promise.all(top10.map(async ([vendorId, quantity]) => {
+            const vendor = await userRepository.getUserByID(vendorId);
+            return {
+                vendorName: vendor.name,
+                quantity
+            }
+        }));
+
+        res.response(topSellersInfo, "Top 10 sellers found", 200);
+    } catch (error) {
+        console.error(error);
+        res.response(null, error.message, 500);
+    }
+}
