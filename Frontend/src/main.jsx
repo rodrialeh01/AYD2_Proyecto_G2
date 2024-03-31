@@ -1,12 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+import { RouterProvider } from 'react-router-dom'
+import { CarritoProvider } from './Context/Carrito.jsx'
+import UserProvider from './Context/User.jsx'
 import './index.css'
-import CreatePContainer from './components/vendor/CreatePContainer.jsx'
-import ListPContainer from './components/vendor/ListPContainer.jsx'
-import ViewPContainer from './components/general/ViewPContainer.jsx'
+import { router } from './router/index.jsx'
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <ViewPContainer />
+    <UserProvider>
+      <CarritoProvider>
+        <RouterProvider router={router} />
+      </CarritoProvider>
+    </UserProvider>
   </React.StrictMode>,
 )

@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
-import ListP from "../../pages/vendor/ListP";
-import Sidebar from "../../Navigation/Sidebar";
+import React, { useEffect, useState } from "react";
 import Service from "../../Service/Service";
 import FormEditP from "../../pages/vendor/FormEditP";
+import ListP from "../../pages/vendor/ListP";
 
 const ListPContainer = () => {
   const [products, setProducts] = useState([]);
@@ -11,13 +10,13 @@ const ListPContainer = () => {
     currentProduct: {},
   });
   const [showModal, setShowModal] = useState(false);
+  const usuario = JSON.parse(localStorage.getItem("data_user"));
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        let res = await Service.getProducts("65cbf0042efb66288c71e1b2");
+        let res = await Service.getProducts(usuario.id);
         console.log(res.data);
-        console.log(res.data[0].pathImage);
         setProducts(res.data);
 
         setTimeout(() => {
@@ -83,8 +82,7 @@ const ListPContainer = () => {
 
   return (
     <>
-      <div className="flex h-screen flex bg-gray-100 ">
-        <Sidebar />
+      <div className="flex-1 h-screen  bg-gray-100 ">
 
         {loading ? (
           <div className="flex justify-center items-center w-full">
@@ -105,7 +103,7 @@ const ListPContainer = () => {
 
               <div className="flex justify-center mt-5">
                 <h1 className="text-xl font-bold text-black">
-                  VENDEDOR: Nombre del vendedor
+                  
                 </h1>
               </div>
               <div className="w-full height-100 flex flex-wrap overflow-y-auto scrollbar-hide  justify-center mt-8">
