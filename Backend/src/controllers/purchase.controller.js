@@ -3,11 +3,13 @@ import PayRepository from "../repositories/payRepository.js";
 import ProductRepository from "../repositories/productRepository.js";
 import PurchaseRepository from "../repositories/PurchaseRepository.js";
 import UserRepository from "../repositories/UserRepository.js";
+import { LogBack } from '../log/bitacora.js';
 
 const purchaseRepository = new PurchaseRepository();
 const productRepository = new ProductRepository();
 const userRepository = new UserRepository();
 const payRepository = new PayRepository();
+const logB = LogBack.getInstance();
 
 export const createPurchase = async (req, res) => {
     try {
@@ -156,6 +158,8 @@ export const getDetailedPurchase = async (req, res) => {
             });
         }
 
+        logB.addBitacora(`Se han encontrado ${detailedPurchases.length} compras detalladas.`);
+
         res.response(detailedPurchases, "Purchases found", 200);
 
     } catch (error) {
@@ -186,7 +190,7 @@ export const getIngresos = async (req, res) => {
             total += product.price * purchase.quantity;
         }
 
-        
+        logB.addBitacora(`Se han encontrado ${repEnviar.length} ingresos.`);
         res.response({productos: repEnviar, total}, "Ingresos found", 200);
         
         
@@ -239,7 +243,7 @@ export const getVentasRango = async (req, res) => {
 
 
         }
-
+        logB.addBitacora(`Se han encontrado ${enviarRespuesta.length} ventas en el rango de fechas.`);
         res.response(enviarRespuesta, "Ventas found", 200);
         
     } catch (error) {
