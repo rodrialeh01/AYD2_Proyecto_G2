@@ -33,8 +33,8 @@ export const createProduct = async (req, res) => {
             idUser
         }
 
-        productRepository.crearProducto(producto);
-        res.response(null, "Product created successfully", 201);
+        const p = await productRepository.crearProducto(producto);
+        res.response(p, "Product created successfully", 201);
     } catch (error) {
         console.error(error);
         res.response(null, error.message, 500);
