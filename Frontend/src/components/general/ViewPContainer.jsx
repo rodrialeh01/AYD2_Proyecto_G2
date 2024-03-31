@@ -1,13 +1,7 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import Sidebar from "../../Navigation/Sidebar";
+import React, { useEffect, useState } from "react";
 import ViewP from "../../pages/general/ViewP";
-<<<<<<< HEAD
 import Service from "../../Service/Service";
 
-=======
-import FormEditP from "../../pages/general/FormEditP";
->>>>>>> feature#ABCO
 const ViewPContainer = () => {
   
   const [loading, setLoading] = useState(true);

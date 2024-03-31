@@ -1,9 +1,9 @@
 import validator from "validator";
+import { LogBack } from '../log/bitacora.js';
 import PayRepository from "../repositories/payRepository.js";
 import ProductRepository from "../repositories/productRepository.js";
 import PurchaseRepository from "../repositories/PurchaseRepository.js";
 import UserRepository from "../repositories/UserRepository.js";
-import { LogBack } from '../log/bitacora.js';
 
 const purchaseRepository = new PurchaseRepository();
 const productRepository = new ProductRepository();
@@ -12,6 +12,7 @@ const payRepository = new PayRepository();
 const logB = LogBack.getInstance();
 
 export const createPurchase = async (req, res) => {
+    logB.addBitacora("Se ha solicitado crear una compra.");
     try {
         const { idUser, idProduct, quantity } = req.body;
         if (!idUser || !idProduct || !quantity) {
@@ -32,7 +33,7 @@ export const createPurchase = async (req, res) => {
         if (!r) {
             throw new Error("Purchase not created");
         }
-
+        
         res.response(r, "Purchase created successfully", 201);
     } catch (error) {
         console.error(error);
@@ -41,6 +42,7 @@ export const createPurchase = async (req, res) => {
 }
 
 export const createPurchasesWithPay = async (req, res) => {
+    logB.addBitacora("Se ha solicitado crear una compra con Pago.");
     try {
         const { purchases, email, phone, address,nit, name, method, amount, card_number, card_name, month, year, cvv } = req.body;
         // SE USARA METHOD 1 SI ES PAGO POR TARJETA Y METHOD 2 SI ES PAGO POR PAYPAL
