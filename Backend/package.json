@@ -6,12 +6,14 @@
   "type": "module",
   "scripts": {
     "start": "node src/index.js",
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "test": "set NODE_OPTIONS=--experimental-vm-modules && jest --runInBand --detectOpenHandles --forceExit"
   },
   "author": "Daniel Dubon",
   "license": "ISC",
   "dependencies": {
     "aws-sdk": "^2.1552.0",
+    "babel-jest": "^29.7.0",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
@@ -23,7 +25,9 @@
     "validator": "^13.11.0"
   },
   "devDependencies": {
+    "jest": "^29.7.0",
     "morgan": "^1.10.0",
-    "nodemon": "^3.0.1"
+    "nodemon": "^3.0.1",
+    "supertest": "^6.3.4"
   }
 }
