@@ -34,13 +34,40 @@ export const signUp = async (req, res) => {
 
     if (user) return res.response(null, "User already exists", 400);
 
+    //Codigo para primer login
+
+    const code = generateCode();
+
+
     let bid = new Date(birthday);
     console.log(bid);
-    user = new User({ name, email, password, cui, role, verified, birthday: bid});
+    user = new User({ name, email, password, cui, role, verified, birthday: bid, code, verified: false });
 
     user.password = await user.encryptPassword(password);
+    user.code = await user.encryptPassword(code);
 
     await user.save();
+
+    const mailOptions = {
+      from: 'MarketPlace <' + process.env.MAIL_USERNAME + '>',
+      to: email,
+      subject: 'Verificación de correo',
+      html: `<p>Para poder ingresar a tu cuenta, necesitamos que confirmes tu correo electrónico.</p>
+            <p>Para confirmar tu correo, ingresa el siguiente código en el apartado de password de la aplicación en el primer inicio de sesión:</p>
+            <p><strong>${code}</strong></p>
+            <p>Si no has solicitado este correo, puedes ignorarlo.</p>
+            <p>¡Gracias!</p>`,
+    };
+
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+        res.response(null, error.message, 500);
+      }
+      else {
+        console.log('Email sent: ' + info.response);
+      }
+    });
 
     res.response(
       { name: user.name, email: user.email },
@@ -76,11 +103,25 @@ export const signIn = async (req, res) => {
 
     if (!user) return res.response(null, "User not found", 404);
 
-    const matchPassword = await user.validatePassword(password, user.password);
+    if (user.verified) {
+      const matchPassword = await user.validatePassword(password, user.password);
 
-    if (!matchPassword) return res.response(null, "Invalid password", 400);
+      if (!matchPassword) return res.response(null, "Invalid password", 400);
 
-    res.response({ id: user.id, rol: user.role }, "User logged", 200);
+      
+      res.response({ id: user.id, rol: user.role }, "User logged", 200);
+    } else {
+
+      const isCode = await user.validatePassword(password, user.code);
+
+      if (!isCode) return res.response(null, "Invalid code", 400);
+
+      user.verified = true;
+      await user.save();
+
+      res.response({ id: user.id, rol: user.role }, "User logged", 200);
+    }
+
   } catch (error) {
     console.log(error);
     res.response(null, error.message, 400);
@@ -130,4 +171,16 @@ export const recuperarPassword = async (req, res) => {
     console.log(error);
     res.response(null, error.message, 500);
   }*/
+}
+
+
+function generateCode() {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let code = '';
+
+  for (let i = 0; i < 12; i++) {
+      code += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+
+  return code;
 }
