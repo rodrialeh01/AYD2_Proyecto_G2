@@ -2,21 +2,25 @@ import { createBrowserRouter } from 'react-router-dom';
 import LayoutPrivateAdmin from '../Layout/LayoutPrivateAdmin';
 import LayoutPrivateClient from '../Layout/LayoutPrivateClient';
 import LayoutPrivateVendor from '../Layout/LayoutPrivateVendor';
+import Report1Container from '../components/admin/Report1Container';
+import ReportContainer from '../components/admin/ReportsContainer';
+import ViewPContainer from '../components/general/ViewPContainer';
 import CreatePContainer from '../components/vendor/CreatePContainer';
+import IncomeContainer from '../components/vendor/IncomePContainer';
+import InfoContainer from '../components/vendor/InfoContainer';
 import ListPContainer from '../components/vendor/ListPContainer';
+import SellsContainer from '../components/vendor/SellsContainer';
+import HomeReviews from '../pages/admin/HomeReviews';
+import ProductAdmin from '../pages/admin/ProductAdmin';
+import Report2 from '../pages/admin/Report2';
+import Users from '../pages/admin/Users';
+import Checkout from '../pages/client/Checkout';
 import HomeProducts from '../pages/client/HomeProducts';
 import Product from '../pages/client/Product';
+import ShoppingCart from '../pages/client/ShoppingCart';
 import SignUp from '../pages/general/SignUp';
 import Login from '../pages/general/login/Login';
-import ProductAdmin from '../pages/admin/ProductAdmin';
-import Users from '../pages/admin/Users';
-import HomeReviews from '../pages/admin/HomeReviews';
-import ViewPContainer from '../components/general/ViewPContainer'
-import InfoContainer from '../components/vendor/InfoContainer';
-import IncomeContainer from '../components/vendor/IncomePContainer';
-import SellsContainer from '../components/vendor/SellsContainer';
-import ReportContainer from '../components/admin/ReportsContainer';
-import Report1Container from '../components/admin/Report1Container';
+import Report3 from '../pages/admin/Report3';
 
 export const router = createBrowserRouter([
     {
@@ -42,6 +46,14 @@ export const router = createBrowserRouter([
             {
                 path: 'profile',
                 element: <ViewPContainer />
+            },
+            {
+                path: 'shoppingcart',
+                element: <ShoppingCart />
+            },
+            {
+                path: 'checkout/:cost',
+                element: <Checkout/>
             }
         ]
     },
@@ -98,9 +110,18 @@ export const router = createBrowserRouter([
             {
                 path: 'reports',
                 element: <ReportContainer/>
-            },{
+            },
+            {
                 path: 'report1',
                 element: <Report1Container/>
+            },
+            {
+                path: 'report2',
+                element: <Report2/>
+            },
+            {
+                path: 'report3',
+                element: <Report3/>
             }
         ]
     }

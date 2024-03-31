@@ -71,6 +71,16 @@ export const createPurchase = async (purchase) => {
     return response.data;
 }
 
+//PAGAR COMPRA
+export const createPurchasesWithPay = async(data) => {
+    const response = await instance.post('purchase/pay', data, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    return response.data;
+}
+
 //USUARIOS:
 //Crear Usuario
 export const registrarUsuario = async (usuario) => {
@@ -129,10 +139,15 @@ export const getReviews = async (id) => {
 export const createReview = async (review) => {
     const response = await instance.post('review/create', review, {
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'multipart/form-data'
         }
     });
     console.log(response);
+    return response.data;
+}
+
+export const getReportReview = async () => {
+    const response = await instance.get('/review/report');
     return response.data;
 }
 
@@ -178,5 +193,12 @@ export const getReport1 = async (fechaI, fechaF) => {
             fechaF
         }
     });
+    return response.data;
+}
+
+//OBTENER TODOS LOS PAGOS
+
+export const getPays = async () => {
+    const response = await instance.get('pays')
     return response.data;
 }

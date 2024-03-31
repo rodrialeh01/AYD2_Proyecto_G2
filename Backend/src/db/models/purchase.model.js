@@ -6,7 +6,14 @@ const purchaseSchema = new mongoose.Schema(
         product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product' },
         price: { type: Number, required: true },
         vendorId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-        quantity: { type: Number, default: 1 }
+        quantity: { type: Number, default: 1 },
+        email: {
+            type: String,
+            required: true,
+            minlength: 3,
+            maxlength: 50
+        },
+        phone: { type: Number, required: true}
     },
     { 
         timestamps: true 
