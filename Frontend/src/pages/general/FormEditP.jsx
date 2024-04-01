@@ -72,14 +72,14 @@ const FormEditP = ({ perfil, handleChange, handleSubmit, handleClose, handleForm
                         </label>
                       </div>
                       <div class="w-full mr-[50px]">
-                        <textarea
-                          class="bg-white h-20 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                        <input
+                          class="bg-white appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                           id="inline-full-name"
                           type="text"
                           name="email"
                           defaultValue={{ perfil }.perfil.email}
                           onChange={handleChange}
-                        ></textarea>
+                        ></input>
                       </div>
                     </div>
 
@@ -99,7 +99,7 @@ const FormEditP = ({ perfil, handleChange, handleSubmit, handleClose, handleForm
                           type="number"
                           name="cui"
                           defaultValue={{ perfil }.perfil.cui}
-                          onChange={handleChange}
+                          disabled
                         ></input>
                       </div>
                       <div class="">

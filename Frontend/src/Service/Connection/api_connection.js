@@ -214,3 +214,13 @@ export const getReportUserTypes = async () => {
     const response = await instance.get('purchase/getReportUserTypes');
     return response.data;
   }
+
+//Editar Usuario
+export const updateUser = async (usuario) => {
+    const response = await instance.put('users/update', usuario, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    return response.data;
+}
