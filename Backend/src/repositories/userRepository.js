@@ -13,9 +13,19 @@ class UserRepository {
             return res.response(null, error.message, 500);
         }
     }
+
+    async deleteUser(id) {
+        return await User.findByIdAndDelete(id);
+    }
     
     async getUserByID(id) {
         return await User.findById(id);
+    }
+
+    async updateInfoUser(id) {
+        console.log("PATCH",'Actualización de información con ID: ' + id );
+        return await User.findByIdAndUpdate(id, { new: true });
+
     }
 }
 
