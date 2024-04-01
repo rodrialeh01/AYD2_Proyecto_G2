@@ -40,7 +40,7 @@ export const createProduct = async (req, res) => {
         res.response(p, "Product created successfully", 201);
     } catch (error) {
         console.error(error);
-        logB.addBitacora(`ENDPOINT: /product/create - ${error.message.replace("\n", " ")}`);
+        logB.addBitacora(`ENDPOINT: /product/create - Hubo un error: ${error.message.replace("\n", " ")}`);
         res.response(null, error.message, 500);
     }
 }

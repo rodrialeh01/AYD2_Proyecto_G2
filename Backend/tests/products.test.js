@@ -1,6 +1,8 @@
-import app from "../src/app.js";
 import request from "supertest";
+import app from "../src/app.js";
 
+// ---------------------------- PRUEBAS UNITARIAS ----------------------------
+//PRODUCTO TEST
 // Crear un producto
 let idProduct = "";
 describe("Post de algún producto", () => {
@@ -103,7 +105,28 @@ describe("Get de productos por id de vendedor", () => {
 }
 );
 
-// Prueba de integración
+//Obtener todos los productos
+describe("Get de todos los productos", () => {
+    test("Debería de devolver productos o un array vacio", async () => {
+        const response = await request(app)
+            .get("/products/all");
+            expect(response.body.data).not.toBeNull();
+    }
+    );
+}
+);
+
+// Obtener un producto por su id
+describe("Get de un producto por su id", () => {
+    test("Debería de devolver un producto", async () => {
+        const response = await request(app)
+            .get("/products/see/65e34ef52983c7fb1b35e588");
+            expect(response.body.data).not.toBeNull();
+    }
+    );
+}
+);
+// ---------------------------- PRUEBAS DE INTEGRACIÓN ----------------------------
 describe("Prueba de Integración de Productos", () => {
     let createdProductId;
 
