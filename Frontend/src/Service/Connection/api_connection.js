@@ -224,3 +224,11 @@ export const updateUser = async (usuario) => {
     });
     return response.data;
 }
+
+
+//BITACORA
+//Obtener Bitácoras
+export const getAuditoria = async () => {
+    const response = await instance.get('bitacora');
+    return response.data;
+}
