@@ -1,4 +1,5 @@
 import validator from "validator";
+import BitacoraBD from "../db/models/bitacorabd.model.js";
 import { LogBack } from '../log/bitacora.js';
 import PayRepository from "../repositories/payRepository.js";
 import ProductRepository from "../repositories/productRepository.js";
@@ -10,6 +11,7 @@ const productRepository = new ProductRepository();
 const userRepository = new UserRepository();
 const payRepository = new PayRepository();
 const logB = LogBack.getInstance();
+const bdb = new BitacoraBD();
 
 export const createPurchase = async (req, res) => {
     try {
@@ -33,10 +35,12 @@ export const createPurchase = async (req, res) => {
             throw new Error("Purchase not created");
         }
         logB.addBitacora("ENDPOINT: /purchase/create - Se ha creado una compra.");
+        
         res.response(r, "Purchase created successfully", 201);
     } catch (error) {
         console.error(error);
         logB.addBitacora("ENDPOINT: /purchase/create - Hubo un error: " + error.message.replace("\n", " "));
+        bdb.crearBitacoraBD("Hubo un error en la tabla PURCHASE", 'ERROR', new Date());
         res.response(null, error.message, 500);
     }
 }
@@ -125,6 +129,7 @@ export const createPurchasesWithPay = async (req, res) => {
     }catch(error){
         console.error(error.message);
         logB.addBitacora("ENDPOINT: /purchase/pay - Hubo un error: " + error.message.replace("\n", " "));
+        bdb.crearBitacoraBD("Hubo un error en la tabla PURCHASE", 'ERROR', new Date());
         res.response(null, error.message, 500);
     }
 }
@@ -142,6 +147,7 @@ export const getPurchases = async (req, res) => {
     } catch (error) {
         console.error(error);
         logB.addBitacora(`ENDPOINT: /purchase/getPurchase/:idVendor - Hubo un error: ${error.message.replace("\n", " ")}`);
+        bdb.crearBitacoraBD("Hubo un error en la tabla PURCHASE", 'ERROR', new Date());
         res.response(null, error.message, 500);
     }
 };
@@ -175,6 +181,7 @@ export const getDetailedPurchase = async (req, res) => {
     } catch (error) {
         console.error(error);
         logB.addBitacora(`ENDPOINT: /purchase/getDetailPurchase/:idVendor - Hubo un error: ${error.message.replace("\n", " ")}`);
+        bdb.crearBitacoraBD("Hubo un error en la tabla PURCHASE", 'ERROR', new Date());
         res.response(null, error.message, 500);
     }
 };
@@ -207,6 +214,7 @@ export const getIngresos = async (req, res) => {
         
     } catch (error) {
         console.error(error);
+        bdb.crearBitacoraBD("Hubo un error en la tabla PURCHASE", 'ERROR', new Date());
         res.response(null, error.message, 500);
     }
 }
@@ -259,6 +267,7 @@ export const getVentasRango = async (req, res) => {
         
     } catch (error) {
         console.error(error);
+        bdb.crearBitacoraBD("Hubo un error en la tabla PURCHASE", 'ERROR', new Date());
         res.response(null, error.message, 500);
     }
 }
@@ -298,6 +307,7 @@ export const getTop10Sellers = async (req, res) => {
     } catch (error) {
         console.error(error);
         logB.addBitacora(`ENDPOINT: /purchase/getTop10Sellers - Hubo un error: ${error.message.replace("\n", " ")}`);
+        bdb.crearBitacoraBD("Hubo un error en la tabla PURCHASE", 'ERROR', new Date());
         res.response(null, error.message, 500);
     }
 }
