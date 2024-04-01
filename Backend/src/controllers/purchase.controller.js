@@ -3,7 +3,7 @@ import { LogBack } from '../log/bitacora.js';
 import PayRepository from "../repositories/payRepository.js";
 import ProductRepository from "../repositories/productRepository.js";
 import PurchaseRepository from "../repositories/PurchaseRepository.js";
-import UserRepository from "../repositories/UserRepository.js";
+import UserRepository from "../repositories/userRepository.js";
 
 const purchaseRepository = new PurchaseRepository();
 const productRepository = new ProductRepository();
@@ -301,3 +301,32 @@ export const getTop10Sellers = async (req, res) => {
         res.response(null, error.message, 500);
     }
 }
+
+export const getReportUserTypes = async (req, res) => {
+    //Tipos de usuarios
+    try {
+        // Obtener todos los usuarios de la base de datos
+        const users = await userRepository.obtenerTodos();
+
+        // Inicializar un objeto para almacenar el recuento de usuarios por tipo
+        let userCounts = {
+            1: 0, // Cliente
+            2: 0, // Vendedor
+            3: 0  // Administrador
+        };
+
+        // Contar cuántos usuarios hay de cada tipo
+        users.forEach(user => {
+            userCounts[user.type] += 1;
+        });
+
+        // Convertir el objeto de recuento en un array de pares [tipo de usuario, cantidad]
+        const userCountsArray = Object.entries(userCounts);
+
+        // Enviar la respuesta con el recuento de usuarios por tipo
+        res.response(userCountsArray, "Cantidad de usuarios por tipo encontrada", 200);
+    } catch (error) {
+        console.error(error);
+        res.response(null, error.message, 500);
+    }
+};

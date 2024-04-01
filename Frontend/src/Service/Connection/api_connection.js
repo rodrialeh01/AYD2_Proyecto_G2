@@ -208,3 +208,9 @@ export const getTop10Sellers = async () => {
     const response = await instance.get('purchase/getTop10Sellers');
     return response.data;
 }
+
+//Tipo usuarios
+export const getReportUserTypes = async () => {
+    const response = await instance.get('purchase/getReportUserTypes');
+    return response.data;
+  }
