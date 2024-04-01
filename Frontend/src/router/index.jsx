@@ -10,9 +10,13 @@ import IncomeContainer from '../components/vendor/IncomePContainer';
 import InfoContainer from '../components/vendor/InfoContainer';
 import ListPContainer from '../components/vendor/ListPContainer';
 import SellsContainer from '../components/vendor/SellsContainer';
+import Auditoria from '../pages/admin/Auditoria';
+import CrearAdmin from '../pages/admin/CrearAdmin';
 import HomeReviews from '../pages/admin/HomeReviews';
 import ProductAdmin from '../pages/admin/ProductAdmin';
 import Report2 from '../pages/admin/Report2';
+import Report3 from '../pages/admin/Report3';
+import Report5 from '../pages/admin/Report5';
 import Users from '../pages/admin/Users';
 import Checkout from '../pages/client/Checkout';
 import HomeProducts from '../pages/client/HomeProducts';
@@ -133,6 +137,10 @@ export const router = createBrowserRouter([
             {
                 path: 'report5',
                 element: <Report5/>
+            },
+            {
+                path: 'audit',
+                element: <Auditoria/>
             },
             {
                 path: 'report4',
