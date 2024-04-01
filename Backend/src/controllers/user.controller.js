@@ -1,6 +1,7 @@
 import validator from "validator";
 import UserRepository from "../repositories/userRepositoryTemp.js";
 import { folderBucket } from "../config/constants.js";
+import { saveObj } from "../config/objectHandler.js";
 
 const userRepository = new UserRepository();
 
@@ -90,13 +91,16 @@ export const updateInfoUser = async (req, res) => {
 export const uploadImage = async (req, res) => {
     try {
         const { buffer, originalname } = req.file;
+        console.log(req.file);
         let image = "";
+        let KeyT = "";
         if (buffer) {
             const fileExtension = originalname.split('.').pop();
-            const { Location } = await saveObj(buffer, fileExtension, folderBucket.users);
+            const { Key, Location } = await saveObj(buffer, fileExtension, folderBucket.users);
             image = Location;
+            KeyT = Key;
         }
-        res.response({ Key, image }, "Imagen subida correctamente")
+        res.response({ KeyT, image }, "Imagen subida correctamente")
 
     } catch (error) {
         console.log(error);

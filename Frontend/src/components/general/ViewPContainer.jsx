@@ -37,8 +37,10 @@ const ViewPContainer = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await Service.updateUser(currentProfile);
-      console.log(res.data);
+      console.log(usuario.id)
+      console.log(currentProfile)
+      const res = await Service.updateUser(usuario.id, currentProfile);
+      
       setLoading(true);
     } catch (error) {
       console.log(error);
@@ -52,11 +54,11 @@ const ViewPContainer = () => {
       const formData = new FormData();
       formData.append("image", file);
 
-      const response = await Service.uploadImage(formData);
-      setProfile((prev) => {
+      const response = await Service.uploadProfileImage(formData);
+      setCurrentProfile((prev) => {
         return {
           ...prev,
-          pathImage: response.data.data.Location,
+          pathImage: response.data.data.image,
         };
       });
     } catch (error) {
