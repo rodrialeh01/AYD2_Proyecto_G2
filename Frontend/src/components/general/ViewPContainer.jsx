@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import ViewP from "../../pages/general/ViewP";
 import Service from "../../Service/Service";
+import EditarInfo from "../../pages/general/FormEditP";
+import { useNavigate } from "react-router";
 
 const ViewPContainer = () => {
-  
+
   const [loading, setLoading] = useState(true);
   const usuario = JSON.parse(localStorage.getItem("data_user"));
   const [profile, setProfile] = useState({
@@ -16,6 +18,7 @@ const ViewPContainer = () => {
     birthday: "2021-10-10",
     pathImage: "",
   });
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -76,7 +79,8 @@ const ViewPContainer = () => {
                 <div className="flex items-center justify-end p-1 border-t border-solid border-slate-200 rounded-b">
                   <button
                     className="text-black bg-green-500 hover:bg-green-900 transition duration-300 ease-in-out rounded font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                    type="submit"
+                    type="button"
+                    onClick={EditarInfo}
                   >
                     Editar
                   </button>

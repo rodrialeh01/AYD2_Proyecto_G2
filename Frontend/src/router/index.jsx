@@ -23,6 +23,7 @@ import Login from '../pages/general/login/Login';
 import Report3 from '../pages/admin/Report3';
 import CrearAdmin from '../pages/admin/CrearAdmin';
 import Report5 from '../pages/admin/Report5';
+import Report4 from '../pages/admin/Report4';
 
 export const router = createBrowserRouter([
     {
@@ -132,6 +133,10 @@ export const router = createBrowserRouter([
             {
                 path: 'report5',
                 element: <Report5/>
+            },
+            {
+                path: 'report4',
+                element: <Report4/>
             }
         ]
     }

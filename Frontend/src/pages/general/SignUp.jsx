@@ -15,6 +15,7 @@ const SignUp = () => {
     verified: 1,
     birthday: "",
     role: 1,
+    pathImage: ""
   });
 
   const handleInputChange = (event) => {
@@ -41,6 +42,13 @@ const SignUp = () => {
     { value: 1, label: "Cliente" },
     { value: 2, label: "Vendedor" },
   ];
+
+  const [image, setImage] = useState(null);
+
+  const handleImageChange = (e) => {
+    const selectedImage = e.target.files[0];
+    setImage(selectedImage);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -269,6 +277,29 @@ const SignUp = () => {
                 options={options}
                 onChange={(e) => handleSelect(e.value)}
               />
+            </div>
+
+            <div className="md:flex md:items-center mb-6">
+              <div className="">
+                <label
+                  className="block text-black font-bold md:text-left mb-1 md:mb-0 pr-4"
+                  htmlFor="inline-full-name"
+                >
+                  Seleccionar fotografia:
+                </label>
+              </div>
+              <div className="w-full mr-[250px]">
+                <input
+                  data-test-id="cypress-input-petName"
+                  className="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                  id="inline-full-name"
+                  type="file"
+                  name="pathImage"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                  required
+                ></input>
+              </div>
             </div>
 
             <button
