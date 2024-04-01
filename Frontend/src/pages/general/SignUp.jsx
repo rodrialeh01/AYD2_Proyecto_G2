@@ -7,6 +7,7 @@ import Service from "../../Service/Service";
 const SignUp = () => {
   const [rolSelect, setRolSelect] = useState(0);
   const navigate = useNavigate();
+  const [image, setImage] = useState(null);
   const [input, setInput] = useState({
     name: "",
     email: "",
@@ -15,9 +16,28 @@ const SignUp = () => {
     verified: 1,
     birthday: "",
     role: 1,
-    pathImage: ""
+    pathImage: "",
   });
 
+  const handleFormData = async (e) => {
+    e.preventDefault();
+    try {
+      const file = e.target.files[0];
+      const formData = new FormData();
+      formData.append("image", file);
+
+      const response = await Service.uploadProfileImage(formData);
+      console.log(response);
+      setInput((prev) => {
+        return {
+          ...prev,
+          pathImage: response.data.data.image,
+        };
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const handleInputChange = (event) => {
     setInput({
       ...input,
@@ -36,57 +56,49 @@ const SignUp = () => {
     const year = date.getFullYear().toString();
 
     return `${day}/${month}/${year}`;
-  }
+  };
 
   const options = [
     { value: 1, label: "Cliente" },
     { value: 2, label: "Vendedor" },
   ];
 
-  const [image, setImage] = useState(null);
-
-  const handleImageChange = (e) => {
-    const selectedImage = e.target.files[0];
-    setImage(selectedImage);
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(input.birthday);
     input.birthday = new Date(input.birthday);
     input.role = rolSelect;
-    console.log(input)
+    console.log(input);
     Service.registrarUsuario(input)
-    .then((response) => {
+      .then((response) => {
         console.log(response);
         toast.success("Registro exitoso, verifique su correo", {
-            position: "upper-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-  
-          setTimeout(() => {
-            navigate("/");
-          }, 3000);
-        })
-        .catch((error) => {
-            console.log(error)
-            toast.error("Error al registrar usuario",{
-                position: "upper-center",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
+          position: "upper-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
         });
+
+        setTimeout(() => {
+          navigate("/");
+        }, 3000);
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Error al registrar usuario", {
+          position: "upper-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      });
   };
-  
 
   return (
     <>
@@ -121,6 +133,39 @@ const SignUp = () => {
             <p className="text-s font-semibold text-white mb-7">
               TodoCompras, el mejor lugar para comprar y vender
             </p>
+            <div className="flex bg-white items-center border-2 py-2 px-3 rounded-2xl mb-4 border-purple">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z"
+                />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5h.008v.008h-.008V10.5Z"
+                />
+              </svg>
+
+              <input
+                className="pl-2 outline-none border-none bg-transparent text-gray-700 placeholder-black placeholder-opacity-50"
+                type="file"
+                name="pathImage"
+                accept="image/*"
+                id="pathImage"
+                onChange={handleFormData}
+                placeholder="Foto de Perfil"
+                required
+              />
+            </div>
+
             <div className="flex bg-white items-center border-2 py-2 px-3 rounded-2xl mb-4 border-purple">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -277,29 +322,6 @@ const SignUp = () => {
                 options={options}
                 onChange={(e) => handleSelect(e.value)}
               />
-            </div>
-
-            <div className="md:flex md:items-center mb-6">
-              <div className="">
-                <label
-                  className="block text-black font-bold md:text-left mb-1 md:mb-0 pr-4"
-                  htmlFor="inline-full-name"
-                >
-                  Seleccionar fotografia:
-                </label>
-              </div>
-              <div className="w-full mr-[250px]">
-                <input
-                  data-test-id="cypress-input-petName"
-                  className="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                  id="inline-full-name"
-                  type="file"
-                  name="pathImage"
-                  accept="image/*"
-                  onChange={handleImageChange}
-                  required
-                ></input>
-              </div>
             </div>
 
             <button

@@ -24,9 +24,6 @@ import Product from '../pages/client/Product';
 import ShoppingCart from '../pages/client/ShoppingCart';
 import SignUp from '../pages/general/SignUp';
 import Login from '../pages/general/login/Login';
-import Report3 from '../pages/admin/Report3';
-import CrearAdmin from '../pages/admin/CrearAdmin';
-import Report5 from '../pages/admin/Report5';
 import Report4 from '../pages/admin/Report4';
 
 export const router = createBrowserRouter([

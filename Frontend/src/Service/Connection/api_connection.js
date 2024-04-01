@@ -215,9 +215,21 @@ export const getReportUserTypes = async () => {
     return response.data;
   }
 
+// Subir imagen de perfil
+export const uploadProfileImage = async (image) => {
+    const response = await instance.post('users/addImage', image, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    });
+    return response;
+}
+
+
+
 //Editar Usuario
-export const updateUser = async (usuario) => {
-    const response = await instance.put('users/update', usuario, {
+export const updateUser = async (id, usuario) => {
+    const response = await instance.patch(`users/update/${id}`, usuario, {
         headers: {
             'Content-Type': 'application/json'
         }

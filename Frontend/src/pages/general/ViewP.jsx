@@ -1,12 +1,23 @@
 import react from "react";
 
-const ViewP = ({perfil}) => {
+const ViewP = ({ perfil }) => {
   return (
     <>
       <form>
-        <div className="relative p-6 flex-auto">
+        <div className="relative flex-auto">
           <div className="w-full ">
             <div className="md:flex md:items-center mb-6">
+              <div className="w-full">
+                <div className="flex items-center justify-center bg-gray-300 py-6">
+                  <img
+                    src={{ perfil }.perfil.pathImage}
+                    alt="Imagen del usuario"
+                    className="object-contain w-48 h-48 rounded-lg"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="md:flex md:items-center mb-6 px-6">
               <div className="">
                 <label
                   className="block text-black font-bold md:text-left mb-1 md:mb-0 pr-4"
@@ -17,7 +28,6 @@ const ViewP = ({perfil}) => {
               </div>
               <div className="w-full mr-[150px]">
                 <input
-                  data-test-id="cypress-input-petName"
                   className="bg-white appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                   id="inline-full-name"
                   type="text"
@@ -28,7 +38,7 @@ const ViewP = ({perfil}) => {
               </div>
             </div>
 
-            <div className="md:flex md:items-center mb-6">
+            <div className="md:flex md:items-center mb-6 px-6">
               <div className="">
                 <label
                   className="block text-black font-bold md:text-left mb-1 md:mb-0 pr-4"
@@ -39,7 +49,6 @@ const ViewP = ({perfil}) => {
               </div>
               <div className="w-full mr-[150px]">
                 <input
-                  data-test-id="cypress-input-petName"
                   className="bg-white appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                   id="inline-full-name"
                   type="text"
@@ -49,7 +58,7 @@ const ViewP = ({perfil}) => {
                 ></input>
               </div>
             </div>
-            <div className="md:flex md:items-center mb-6">
+            <div className="md:flex md:items-center mb-6 px-6">
               <div className="">
                 <label
                   className="block text-black font-bold md:text-left mb-1 md:mb-0 pr-4"
@@ -60,7 +69,6 @@ const ViewP = ({perfil}) => {
               </div>
               <div className="w-full mr-[150px]">
                 <input
-                  data-test-id="cypress-input-petName"
                   className="bg-white appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                   id="inline-full-name"
                   type="number"
@@ -70,8 +78,8 @@ const ViewP = ({perfil}) => {
                 ></input>
               </div>
             </div>
-            
-            <div className="md:flex md:items-center mb-6">
+
+            <div className="md:flex md:items-center mb-6 px-6">
               <div className="">
                 <label
                   className="block text-black font-bold md:text-left mb-1 md:mb-0 pr-4"
@@ -82,7 +90,6 @@ const ViewP = ({perfil}) => {
               </div>
               <div className="w-full mr-[150px]">
                 <input
-                  data-test-id="cypress-input-petName"
                   className="bg-white appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                   id="inline-full-name"
                   type="date"
@@ -92,25 +99,6 @@ const ViewP = ({perfil}) => {
                 ></input>
               </div>
             </div>
-            <div className="md:flex md:items-center mb-6">
-              <div className="">
-                <label
-                  className="block text-black font-bold md:text-left mb-1 md:mb-0 pr-4"
-                  htmlFor="inline-full-name"
-                >
-                  Fotografia:
-                </label>
-              </div>
-              <div className="flex items-center justify-center">
-                <img
-                  src={{perfil}.perfil.pathImage}
-                  alt="Imagen del usuario"
-                  className="object-contain w-48 h-48 rounded-lg"
-                />
-              </div>
-            </div>
-           
-            
           </div>
         </div>
       </form>
