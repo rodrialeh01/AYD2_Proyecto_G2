@@ -1,5 +1,5 @@
-import Purchase from '../db/models/purchase.model.js';
 import { Bitacora } from '../bitacora/bitacora.js';
+import Purchase from '../db/models/purchase.model.js';
 
 const bitacora = Bitacora.getInstance();
 

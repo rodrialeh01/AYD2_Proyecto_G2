@@ -44,7 +44,11 @@ export const createPurchase = async (req, res) => {
 export const createPurchasesWithPay = async (req, res) => {
     logB.addBitacora("Se ha solicitado crear una compra con Pago.");
     try {
+        console.log(req.body)
         const { purchases, email, phone, address,nit, name, method, amount, card_number, card_name, month, year, cvv } = req.body;
+        console.log(name)
+        console.log(nit)
+        console.log(address)
         // SE USARA METHOD 1 SI ES PAGO POR TARJETA Y METHOD 2 SI ES PAGO POR PAYPAL
         if(!purchases || !email || !phone || !address || !nit || !name || !method || !amount){
             res.response(null, "All fields are required", 400);
