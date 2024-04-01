@@ -24,7 +24,10 @@ class PayRepository {
                 const pay = new Pay({
                     purchase: idPurchase,
                     method: method,
-                    amount: amount
+                    amount: amount,
+                    address: address,
+                    nit: nit,
+                    name: name
                 })
                 await pay.save();
                 return pay;

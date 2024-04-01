@@ -1,7 +1,7 @@
 import validator from "validator";
-import ProductRepository from "../repositories/productRepository.js";
 import { saveObj } from '../config/objectHandler.js';
 import { LogBack } from '../log/bitacora.js';
+import ProductRepository from "../repositories/productRepository.js";
 
 const productRepository = new ProductRepository();
 const logB = LogBack.getInstance();
@@ -36,10 +36,11 @@ export const createProduct = async (req, res) => {
         }
 
         const p = await productRepository.crearProducto(producto);
-        logB.addBitacora(`Se añadió el nuevo producto con ID: ${p._id}`);
+        logB.addBitacora(`ENDPOINT: /product/create - Se añadió el nuevo producto con ID: ${p._id}`);
         res.response(p, "Product created successfully", 201);
     } catch (error) {
         console.error(error);
+        logB.addBitacora(`ENDPOINT: /product/create - Hubo un error: ${error.message.replace("\n", " ")}`);
         res.response(null, error.message, 500);
     }
 }
@@ -78,11 +79,12 @@ export const updateProduct = async (req, res) => {
             stock,
             idUser
         }
-        logB.addBitacora(`El producto: ${id} se ha actualizado.`);
+        logB.addBitacora(`ENDPOINT: /product/update/:id -El producto: ${id} se ha actualizado.`);
         productRepository.updateProduct(id, producto);
         res.response(null, "Product updated successfully", 200);
     } catch (error) {
         console.error(error);
+        logB.addBitacora(`ENDPOINT: /product/update/:id - Hubo un error: ${error.message.replace("\n", " ")}`);
         res.response(null, error.message, 500);
     }
 }
@@ -90,10 +92,11 @@ export const updateProduct = async (req, res) => {
 export const seeAllProducts = async (req, res) => {
     try {
         const products = await productRepository.obtenerTodos();
-        logB.addBitacora(`Se han encontrado ${products.length} productos.`);
+        logB.addBitacora(`ENDPOINT: /product/all - Se han encontrado ${products.length} productos.`);
         res.response(products, "Products found", 200);
     } catch (error) {
         console.error(error);
+        logB.addBitacora(`ENDPOINT: /product/all - Hubo un error: ${error.message.replace("\n", " ")}`);
         res.response(null, error.message, 500);
     }
 }
@@ -105,11 +108,12 @@ export const seeProductById = async (req, res) => {
             res.response(null, "Invalid product id", 400);
         }
 
-        logB.addBitacora(`Se ha buscado el producto con ID: ${id}`);
+        logB.addBitacora(`ENDPOINT: /product/see/:id - Se ha buscado el producto con ID: ${id}`);
         const product = await productRepository.getProductById(id);
         res.response(product, "Product found", 200);
     } catch (error) {
         console.error(error);
+        logB.addBitacora(`ENDPOINT: /product/see/:id - Hubo un error: ${error.message.replace("\n", " ")}`);
         res.response(null, error.message, 500);
     }
 }
@@ -121,11 +125,12 @@ export const getProductsByVendor = async (req, res) => {
             res.response(null, "Invalid idUser", 400);
         }
 
-        logB.addBitacora(`Se han buscado los productos del vendedor con ID: ${id}`);
+        logB.addBitacora(`ENDPOINT: /product/get/:id - Se han buscado los productos del vendedor con ID: ${id}`);
         const products = await productRepository.getProductsByVendor(id);
         res.response(products, "Products found", 200);
     } catch (error) {
         console.error(error);
+        logB.addBitacora(`ENDPOINT: /product/get/:id - Hubo un error: ${error.message.replace("\n", " ")}`);
         res.response(null, error.message, 500);
     }
 }
@@ -142,10 +147,11 @@ export const deleteProduct = async (req, res) => {
             throw new Error("Product not deleted");
         }
 
-        logB.addBitacora(`Se ha eliminado el producto con ID: ${id}`);
+        logB.addBitacora(`ENDPOINT: /product/delete/:id - Se ha eliminado el producto con ID: ${id}`);
         res.response(null, "Product deleted", 200);
     } catch (error) {
         console.error(error);
+        logB.addBitacora(`ENDPOINT: /product/delete/:id - Hubo un error: ${error.message.replace("\n", " ")}`);
         res.response(null, error.message, 500);
     }
 }
@@ -157,11 +163,12 @@ export const uploadImage = async (req, res) => {
         const fileExtension = originalname.split('.').pop();
 
         const { Key, Location } = await saveObj(buffer, fileExtension);
-        logB.addBitacora(`Se ha subido la imagen con nombre: ${Key}`);
+        logB.addBitacora(`ENDPOINT: /product/addImage - Se ha subido la imagen con nombre: ${Key}`);
         res.response({ Key, Location }, "Imagen subida correctamente")
 
     } catch (error) {
         console.log(error);
+        logB.addBitacora(`ENDPOINT: /product/addImage - Hubo un error: ${error.message.replace("\n", " ")}`);
         res.response(null, error.message, 500);
     }
 
