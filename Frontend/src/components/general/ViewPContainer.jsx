@@ -1,6 +1,4 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import Sidebar from "../../Navigation/Sidebar";
+import React, { useEffect, useState } from "react";
 import ViewP from "../../pages/general/ViewP";
 import Service from "../../Service/Service";
 
@@ -16,6 +14,7 @@ const ViewPContainer = () => {
     role: 0,
     verified: "",
     birthday: "2021-10-10",
+    pathImage: "",
   });
   useEffect(() => {
     const fetchData = async () => {

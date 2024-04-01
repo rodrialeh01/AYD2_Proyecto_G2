@@ -1,9 +1,9 @@
 import validator from "validator";
+import { LogBack } from '../log/bitacora.js';
 import PayRepository from "../repositories/payRepository.js";
 import ProductRepository from "../repositories/productRepository.js";
 import PurchaseRepository from "../repositories/PurchaseRepository.js";
 import UserRepository from "../repositories/UserRepository.js";
-import { LogBack } from '../log/bitacora.js';
 
 const purchaseRepository = new PurchaseRepository();
 const productRepository = new ProductRepository();
@@ -32,15 +32,17 @@ export const createPurchase = async (req, res) => {
         if (!r) {
             throw new Error("Purchase not created");
         }
-
+        logB.addBitacora("ENDPOINT: /purchase/create - Se ha creado una compra.");
         res.response(r, "Purchase created successfully", 201);
     } catch (error) {
         console.error(error);
+        logB.addBitacora("ENDPOINT: /purchase/create - Hubo un error: " + error.message.replace("\n", " "));
         res.response(null, error.message, 500);
     }
 }
 
 export const createPurchasesWithPay = async (req, res) => {
+    logB.addBitacora("Se ha solicitado crear una compra con Pago.");
     try {
         const { purchases, email, phone, address,nit, name, method, amount, card_number, card_name, month, year, cvv } = req.body;
         // SE USARA METHOD 1 SI ES PAGO POR TARJETA Y METHOD 2 SI ES PAGO POR PAYPAL
@@ -114,9 +116,11 @@ export const createPurchasesWithPay = async (req, res) => {
                 throw new Error("Purchase and Pay not created");
             }
         }));
+        logB.addBitacora("ENDPOINT: /purchase/pay - Se ha creado una compra y un pago.");
         res.response(null, "Compra y Pago hecho con éxito", 200)
     }catch(error){
         console.error(error.message);
+        logB.addBitacora("ENDPOINT: /purchase/pay - Hubo un error: " + error.message.replace("\n", " "));
         res.response(null, error.message, 500);
     }
 }
@@ -129,9 +133,11 @@ export const getPurchases = async (req, res) => {
         }
 
         const purchases = await purchaseRepository.getPurchasesByIDVendor(idVendor);
+        logB.addBitacora(`ENDPOINT: /purchase/getPurchase/:idVendor - Se han encontrado ${purchases.length} compras.`);
         res.response(purchases, "Purchases found", 200);
     } catch (error) {
         console.error(error);
+        logB.addBitacora(`ENDPOINT: /purchase/getPurchase/:idVendor - Hubo un error: ${error.message.replace("\n", " ")}`);
         res.response(null, error.message, 500);
     }
 };
@@ -158,12 +164,13 @@ export const getDetailedPurchase = async (req, res) => {
             });
         }
 
-        logB.addBitacora(`Se han encontrado ${detailedPurchases.length} compras detalladas.`);
+        logB.addBitacora(`ENDPOINT: /purchase/getDetailPurchase/:idVendor - Se han encontrado ${detailedPurchases.length} compras detalladas.`);
 
         res.response(detailedPurchases, "Purchases found", 200);
 
     } catch (error) {
         console.error(error);
+        logB.addBitacora(`ENDPOINT: /purchase/getDetailPurchase/:idVendor - Hubo un error: ${error.message.replace("\n", " ")}`);
         res.response(null, error.message, 500);
     }
 };
@@ -282,9 +289,11 @@ export const getTop10Sellers = async (req, res) => {
             }
         }));
 
+        logB.addBitacora(`ENDPOINT: /purchase/getTop10Sellers - Se han encontrado ${topSellersInfo.length} vendedores top.`);
         res.response(topSellersInfo, "Top 10 sellers found", 200);
     } catch (error) {
         console.error(error);
+        logB.addBitacora(`ENDPOINT: /purchase/getTop10Sellers - Hubo un error: ${error.message.replace("\n", " ")}`);
         res.response(null, error.message, 500);
     }
 }
