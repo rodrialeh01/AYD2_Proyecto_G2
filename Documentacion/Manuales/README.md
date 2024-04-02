@@ -70,6 +70,14 @@ Los tag se crean desde la rama main, los utilizamos para marcar las nuevas versi
 ___Release/x.y.z -> Main -> x.y.z (Tag)___
 
 # Mockups
+
+## Registro
+![mockup](./img/mockup17.png)
+
+## Login
+![mockup](./img/mockup18.png)
+
+
 ## Vendedor
 
 ### Registro de Productos
@@ -80,6 +88,8 @@ ___Release/x.y.z -> Main -> x.y.z (Tag)___
 ![mockup](./img/mockup3.png)
 ### Vista de Perfil
 ![mockup](./img/mockup4.png)
+### Edición de Perfil
+![mockup](./img/mockup15.png)
 ### Información
 ![mockup](./img/mockup5.png)
 ### Vista de Ventas
@@ -89,7 +99,14 @@ ___Release/x.y.z -> Main -> x.y.z (Tag)___
 
 
 ## Usuario
+### Vista Review
+![mockup](./img/mockup9.png)
 
+### Creacion de Review
+![mockup](./img/mockup10.png)
+
+### Edición de Review
+![mockup](./img/mockup11.png)
 
 
 ## Administrador
@@ -97,6 +114,11 @@ ___Release/x.y.z -> Main -> x.y.z (Tag)___
 ### Reporte de Ventas en un rango determinado de tiempo
 ![mockup](./img/mockup8.png)
 
+### Reporte de Tipos de Usuarios
+![mockup](./img/mockup16.png)
+
+### Reporte de calidad de productos
+![mockup](./img/mockup12.png)
 
 # Arquitectura
 ![alt text](../img/arquitectura.JPG)

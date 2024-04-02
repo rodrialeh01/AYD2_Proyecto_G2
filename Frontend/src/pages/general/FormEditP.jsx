@@ -1,6 +1,12 @@
 import React from "react";
 
-const FormEditP = ({ perfil, handleChange, handleSubmit, handleClose, handleFormData }) => {
+const FormEditP = ({
+  perfil,
+  handleChange,
+  handleSubmit,
+  handleClose,
+  handleFormData,
+}) => {
   return (
     <>
       <>
@@ -35,11 +41,30 @@ const FormEditP = ({ perfil, handleChange, handleSubmit, handleClose, handleForm
                 </button>
               </div>
               {/*body*/}
-              <form 
-                onSubmit={handleSubmit}
-              >
+              <form onSubmit={handleSubmit}>
                 <div className="relative p-6 flex-auto">
                   <div class="w-full ">
+                    <div class="md:flex md:items-center mb-6">
+                      <div class="">
+                        <label
+                          class="block text-black font-bold md:text-left mb-1 md:mb-0 pr-4"
+                          for="inline-full-name"
+                        >
+                          Foto de perfil:
+                        </label>
+                      </div>
+                      <div class="w-full mr-[250px]">
+                        <input
+                          className="pl-2 outline-none border-none bg-transparent text-gray-700 placeholder-black placeholder-opacity-50"
+                          type="file"
+                          name="pathImage"
+                          accept="image/*"
+                          id="pathImage"
+                          onChange={handleFormData}
+                          placeholder="Foto de Perfil"
+                        />
+                      </div>
+                    </div>
                     <div class="md:flex md:items-center mb-6">
                       <div class="">
                         <label
@@ -72,14 +97,14 @@ const FormEditP = ({ perfil, handleChange, handleSubmit, handleClose, handleForm
                         </label>
                       </div>
                       <div class="w-full mr-[50px]">
-                        <textarea
-                          class="bg-white h-20 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                        <input
+                          class="bg-white appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                           id="inline-full-name"
                           type="text"
                           name="email"
+                          disabled
                           defaultValue={{ perfil }.perfil.email}
-                          onChange={handleChange}
-                        ></textarea>
+                        ></input>
                       </div>
                     </div>
 
@@ -99,7 +124,7 @@ const FormEditP = ({ perfil, handleChange, handleSubmit, handleClose, handleForm
                           type="number"
                           name="cui"
                           defaultValue={{ perfil }.perfil.cui}
-                          onChange={handleChange}
+                          disabled
                         ></input>
                       </div>
                       <div class="">
@@ -121,22 +146,7 @@ const FormEditP = ({ perfil, handleChange, handleSubmit, handleClose, handleForm
                         ></input>
                       </div>
                     </div>
-                    <div className="w-full bg-gray-400 items-center justify-center">
-                    <div class=" w-full p-5 rounded-xl z-10">
-                        <div class="grid grid-cols-1 space-y-2">
-                        <label class="text-sm font-bold text-gray-500 tracking-wide">
-                            Actualiza la imagen
-                        </label>
-                        <input
-                            className="mt-6 text-black rounded-lg bg-purple"
-                            type="file"
-                            name="pathImage"
-                            onChange={handleFormData}
-                            accept="image/*" // Accept only image files
-                        />
-                        </div>
-                    </div>
-                    </div>
+
                     <button
                       type="submit"
                       class="text-black bg-green-500 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#3b5998]/55 mr-2 mb-2"

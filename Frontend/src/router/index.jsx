@@ -10,9 +10,13 @@ import IncomeContainer from '../components/vendor/IncomePContainer';
 import InfoContainer from '../components/vendor/InfoContainer';
 import ListPContainer from '../components/vendor/ListPContainer';
 import SellsContainer from '../components/vendor/SellsContainer';
+import Auditoria from '../pages/admin/Auditoria';
+import CrearAdmin from '../pages/admin/CrearAdmin';
 import HomeReviews from '../pages/admin/HomeReviews';
 import ProductAdmin from '../pages/admin/ProductAdmin';
 import Report2 from '../pages/admin/Report2';
+import Report3 from '../pages/admin/Report3';
+import Report5 from '../pages/admin/Report5';
 import Users from '../pages/admin/Users';
 import Checkout from '../pages/client/Checkout';
 import HomeProducts from '../pages/client/HomeProducts';
@@ -20,9 +24,6 @@ import Product from '../pages/client/Product';
 import ShoppingCart from '../pages/client/ShoppingCart';
 import SignUp from '../pages/general/SignUp';
 import Login from '../pages/general/login/Login';
-import Report3 from '../pages/admin/Report3';
-import CrearAdmin from '../pages/admin/CrearAdmin';
-import Report5 from '../pages/admin/Report5';
 import Report4 from '../pages/admin/Report4';
 
 export const router = createBrowserRouter([
@@ -133,6 +134,10 @@ export const router = createBrowserRouter([
             {
                 path: 'report5',
                 element: <Report5/>
+            },
+            {
+                path: 'audit',
+                element: <Auditoria/>
             },
             {
                 path: 'report4',

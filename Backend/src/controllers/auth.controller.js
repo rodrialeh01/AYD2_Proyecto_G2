@@ -17,11 +17,13 @@ const transporter = nodemailer.createTransport({
 
 export const signUp = async (req, res) => {
   try {
-    const { name, email, password, cui, role, verified, birthday } = req.body;
+    const { name, email, password, cui, role, verified, birthday, pathImage } = req.body;
 
     console.log(req.body);
 
-    if (!name || !email || !password || !cui || !role || !verified || !birthday)
+    console.log(birthday);
+
+    if (!name || !email || !password || !cui || !role || !verified || !birthday || !pathImage)
       return res.response(null, "Missing fields", 400);
 
     if (!validator.isEmail(email))
@@ -41,7 +43,7 @@ export const signUp = async (req, res) => {
 
     let bid = new Date(birthday);
     console.log(bid);
-    user = new User({ name, email, password, cui, role, verified, birthday: bid, code, verified: false });
+    user = new User({ name, email, password, cui, role, verified, birthday: bid, code, verified: true, pathImage });
 
     user.password = await user.encryptPassword(password);
     user.code = await user.encryptPassword(code);

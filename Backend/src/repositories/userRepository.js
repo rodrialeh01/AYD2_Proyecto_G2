@@ -22,10 +22,9 @@ class UserRepository {
         return await User.findById(id);
     }
 
-    async updateInfoUser(id) {
-        console.log("PATCH",'Actualización de información con ID: ' + id );
-        return await User.findByIdAndUpdate(id, { new: true });
-
+    async updateUser(id, user) {
+        
+        return await User.findByIdAndUpdate(String(id), user, { new: true });
     }
 }
 

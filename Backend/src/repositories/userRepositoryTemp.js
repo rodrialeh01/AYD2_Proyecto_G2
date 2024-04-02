@@ -14,6 +14,11 @@ class UserRepository {
         return await User.findById(id);
     }
 
+    async updateUser(id, user) {
+        console.log("updateUser");
+        return await User.findByIdAndUpdate(String(id), user, { new: true });
+    }
+
 }
 
 export default UserRepository;
