@@ -43,7 +43,7 @@ export const signUp = async (req, res) => {
 
     let bid = new Date(birthday);
     console.log(bid);
-    user = new User({ name, email, password, cui, role, verified, birthday: bid, code, verified: false, pathImage });
+    user = new User({ name, email, password, cui, role, verified, birthday: bid, code, verified: true, pathImage });
 
     user.password = await user.encryptPassword(password);
     user.code = await user.encryptPassword(code);
