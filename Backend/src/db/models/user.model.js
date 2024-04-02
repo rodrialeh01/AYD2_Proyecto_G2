@@ -1,9 +1,8 @@
-import { Schema, model } from 'mongoose';
 import bcrypt from 'bcrypt';
-
+import { Schema, model } from 'mongoose';
 const userSchema = new Schema(
     {
-        name: { type: String, required: true, minlength: 3, maxlength: 30 },
+        name: { type: String, required: true, minlength: 3, maxlength: 50 },
         email: {
             type: String,
             required: true,
@@ -12,10 +11,12 @@ const userSchema = new Schema(
             unique: true
         },
         password: { type: String, required: true, minlength: 3, maxlength: 1024 },
+        code: { type: String, required: true, minlength: 6, maxlength: 1024 },
         cui: { type: String, required: true, minlength: 13, maxlength: 13 },
         role: Number,
         verified: Boolean,
-        birthday: Date
+        birthday: Date,
+        pathImage: String,
     },
     { timestamps: true }
 );

@@ -9,8 +9,13 @@ export const SidebarDataClient = [
     },
     {
         title: 'Perfil',
-        path: '/profile',
+        path: '/client/profile',
         icon: <RiIcons.RiUserFill />
+    },
+    {
+        title: 'Mi Carrito',
+        path: '/client/shoppingcart',
+        icon: <RiIcons.RiShoppingCart2Fill />
     }
 ]
 
@@ -22,13 +27,18 @@ export const SidebarDataVendor = [
     },
     {
         title: 'Perfil',
-        path: '/profile',
+        path: '/vendor/profile',
         icon: <RiIcons.RiUserFill />
     },
     {
         title: 'Mis Productos',
         path: '/vendor/myproducts',
         icon: <RiIcons.RiShoppingBag2Fill />
+    },
+    {
+        title: 'Información',
+        path: '/vendor/info',
+        icon: <RiIcons.RiMoneyDollarCircleFill />
     }
 ]
 
@@ -42,5 +52,30 @@ export const SidebarDataAdmin = [
         title: 'Productos',
         path: '/admin/products',
         icon: <RiIcons.RiShoppingBag2Fill />
+    },
+    {
+        title: 'Crear Admin',
+        path: '/admin/createadmin',
+        icon: <RiIcons.RiAdminFill />
+    },
+    {
+        title: 'Perfil',
+        path: '/admin/profile',
+        icon: <RiIcons.RiUserFill />
+    },
+    {
+        title: 'Reviews',
+        path: '/admin/reviews',
+        icon: <RiIcons.RiStarFill />
+    },
+    {
+        title: 'Reportes',
+        path: '/admin/reports',
+        icon: <RiIcons.RiFileList2Fill />
+    },
+    {
+        title: 'Auditoría',
+        path: '/admin/audit',
+        icon: <RiIcons.RiUserSettingsFill />
     }
 ]

@@ -13,9 +13,18 @@ class UserRepository {
             return res.response(null, error.message, 500);
         }
     }
+
+    async deleteUser(id) {
+        return await User.findByIdAndDelete(id);
+    }
     
-    async getUserById(id) {
+    async getUserByID(id) {
         return await User.findById(id);
+    }
+
+    async updateUser(id, user) {
+        
+        return await User.findByIdAndUpdate(String(id), user, { new: true });
     }
 }
 

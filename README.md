@@ -1,4 +1,4 @@
-# 💻 Proyecto
+# 🛍️ TodoCompras
 ```json
 {
   "Curso": "Analisis y Diseño de Sistemas 2",

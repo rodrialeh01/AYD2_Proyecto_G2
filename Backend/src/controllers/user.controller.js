@@ -1,6 +1,7 @@
-<<<<<<< Updated upstream
 import validator from "validator";
 import UserRepository from "../repositories/userRepositoryTemp.js";
+import { folderBucket } from "../config/constants.js";
+import { saveObj } from "../config/objectHandler.js";
 
 const userRepository = new UserRepository();
 
@@ -33,87 +34,77 @@ export const deleteUser = async (req, res) => {
     }
 }
 
-=======
-import { User } from '../db/models/user.model.js';
-const userRepository = new UserRepository();
-
 export const getUser = async (req, res) => {
-    try{
+    try {
         const { id } = req.params;
+        if (!validator.isMongoId(String(id))) {
+            res.response(null, "Invalid user id", 400);
 
-        const dataUser = await User.findOne({ _id:id }, { __v: 0, password: 0, code: 0, verified: 0 });
-
-        res.response(dataUser);
-
-    } catch (error) {
-        res.response(null, error.message, 400);
-    }
-};
-
-export const updateInfoUser = async (req, res) => {
-    
-    try
-    {
-        const { id } = req.params;
-        const { name, lastName, phone, birthDate, password } = req.body;
-
-        //Verificar que todos los campos esten llenos
-        if (!name || !lastName || !phone || !birthDate) {
-            res.response(null, 'All fields are required', 400);
-            return;
         }
 
-        //Si viene la contrasenia nula, no se actualiza
+        const user = await userRepository.getUserByID(id);
+        if (!user) {
+            throw new Error("User not found");
+        }
 
-        if (!password) {
-            await User.updateOne({ _id: id }, { name, lastName, phone, birthDate });
-            const userUpdated = await User.findOne({ _id: id }, { __v: 0, password: 0, code: 0, verified: 0 });
-            res.response(userUpdated, 'User updated successfully', 200);
-        }else{
-            //Cifrar contrasenia
+        res.response(user, "User found", 200);
+    } catch (error) {
+        console.error(error);
+        res.response(null, error.message, 500);
+    }
+}
 
-            const passwordHash = await User.encryptPassword(password);
-            await User.updateOne({ _id: id }, { name, lastName, phone, birthDate, passwordHash });
-            const userUpdated = await User.findOne({ _id: id }, { __v: 0, password: 0, code: 0, verified: 0 });
-            res.response(userUpdated, 'User updated successfully', 200);
 
-        }   
+
+export const updateInfoUser = async (req, res) => {
+    console.log("updateInfoUser");
+    try {
+        const { id } = req.params;
+        const { name, email, cui, role, verified, birthday, pathImage } = req.body;
+
+        // verificar que el id sea valido
+        if (!validator.isMongoId(String(id))) {
+            res.response(null, "Invalid user id", 400);
+            return;
+        }
+        
+        let user = {
+            name,
+            email,
+            cui,
+            role,
+            verified,
+            birthday,
+            pathImage
+        }
+        
+        userRepository.updateUser(id, user);
+
+
+        res.response(user, "User found", 200);
+    } catch (error) {
+        console.error(error);
+        res.response(null, error.message, 500);
+    }
+}
+
+export const uploadImage = async (req, res) => {
+    try {
+        const { buffer, originalname } = req.file;
+        console.log(req.file);
+        let image = "";
+        let KeyT = "";
+        if (buffer) {
+            const fileExtension = originalname.split('.').pop();
+            const { Key, Location } = await saveObj(buffer, fileExtension, folderBucket.users);
+            image = Location;
+            KeyT = Key;
+        }
+        res.response({ KeyT, image }, "Imagen subida correctamente")
 
     } catch (error) {
         console.log(error);
-        res.response(null, error.message, 400);
+        res.response(null, error.message, 500);
     }
 
-}
-
-export const deleteUser = async (req, res) => {
-    try{
-        const { id } = req.params;
-
-        const isRegistered = await User.findOne({ _id: id }, { email: 1});
-
-        if (!isRegistered) {
-            res.response(null, 'User not registered', 400);
-            return;
-        }
-
-        await User.deleteOne({ _id: id });
-
-        res.response(null, 'User deleted successfully', 200);
-
-    } catch (error) {
-        res.response(null, error.message, 400);
-    }
 };
-
-export const getAllUsers = async (req, res) => {
-    try{
-        const users = await User.find({}, { __v: 0, password: 0, code: 0, verified: 0 });
-
-        res.response(users, 'Users', 200);
-
-    } catch (error) {
-        res.response(null, error.message, 400);
-    }
-};
->>>>>>> Stashed changes
