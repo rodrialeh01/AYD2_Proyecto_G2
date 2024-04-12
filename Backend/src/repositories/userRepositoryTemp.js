@@ -6,6 +6,10 @@ class UserRepository {
         return await User.find({ role: { $ne: 3 } });    
     }
 
+    async obtenerTodos2() {
+        return await User.find({});    
+    }
+
     async deleteUser(id) {
         return await User.findByIdAndDelete(id);
     }

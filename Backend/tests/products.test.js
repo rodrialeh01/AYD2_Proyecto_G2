@@ -3,8 +3,10 @@ import app from "../src/app.js";
 
 // ---------------------------- PRUEBAS UNITARIAS ----------------------------
 //PRODUCTO TEST
+// REVIEW TEST
 // Crear un producto
 let idProduct = "";
+let idReview = "";
 let idTest = "660b49dc346e9f4f99ba34b2";
 describe("Post de algún producto", () => {
     test("Debería de crear un producto y devolver un mensaje específico", async () => {
@@ -84,6 +86,64 @@ describe("Patch de un producto", () => {
 }
 );
 
+// Creamos una review al producto
+describe("Post de una review", () => {
+    test("Debería de crear una review y devolver el mensaje Review created", async () => {
+        const response = await request(app)
+            .post("/review/create")
+            .send({
+                "idUser": idTest,
+                "idProduct": idProduct,
+                "rating": 1,
+                "comment": "Muy malo, me llegó roto"
+            });
+
+
+        idReview = response.body.data._id;
+
+        expect(response.body.message).toBe("Review created");
+    }
+    );
+}
+);
+
+// Editar una review
+describe("Put de una review", () => {
+    test("Debería de editar una review y devolver un status 200", async () => {
+        const response = await request(app)
+            .put("/review/update/" + idReview)
+            .send({
+                "rating": 2,
+                "comment": "Muy malo, me llegó roto. No lo recomiendo"
+            });
+        expect(response.statusCode).toBe(200);
+    }
+    );
+}
+);
+
+// Eliminar una review
+describe("Delete de una review", () => {
+    test("Debería de eliminar una review y devolver un mensaje Review deleted", async () => {
+        const response = await request(app)
+            .delete("/review/delete/" + idReview);
+        expect(response.body.message).toBe("Review deleted");
+    }
+    );
+}
+);
+
+//Obtener todas las reviews
+describe("Get de todas las reviews", () => {
+    test("Debería de devolver reviews o un array vacio", async () => {
+        const response = await request(app)
+            .get("/review/all");
+            expect(response.body.data).not.toBeNull();
+    }
+    );
+}
+);
+
 // Eliminar un producto
 describe("Delete de un producto", () => {
     test("Debería de eliminar un producto y devolver un status 200", async () => {
@@ -138,6 +198,32 @@ describe("Prueba de Integración de Productos", () => {
         createdProductId = response.body.data._id;
     });
 
+    test("CREAMOS UNA REVIEW PARA EL PRODUCTO", async () => {
+        const response = await request(app)
+            .post("/review/create")
+            .send({
+                "idUser": idTest,
+                "idProduct": createdProductId,
+                "rating": 2,
+                "comment": "Muy malo, me llegó roto"
+            });
+        
+        idReview = response.body.data._id;
+        expect(response.statusCode).toBe(200);
+        expect(response.body.message).toBe("Review created");
+    });
+
+    test("ACTUALIZAMOS LA REVIEW CREADA", async () => {
+        const response = await request(app)
+            .put("/review/update/" + idReview)
+            .send({
+                "rating": 1,
+                "comment": "Muy malo, me llegó roto. No lo recomiendo"
+            });
+
+        expect(response.statusCode).toBe(200);
+    });
+
     test("OBTENEMOS EL PRODUCTO CREADO POR ID", async () => {
         const response = await request(app)
             .get("/products/see/" + createdProductId);
@@ -146,6 +232,13 @@ describe("Prueba de Integración de Productos", () => {
         expect(response.body.data._id).toBe(createdProductId);
     });
 
+    test("ELIMINAMOS LA REVIEW CREADA", async () => {
+        const response = await request(app)
+            .delete("/review/delete/" + idReview);
+
+        expect(response.statusCode).toBe(200);
+        expect(response.body.message).toBe("Review deleted");
+    });
 
     test("UNA VEZ VERIFICADA SU EXISTENCIA, SE ELIMINA", async () => {
         const response = await request(app)
