@@ -301,13 +301,16 @@ function Review({ id }) {
                   )}
                 </div>
                 <div className="flex flex-col lg:flex-row gap-4 mb-2">
-                  {/* <div className="flex-shrink-0">
+              {comment.idUser.pathImage && (
+                <div className="flex-shrink-0">
                 <img
-                  src={comment.photo}
-                  alt={comment.name}
+                  src={comment.idUser.pathImage}
+                  alt={comment.idUser.name}
                   className="w-12 h-12 rounded-full object-cover"
                 />
-              </div> */}
+              </div>)
+                }
+                
                   <div className="flex-grow">
                     <div className="mb-0 flex items-center">
                       <div className="flex mr-2">
@@ -321,6 +324,7 @@ function Review({ id }) {
                   </div>
                 </div>
                 <p className="mb-0">{comment.comment}</p>
+                
               </div>
               
 
