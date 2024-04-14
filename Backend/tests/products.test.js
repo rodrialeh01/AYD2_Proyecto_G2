@@ -3,8 +3,11 @@ import app from "../src/app.js";
 
 // ---------------------------- PRUEBAS UNITARIAS ----------------------------
 //PRODUCTO TEST
+// REVIEW TEST
 // Crear un producto
 let idProduct = "";
+let idReview = "";
+let idTest = "660b49dc346e9f4f99ba34b2";
 describe("Post de algún producto", () => {
     test("Debería de crear un producto y devolver un mensaje específico", async () => {
         const response = await request(app)
@@ -15,7 +18,7 @@ describe("Post de algún producto", () => {
                 "description": "Oso de peluche, ideal para acompañar tus flores y sorprender a esa persona tan especial.",
                 "price": 22.00,
                 "stock": 2,
-                "idUser": "65e39bf5a4c5d21eb2ab32ab"
+                "idUser": idTest
             });
 
 
@@ -57,7 +60,7 @@ describe("Get de todos los productos", () => {
 describe("Get de un producto por su id", () => {
     test("Debería de devolver un status 200", async () => {
         const response = await request(app)
-            .get("/products/see/6609b07cade355e917d4cec0");
+            .get("/products/see/"+idProduct);
         expect(response.statusCode).toBe(200);
     }
     );
@@ -68,16 +71,74 @@ describe("Get de un producto por su id", () => {
 describe("Patch de un producto", () => {
     test("Debería de actualizar un producto y devolver un status 200", async () => {
         const response = await request(app)
-            .patch("/products/update/6609b07cade355e917d4cec0")
+            .patch("/products/update/"+idProduct)
             .send({
                 "pathImage": "https://www.floristeriasguatemala.com/media/catalog/product/cache/9e8f7fb7c4789ff7af581d9bcc93d7a8/o/s/oso_peluche.jpg",
                 "name": "Osito de Peluche",
                 "description": "Oso de peluche, ideal para acompañar tus flores y sorprender a esa persona tan especial.",
                 "price": 22.00,
                 "stock": 1, // Se cambia el stock
-                "idUser": "65e39bf5a4c5d21eb2ab32ab"
+                "idUser": idTest
             });
         expect(response.statusCode).toBe(200);
+    }
+    );
+}
+);
+
+// Creamos una review al producto
+describe("Post de una review", () => {
+    test("Debería de crear una review y devolver el mensaje Review created", async () => {
+        const response = await request(app)
+            .post("/review/create")
+            .send({
+                "idUser": idTest,
+                "idProduct": idProduct,
+                "rating": 1,
+                "comment": "Muy malo, me llegó roto"
+            });
+
+
+        idReview = response.body.data._id;
+
+        expect(response.body.message).toBe("Review created");
+    }
+    );
+}
+);
+
+// Editar una review
+describe("Put de una review", () => {
+    test("Debería de editar una review y devolver un status 200", async () => {
+        const response = await request(app)
+            .put("/review/update/" + idReview)
+            .send({
+                "rating": 2,
+                "comment": "Muy malo, me llegó roto. No lo recomiendo"
+            });
+        expect(response.statusCode).toBe(200);
+    }
+    );
+}
+);
+
+// Eliminar una review
+describe("Delete de una review", () => {
+    test("Debería de eliminar una review y devolver un mensaje Review deleted", async () => {
+        const response = await request(app)
+            .delete("/review/delete/" + idReview);
+        expect(response.body.message).toBe("Review deleted");
+    }
+    );
+}
+);
+
+//Obtener todas las reviews
+describe("Get de todas las reviews", () => {
+    test("Debería de devolver reviews o un array vacio", async () => {
+        const response = await request(app)
+            .get("/review/all");
+            expect(response.body.data).not.toBeNull();
     }
     );
 }
@@ -98,7 +159,7 @@ describe("Delete de un producto", () => {
 describe("Get de productos por id de vendedor", () => {
     test("Debería de devolver productos", async () => {
         const response = await request(app)
-            .get("/products/get/65e39bf5a4c5d21eb2ab32ab");
+            .get("/products/get/"+idTest);
             expect(response.body.data).not.toBeNull();
     }
     );
@@ -116,16 +177,6 @@ describe("Get de todos los productos", () => {
 }
 );
 
-// Obtener un producto por su id
-describe("Get de un producto por su id", () => {
-    test("Debería de devolver un producto", async () => {
-        const response = await request(app)
-            .get("/products/see/65e34ef52983c7fb1b35e588");
-            expect(response.body.data).not.toBeNull();
-    }
-    );
-}
-);
 // ---------------------------- PRUEBAS DE INTEGRACIÓN ----------------------------
 describe("Prueba de Integración de Productos", () => {
     let createdProductId;
@@ -139,12 +190,38 @@ describe("Prueba de Integración de Productos", () => {
                 "description": "Oso de peluche, ideal para acompañar tus flores y sorprender a esa persona tan especial.",
                 "price": 22.00,
                 "stock": 2,
-                "idUser": "65e39bf5a4c5d21eb2ab32ab"
+                "idUser": idTest
             });
 
         expect(response.statusCode).toBe(201);
         expect(response.body.message).toBe("Product created successfully");
         createdProductId = response.body.data._id;
+    });
+
+    test("CREAMOS UNA REVIEW PARA EL PRODUCTO", async () => {
+        const response = await request(app)
+            .post("/review/create")
+            .send({
+                "idUser": idTest,
+                "idProduct": createdProductId,
+                "rating": 2,
+                "comment": "Muy malo, me llegó roto"
+            });
+        
+        idReview = response.body.data._id;
+        expect(response.statusCode).toBe(200);
+        expect(response.body.message).toBe("Review created");
+    });
+
+    test("ACTUALIZAMOS LA REVIEW CREADA", async () => {
+        const response = await request(app)
+            .put("/review/update/" + idReview)
+            .send({
+                "rating": 1,
+                "comment": "Muy malo, me llegó roto. No lo recomiendo"
+            });
+
+        expect(response.statusCode).toBe(200);
     });
 
     test("OBTENEMOS EL PRODUCTO CREADO POR ID", async () => {
@@ -155,6 +232,13 @@ describe("Prueba de Integración de Productos", () => {
         expect(response.body.data._id).toBe(createdProductId);
     });
 
+    test("ELIMINAMOS LA REVIEW CREADA", async () => {
+        const response = await request(app)
+            .delete("/review/delete/" + idReview);
+
+        expect(response.statusCode).toBe(200);
+        expect(response.body.message).toBe("Review deleted");
+    });
 
     test("UNA VEZ VERIFICADA SU EXISTENCIA, SE ELIMINA", async () => {
         const response = await request(app)

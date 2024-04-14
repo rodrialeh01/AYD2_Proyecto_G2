@@ -70,6 +70,14 @@ Los tag se crean desde la rama main, los utilizamos para marcar las nuevas versi
 ___Release/x.y.z -> Main -> x.y.z (Tag)___
 
 # Mockups
+
+## Registro
+![mockup](./img/mockup17.png)
+
+## Login
+![mockup](./img/mockup18.png)
+
+
 ## Vendedor
 
 ### Registro de Productos
@@ -80,6 +88,8 @@ ___Release/x.y.z -> Main -> x.y.z (Tag)___
 ![mockup](./img/mockup3.png)
 ### Vista de Perfil
 ![mockup](./img/mockup4.png)
+### Edición de Perfil
+![mockup](./img/mockup15.png)
 ### Información
 ![mockup](./img/mockup5.png)
 ### Vista de Ventas
@@ -88,24 +98,51 @@ ___Release/x.y.z -> Main -> x.y.z (Tag)___
 ![mockup](./img/mockup7.png)
 
 
-## Usuario
+## Cliente
+### Vista de Productos
+![mockup](./img/mockup19.png)
 
+### Vista de Perfil
+![mockup](./img/mockup20.png)
 
+### Vista Review
+![mockup](./img/mockup9.png)
+
+### Creacion de Review
+![mockup](./img/mockup10.png)
+
+### Edición de Review
+![mockup](./img/mockup11.png)
+
+### Carrito de Compras
+![mockup](./img/mockup21.png)
+
+### Pago
+![mockup](./img/mockup22.png)
 
 ## Administrador
 
 ### Reporte de Ventas en un rango determinado de tiempo
 ![mockup](./img/mockup8.png)
 
+### Reporte de Tipos de Usuarios
+![mockup](./img/mockup16.png)
+
+### Reporte de tipo de pago
+![mockup](./img/mockup23.png)
+
+### Reporte de calidad de productos
+![mockup](./img/mockup12.png)
 
 # Arquitectura
-![alt text](../img/arquitectura.JPG)
+![Arquitectura Mejorada](../img/Arquitecura_mejorada.png)
 
 La arquitectura nos muestra que la aplicación podrá ser accedidad desde cualquier dispositivo con acceso a internet.
-La parte visual, o FrontEnd, se realizó en React, que estará consumiendo la Api o BackEnd realizado en NodeJs.
-El BackEnd consumirá los servicios de S3 y RDS de AWS, el cual contendrá el Bucket y la base de datos de MongoDB, respectivamente, de todo el servicio.
+Posteriormente el dispositivo se conectará a una máquina virtual donde se aloja el front-end hecho en react, donde este mismo hace peticiones a otra máquina virtual donde se encuenta el back-end hecho en node.js, ambas máquinas virtuales se encuentran en la nube de google cloud platform.
 
-Al centro podemos visualizar todas las peticiones que se realizarán por parte del Front hacia el Back y este a la base de datos por medio de querys. 
+El backend se conecta a un bucket de AWS S3 donde se almacenan las fotos de los usuarios, las imagenes de los productos y por ultimo las imágenes de las reseñas.
+
+Además el backend se conecta a una base de datos en mongodb atlas donde se almacenan los datos de los usuarios, productos, reseñas, ventas, pagos y la bitacora.
 
 
 # Diagrama de Patrones
@@ -133,7 +170,7 @@ Así como los servicios que van a estar en cada uno de ellos.
 # Diagrama Entidad Relación
 El siguiente diagrama es una representacion de la entidad relacion que se utilizara para la base de datos que se empleara en el proyecto.
 
-![ER](../img/er.png)
+![ER](../img/modeloer.jpg)
 
 
 
@@ -316,3 +353,8 @@ Cada tarea dentro de los bloques tendrá su descripción y se mostrará si está
 # Carpeta de grabaciones
 
 https://drive.google.com/drive/folders/19KI0_pRhudytaUeb5BBmW-vgGPIHD1rX?usp=sharing
+
+
+# Documentación de endpoints en Postman
+
+https://documenter.getpostman.com/view/29725150/2sA35MxJGG
