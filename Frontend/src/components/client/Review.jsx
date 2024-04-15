@@ -165,6 +165,7 @@ function Review({ id }) {
         )}
 
         <button
+          data-test-id="cypress-button-review"
           className="bg-violet-800 text-white font-semibold py-3 px-16 rounded-xl h-full"
           onClick={() => setShowModal(true)}
         >
@@ -181,6 +182,7 @@ function Review({ id }) {
               <textarea
                 className="w-full border rounded p-2 my-2"
                 placeholder="Deja un comentario..."
+                data-test-id="cypress-input-comment"
                 value={comment}
                 onChange={handleCommentChange}
               ></textarea>
@@ -212,6 +214,7 @@ function Review({ id }) {
             
         <br />
               <button
+                data-test-id="cypress-button-submit"
                 className="bg-violet-800 text-white font-semibold py-2 px-4 rounded"
                 onClick={handleSubmit}
               >

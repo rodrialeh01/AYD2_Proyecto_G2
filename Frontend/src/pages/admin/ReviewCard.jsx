@@ -3,7 +3,7 @@ import Service from '../../Service/Service'
 import { useEffect, useState } from "react";
 import { FaStar, FaRegStarHalf, FaRegStar } from "react-icons/fa";
 
-const ReviewCard = ({review}) => {
+const ReviewCard = ({index, review}) => {
 
     console.log(review);
     
@@ -55,7 +55,10 @@ const ReviewCard = ({review}) => {
                   <div className="flex mr-2">{renderStars(review.rating)}</div>
                   <p className="flex-shrink-0">{formatDate(review.createdAt)}</p>
                     {/*Agregar botón para eliminar un producto*/}
-                    <button class="w-full bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={() => {deleteReview(review._id)}}>
+                    <button class="w-full bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                    data-test-id={"cypress-button-delete-"+index}
+                    
+                    onClick={() => {deleteReview(review._id)}}>
                         Eliminar
                     </button>
                 </div>

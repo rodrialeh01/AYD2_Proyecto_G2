@@ -23,7 +23,7 @@ const HomeReviews = () => {
                 </h1>
                 <div className="flex flex-wrap gap-4">
                     {reviews.map((review, index) => (
-                        <ReviewCard key={index} review={review}/>))}
+                        <ReviewCard key={index} index={index} review={review}/>))}
                 </div>
             </div>
         </div>
