@@ -107,10 +107,11 @@ const ListPContainer = () => {
                 </h1>
               </div>
               <div className="w-full height-100 flex flex-wrap overflow-y-auto scrollbar-hide  justify-center mt-8">
-                {products.map((product) => (
+                {products.map((product, index) => (
                   <ListP
                     product={product}
                     key={product._id}
+                    index={index}
                     changeShowModal={changeShowModal}
                   />
                 ))}
