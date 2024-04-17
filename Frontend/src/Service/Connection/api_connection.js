@@ -211,7 +211,7 @@ export const getTop10Sellers = async () => {
 
 //Tipo usuarios
 export const getReportUserTypes = async () => {
-    const response = await instance.get('purchase/getReportUserTypes');
+    const response = await instance.get('users/getReportUserTypes');
     return response.data;
   }
 

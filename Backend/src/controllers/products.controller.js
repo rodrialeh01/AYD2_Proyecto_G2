@@ -13,18 +13,23 @@ export const createProduct = async (req, res) => {
         const { pathImage, name, description, price, stock, idUser } = req.body;
         
         if (!pathImage || !name || !description || !price || !stock || !idUser) {
+            logB.addBitacora('ENDPOINT: /product/create - Faltan campos');
             res.response(null, "All fields are required", 400);
         }
 
         if (!validator.isNumeric(String(price)) || !validator.isNumeric(String(stock))) {
+            logB.addBitacora('ENDPOINT: /product/create - Precio y stock deben ser números');
             res.response(null, "Price and stock must be numbers", 400);
         }
 
         if (price <= 0) {
+            logB.addBitacora('ENDPOINT: /product/create - Precio debe ser mayor a 0');
             res.response(null, "Price must be greater than 0", 400);
         }
 
         if (!validator.isMongoId(String(idUser))) {
+            logB.addBitacora('ENDPOINT: /product/create - idUser inválido');
+            bdb.crearBitacoraBD('idUser inválido para crear un producto', 'INSERT', new Date());
             res.response(null, "Invalid idUser", 400);
         }
 
@@ -55,22 +60,29 @@ export const updateProduct = async (req, res) => {
         const { pathImage, name, description, price, stock, idUser } = req.body;
 
         if (!id || !pathImage || !name || !description || !price || !stock || !idUser) {
+            logB.addBitacora('ENDPOINT: /product/update/:id - Faltan campos');
             res.response(null, "All fields are required", 400);
         }
 
         if (!validator.isNumeric(String(price)) || !validator.isNumeric(String(stock))) {
+            logB.addBitacora('ENDPOINT: /product/update/:id - Precio y stock deben ser números');
             res.response(null, "Price and stock must be numbers", 400);
         }
 
         if (price <= 0) {
+            logB.addBitacora('ENDPOINT: /product/update/:id - Precio debe ser mayor a 0');
             res.response(null, "Price must be greater than 0", 400);
         }
 
         if (!validator.isMongoId(String(idUser))) {
+            logB.addBitacora('ENDPOINT: /product/update/:id - idUser inválido');
+            bdb.crearBitacoraBD('idUser inválido para actualizar un producto', 'UPDATE', new Date());
             res.response(null, "Invalid idUser", 400);
         }
 
         if (!validator.isMongoId(String(id))) {
+            logB.addBitacora('ENDPOINT: /product/update/:id - id inválido');
+            bdb.crearBitacoraBD('id inválido para actualizar un producto', 'UPDATE', new Date());
             res.response(null, "Invalid product id", 400);
         }
 
@@ -113,6 +125,8 @@ export const seeProductById = async (req, res) => {
     try {
         const { id } = req.params;
         if (!validator.isMongoId(String(id))) {
+            logB.addBitacora('ENDPOINT: /product/see/:id - id inválido');
+            bdb.crearBitacoraBD('id inválido para buscar un producto', 'SELECT', new Date());
             res.response(null, "Invalid product id", 400);
         }
 
@@ -132,11 +146,14 @@ export const getProductsByVendor = async (req, res) => {
     try {
         const { id } = req.params;
         if (!validator.isMongoId(String(id))) {
+            logB.addBitacora('ENDPOINT: /product/get/:id - idUser inválido');
+            bdb.crearBitacoraBD('idUser inválido para buscar productos', 'SELECT', new Date());
             res.response(null, "Invalid idUser", 400);
         }
 
-        logB.addBitacora(`ENDPOINT: /product/get/:id - Se han buscado los productos del vendedor con ID: ${id}`);
+        
         const products = await productRepository.getProductsByVendor(id);
+        logB.addBitacora(`ENDPOINT: /product/get/:id - Se han buscado los productos del vendedor con ID: ${id}`);
         bdb.crearBitacoraBD(`Se han seleccionado los productos del vendedor en la tabla Producto`, 'SELECT', new Date());
         res.response(products, "Products found", 200);
     } catch (error) {
@@ -151,6 +168,8 @@ export const deleteProduct = async (req, res) => {
     try {
         const { id } = req.params;
         if (!validator.isMongoId(String(id))) {
+            logB.addBitacora('ENDPOINT: /product/delete/:id - id inválido');
+            bdb.crearBitacoraBD('id inválido para eliminar un producto', 'DELETE', new Date());
             res.response(null, "Invalid product id", 400);
         }
 
