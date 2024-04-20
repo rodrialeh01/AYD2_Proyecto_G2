@@ -34,7 +34,7 @@ export default function SignIn() {
       }
       await AsyncStorage.setItem('data_user', JSON.stringify(savedData));
       alert('Bienvenido');
-      navigation.navigate('ListadoProductos');
+      navigation.navigate('Prueba');
     }else{
       alert('Correo o contraseña incorrectos');
     }

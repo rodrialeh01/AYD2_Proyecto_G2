@@ -12,7 +12,19 @@ import {
 import * as ImagePicker from "expo-image-picker";
 import Service from "../../service/Service";
 
-export default function CrearProducto() {
+export default function CrearProducto({ route, nav }) {
+
+  const { onGoBack } = route.params;
+
+  const handleGoBack = () => {
+    if (onGoBack) {
+      onGoBack();
+    }
+    navigation.goBack();
+  };
+
+
+
   const navigation = useNavigation();
   let user;
 
@@ -105,7 +117,7 @@ export default function CrearProducto() {
       const res = await Service.createProduct(product);
       if (res.message === "Product created successfully") {
         alert("Producto creado exitosamente");
-        navigation.navigate("ListadoProductos");
+        handleGoBack();
       } else {
         alert("Error al crear el producto");
       }

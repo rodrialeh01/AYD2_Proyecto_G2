@@ -53,6 +53,16 @@ export default function ListadoProductos() {
     navigation.navigate("FormEditP", { product, onGoBack: handleReload });
   };
 
+  const handleOpenAdd = () => {
+    navigation.navigate("CrearProducto", { onGoBack: handleReload });
+  };
+
+  const handleOpenReport = () => {
+    navigation.navigate("ReporteVendor", { onGoBack: handleReload });
+  }
+
+
+
   return (
     <View style={styles.container}>
       <View style={styles.top}></View>
@@ -61,6 +71,20 @@ export default function ListadoProductos() {
         <Text style={styles.textContainer} className="font-bold">
           Listado de Productos
         </Text>
+
+        <TouchableOpacity>
+            <Text className="mb-3 mt-3" style={styles.editButton3} 
+                onPress={handleOpenAdd}>
+                Agregar nuevo Producto
+            </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity>
+            <Text className="mb-2" style={styles.editButton4} onPress={handleOpenReport}>
+                Reporte de Ventas
+            </Text>
+        </TouchableOpacity>
+
       </View>
 
       {loading ? (
@@ -174,5 +198,23 @@ const styles = StyleSheet.create({
   editButton1: {
     marginTop: 10,
     borderRadius: 10,
+  },
+  editButton3: {
+    backgroundColor: "#663CFF",
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "bold",
+    textAlign: "center",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+  },
+  editButton4: {
+    backgroundColor: "#984AF0",
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "bold",
+    textAlign: "center",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
   },
 });

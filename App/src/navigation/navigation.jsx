@@ -8,6 +8,7 @@ import Prueba from '../screens/prueba/prueba';
 import CrearProducto from '../screens/vendor/crearProducto';
 import ListadoProductos from '../screens/vendor/listadoProductos';
 import FormEditP from '../screens/vendor/formEditP';
+import ReporteVendor from '../screens/vendor/reporteVendor';
 const Stack = createStackNavigator();
 
 function MyTabs() {
@@ -23,6 +24,7 @@ function MyTabs() {
       <Stack.Screen name="CrearProducto" component={CrearProducto} />
       <Stack.Screen name="ListadoProductos" component={ListadoProductos} />
       <Stack.Screen name="FormEditP" component={FormEditP} />
+      <Stack.Screen name="ReporteVendor" component={ReporteVendor} />
     </Stack.Navigator>
   );
 }
