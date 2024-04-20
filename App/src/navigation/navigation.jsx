@@ -5,7 +5,9 @@ import { createStackNavigator } from "@react-navigation/stack";
 import SignIn from "../screens/auth/SignIn";
 import SignUp from "../screens/auth/SignUp";
 import Prueba from '../screens/prueba/prueba';
-
+import CrearProducto from '../screens/vendor/crearProducto';
+import ListadoProductos from '../screens/vendor/listadoProductos';
+import FormEditP from '../screens/vendor/formEditP';
 const Stack = createStackNavigator();
 
 function MyTabs() {
@@ -18,6 +20,9 @@ function MyTabs() {
       <Stack.Screen name="SignIn" component={SignIn} />
       <Stack.Screen name="SignUp" component={SignUp} />
       <Stack.Screen name="Prueba" component={Prueba} />
+      <Stack.Screen name="CrearProducto" component={CrearProducto} />
+      <Stack.Screen name="ListadoProductos" component={ListadoProductos} />
+      <Stack.Screen name="FormEditP" component={FormEditP} />
     </Stack.Navigator>
   );
 }
