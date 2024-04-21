@@ -9,6 +9,8 @@ import CrearProducto from '../screens/vendor/crearProducto';
 import ListadoProductos from '../screens/vendor/listadoProductos';
 import FormEditP from '../screens/vendor/formEditP';
 import ReporteVendor from '../screens/vendor/reporteVendor';
+import Review from "../screens/cliente/Review";
+
 const Stack = createStackNavigator();
 
 function MyTabs() {
@@ -25,6 +27,7 @@ function MyTabs() {
       <Stack.Screen name="ListadoProductos" component={ListadoProductos} />
       <Stack.Screen name="FormEditP" component={FormEditP} />
       <Stack.Screen name="ReporteVendor" component={ReporteVendor} />
+      <Stack.Screen name="Review" component={Review} />
     </Stack.Navigator>
   );
 }
