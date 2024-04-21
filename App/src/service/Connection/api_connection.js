@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-    baseURL: 'http://192.168.31.150:4000/'
+    baseURL: 'http://192.168.0.11:4000/'
 });
 
 // Producto:
@@ -13,10 +13,10 @@ export const getProducts = async (id) => {
 
 // añadir la imagen al bucket:
 export const uploadImage = async (image) => {
-    //console.log([...image.entries()]);
-
+    console.log(image);
     const response = await instance.post('products/addImage', image, {
         headers: {
+            accept: 'application/json',
             'Content-Type': 'multipart/form-data'
         }
     });

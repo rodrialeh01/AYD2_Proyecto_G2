@@ -87,6 +87,7 @@ export const updateProduct = async (req, res) => {
         }
 
 
+    
         const producto = {
             pathImage,
             name,
@@ -190,7 +191,7 @@ export const deleteProduct = async (req, res) => {
 }
 
 export const uploadImage = async (req, res) => {
-    
+
     try {
         const { buffer, originalname } = req.file;
         const fileExtension = originalname.split('.').pop();
