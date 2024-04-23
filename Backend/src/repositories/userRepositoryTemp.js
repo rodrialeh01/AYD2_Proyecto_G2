@@ -6,12 +6,21 @@ class UserRepository {
         return await User.find({ role: { $ne: 3 } });    
     }
 
+    async obtenerTodos2() {
+        return await User.find({});    
+    }
+
     async deleteUser(id) {
         return await User.findByIdAndDelete(id);
     }
 
     async getUserByID(id) {
         return await User.findById(id);
+    }
+
+    async updateUser(id, user) {
+        console.log("updateUser");
+        return await User.findByIdAndUpdate(String(id), user, { new: true });
     }
 
 }

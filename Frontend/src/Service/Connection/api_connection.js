@@ -208,3 +208,39 @@ export const getTop10Sellers = async () => {
     const response = await instance.get('purchase/getTop10Sellers');
     return response.data;
 }
+
+//Tipo usuarios
+export const getReportUserTypes = async () => {
+    const response = await instance.get('users/getReportUserTypes');
+    return response.data;
+  }
+
+// Subir imagen de perfil
+export const uploadProfileImage = async (image) => {
+    const response = await instance.post('users/addImage', image, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    });
+    return response;
+}
+
+
+
+//Editar Usuario
+export const updateUser = async (id, usuario) => {
+    const response = await instance.patch(`users/update/${id}`, usuario, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+    return response.data;
+}
+
+
+//BITACORA
+//Obtener Bitácoras
+export const getAuditoria = async () => {
+    const response = await instance.get('bitacora');
+    return response.data;
+}

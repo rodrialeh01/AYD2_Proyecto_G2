@@ -25,7 +25,7 @@ const CreateP = ({ product, handleChange, handleSubmit, handleFormData }) => {
               </div>
               <div className="w-full mr-[250px]">
                 <input
-                  data-test-id="cypress-input-petName"
+                  data-test-id="cypress-input-photoProduct"
                   className="appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                   id="inline-full-name"
                   type="file"
@@ -48,7 +48,7 @@ const CreateP = ({ product, handleChange, handleSubmit, handleFormData }) => {
               </div>
               <div className="w-full mr-[250px]">
                 <input
-                  data-test-id="cypress-input-petName"
+                  data-test-id="cypress-input-productName"
                   className="bg-white appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                   id="inline-full-name"
                   type="text"
@@ -73,6 +73,7 @@ const CreateP = ({ product, handleChange, handleSubmit, handleFormData }) => {
                   <input
                     className="bg-white appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                     id="inline-full-name"
+                    data-test-id="cypress-input-price"
                     type="number"
                     name="price"
                     onChange={handleChange}
@@ -93,6 +94,7 @@ const CreateP = ({ product, handleChange, handleSubmit, handleFormData }) => {
                   <input
                     className="bg-white appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                     id="inline-full-name"
+                    data-test-id="cypress-input-stock"
                     type="number"
                     name="stock"
                     onChange={handleChange}
@@ -111,7 +113,7 @@ const CreateP = ({ product, handleChange, handleSubmit, handleFormData }) => {
               <div className=""></div>
               <div className="w-full ">
                 <textarea
-                  data-test-id="cypress-input-extraComments"
+                  data-test-id="cypress-input-description"
                   className="bg-white appearance-none h-20 overflow-y-auto border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                   id="inline-full-name"
                   type="text"
@@ -129,6 +131,7 @@ const CreateP = ({ product, handleChange, handleSubmit, handleFormData }) => {
           <button
             className="text-black bg-green-500 hover:bg-green-900 transition duration-300 ease-in-out rounded font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
             type="submit"
+            data-test-id="cypress-button-save"
             onClick={handleSubmit}
           >
             Guardar

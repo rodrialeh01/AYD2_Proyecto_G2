@@ -1,6 +1,6 @@
 import React from "react";
 
-const ListP = ({product, key, changeShowModal} ) => {
+const ListP = ({product, index, key, changeShowModal} ) => {
 
   const handleClick = () => {
     changeShowModal(product);
@@ -53,7 +53,7 @@ const ListP = ({product, key, changeShowModal} ) => {
       <div className="flex items-center justify-center">
         <div className=" flex w-20 justify-center items-center text-white font-bold py-2 px-4 rounded-full mx-1">
           <button className="bg-yellow-500 hover:bg-yellow-700 transition duration-300 text-white font-bold py-2 px-4 rounded"
-            
+            data-test-id={"cypress-button-edit-"+index}
             onClick={() => handleClick()} 
           >
             Editar

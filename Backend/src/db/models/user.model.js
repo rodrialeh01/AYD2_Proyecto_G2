@@ -15,7 +15,8 @@ const userSchema = new Schema(
         cui: { type: String, required: true, minlength: 13, maxlength: 13 },
         role: Number,
         verified: Boolean,
-        birthday: Date
+        birthday: Date,
+        pathImage: String,
     },
     { timestamps: true }
 );
