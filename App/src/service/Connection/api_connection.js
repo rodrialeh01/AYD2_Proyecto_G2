@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-    baseURL: 'http://192.168.72.1:4000/'
+    baseURL: 'http://192.168.31.150:4000/'
 });
 
 // Producto:
