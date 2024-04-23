@@ -93,7 +93,7 @@ export default function SignIn() {
       </View>
 
       <TouchableOpacity
-        className="bg-blue-500 hover:bg-blue-700 py-2 px-4 rounded-full mt-16 mb-14 p-3 w-48 h-12 flex items-center justify-center"
+        className="bg-purple hover:bg-blue-700 py-2 px-4 rounded-full mt-16 mb-14 p-3 w-48 h-12 flex items-center justify-center"
         // onPress={() => navigation.navigate('Prueba')}
         onPress={handleSignIn}
       >
