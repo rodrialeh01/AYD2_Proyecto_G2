@@ -11,6 +11,7 @@ import FormEditP from '../screens/vendor/formEditP';
 import ReporteVendor from '../screens/vendor/reporteVendor';
 import Review from "../screens/cliente/Review";
 import ReporteCliente1 from "../screens/cliente/reportes/reporteCliente1";
+import RecoveryAccount from "../screens/recoveryAccount/recoveryAccount";
 
 const Stack = createStackNavigator();
 
@@ -23,6 +24,7 @@ function MyTabs() {
     >
       <Stack.Screen name="SignIn" component={SignIn} />
       <Stack.Screen name="SignUp" component={SignUp} />
+      <Stack.Screen name="RecoveryAccount" component={RecoveryAccount} />
       <Stack.Screen name="Prueba" component={Prueba} />
       <Stack.Screen name="CrearProducto" component={CrearProducto} />
       <Stack.Screen name="ListadoProductos" component={ListadoProductos} />
