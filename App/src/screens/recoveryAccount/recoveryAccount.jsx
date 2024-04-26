@@ -6,21 +6,40 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import Service from "../../service/Service"
 
-export default function SignIn() {
+export default function RecoveryAccount() {
   const navigation = useNavigation();
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [code, setCode] = useState('');
+  const [stateCode, setStateCode] = useState(false);
+
+  const handleRecovery = async () => {
+      if (!email) {
+        alert('El campo de correo es obligatorio');
+        return;
+      }
+
+      const res = await Service.recuperarPassword(email);
+      console.log(res);
+      if(res.status === 200){
+        alert('Se ha enviado un correo con el código de recuperación');
+        setStateCode(true);
+
+      }else{
+        alert('Correo no encontrado');
+      }
+      return;
+  }
 
   const handleSignIn = async () => {
 
-    if (!email || !password) {
-      alert('Los campos de correo y contraseña son obligatorios');
+    if (!email || !code) {
+      alert('Los campos de correo y codigo son obligatorios');
       return;
     }
 
     let user = {
       email,
-      password,
+      password: code
     };
 
     console.log(user);
@@ -36,39 +55,20 @@ export default function SignIn() {
       alert('Bienvenido');
       navigation.navigate('Prueba');
     }else{
-      alert('Correo o contraseña incorrectos');
+      alert('Correo o codigo incorrectos');
     }
-
-    // fetch('http://192.168.31.150:4000/auth/sign/in', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(user),
-    // }).then((response) => {
-    //   if (response.status === 200) {
-    //     alert('Bienvenido');
-    //     navigation.navigate('Prueba');
-    //   } else {
-    //     alert('Correo o contraseña incorrectos');
-    //   }
-    // }).catch((error) => {
-    //   console.error('Error:', error);
-    // });
-
-
   }
 
   return (
     <View style={styles.container}>
-      <Image
+      {/* <Image
         source={require('../../../assets/Logo2.png')}
         style={{ width: 200, height: 200, marginBottom: 20 }}
-      />
+      /> */}
 
-      <Text className="text-5xl font-bold text-gray-800">Hola</Text>
+      <Text className="text-2xl font-bold text-gray-800">¿Olvidaste tu contraseña?</Text>
 
-      <Text className="text-lg font-bold text-gray-500 mb-5">Accede a tu cuenta</Text>
+      <Text className="text-lg font-bold text-gray-500 mb-16">¡Recuperala!</Text>
 
       <StatusBar style="auto" />
 
@@ -79,31 +79,30 @@ export default function SignIn() {
         onChangeText={(text) => setEmail(text)}
       />
     
-      <TextInput
-        placeholder="Contraseña"
+      {stateCode && (
+        <TextInput
+        placeholder="Codigo de recuperación"
         className="h-12 w-80 border-gray-300 rounded-full mb-3 px-3 bg-white pl-5"
-        secureTextEntry={true}
-        onChangeText={(text) => setPassword(text)}
+        onChangeText={(text) => setCode(text)}
       />
-
-      <View style={styles.forgotPassword}>
-        <Link to="/RecoveryAccount" className="text-blue-500 mt-2">
-          <Text className="mt-2 text-gray-500 font-bold">¿Olvidaste tu contraseña?</Text>
-        </Link>
-      </View>
+      )}
 
       <TouchableOpacity
-        className="bg-purple hover:bg-blue-700 py-2 px-4 rounded-full mt-16 mb-14 p-3 w-48 h-12 flex items-center justify-center"
+        className="bg-purple hover:bg-blue-700 py-2 px-4 rounded-full mt-10 mb-14 p-3 w-48 h-12 flex items-center justify-center"
         // onPress={() => navigation.navigate('Prueba')}
-        onPress={handleSignIn}
+        onPress={handleRecovery}
       >
-        <Text className="text-white font-bold text-center">INICIAR SESION</Text>
+        {stateCode ? (
+          <Text className="text-white font-bold text-center" onPress={() => handleSignIn()}>RECUPERAR</Text>
+        ) : (
+          <Text className="text-white font-bold text-center" onPress={() => handleRecovery()}>ENVIAR CODIGO</Text>
+        )}
       </TouchableOpacity>
       
 
-      <Link to="/SignUp" className="text-blue-500 mt-2"> 
-        <Text className="text-gray-500 font-bold">¿No tienes una cuenta?</Text>
-        <Text className="font-bold"> Registrate</Text>
+      <Link to="/SignIn" className="text-blue-500 mt-2"> 
+        <Text className="text-gray-500 font-bold">¿Deseas volver?</Text>
+        <Text className="font-bold"> Iniciar Sesión</Text>
       </Link>
     </View>
   );
