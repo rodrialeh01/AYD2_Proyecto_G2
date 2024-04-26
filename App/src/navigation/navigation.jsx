@@ -1,15 +1,17 @@
-import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import React from "react";
 
 import SignIn from "../screens/auth/SignIn";
 import SignUp from "../screens/auth/SignUp";
+import Home from "../screens/cliente/Home";
+import Review from "../screens/cliente/Review";
+import VerProducto from "../screens/cliente/VerProducto";
 import Prueba from '../screens/prueba/prueba';
 import CrearProducto from '../screens/vendor/crearProducto';
-import ListadoProductos from '../screens/vendor/listadoProductos';
 import FormEditP from '../screens/vendor/formEditP';
+import ListadoProductos from '../screens/vendor/listadoProductos';
 import ReporteVendor from '../screens/vendor/reporteVendor';
-import Review from "../screens/cliente/Review";
 
 const Stack = createStackNavigator();
 
@@ -28,6 +30,8 @@ function MyTabs() {
       <Stack.Screen name="FormEditP" component={FormEditP} />
       <Stack.Screen name="ReporteVendor" component={ReporteVendor} />
       <Stack.Screen name="Review" component={Review} />
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Producto" component={VerProducto}/>
     </Stack.Navigator>
   );
 }

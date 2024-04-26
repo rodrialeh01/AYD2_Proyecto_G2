@@ -1,10 +1,10 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TextInput, TouchableOpacity, View, Image } from 'react-native';
-import { Link, useNavigation } from '@react-navigation/native';
-import { useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Link, useNavigation } from '@react-navigation/native';
+import { StatusBar } from 'expo-status-bar';
+import { useState } from 'react';
+import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
-import Service from "../../service/Service"
+import Service from "../../service/Service";
 
 export default function SignIn() {
   const navigation = useNavigation();
@@ -34,7 +34,7 @@ export default function SignIn() {
       }
       await AsyncStorage.setItem('data_user', JSON.stringify(savedData));
       alert('Bienvenido');
-      navigation.navigate('Prueba');
+      navigation.navigate('Home');
     }else{
       alert('Correo o contraseña incorrectos');
     }
