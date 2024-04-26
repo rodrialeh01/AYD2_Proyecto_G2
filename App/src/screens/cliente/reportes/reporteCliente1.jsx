@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { BarChart } from "react-native-chart-kit";
-import Service from "../../service/Service";
+import Service from "../../../service/Service";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function ReviewReport() {
