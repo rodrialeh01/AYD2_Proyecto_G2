@@ -1,0 +1,44 @@
+{
+  "Workflows": [
+    {
+      "Path": null,
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [],
+      "ArgumentsSectionElementsOrder": null,
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    },
+    {
+      "Path": "Main.xaml",
+      "SortBy": 0,
+      "VariablesSectionElementsOrder": [
+        "contadorGlobal&Sequence_1",
+        "datos&Sequence_9",
+        "ValuePay&Sequence_10",
+        "Existencia&Sequence_10",
+        "Ind&Sequence_10",
+        "tipoTemp&Sequence_10",
+        "placaTemp&Sequence_10",
+        "contadorRow&Sequence_10",
+        "valueNumberTemp&Sequence_10",
+        "valueNumber&Sequence_11",
+        "nombreExcel&Sequence_9",
+        "rutaExcel&Sequence_9",
+        "valueNumberTemp&Sequence_3",
+        "valueNumber&Sequence_7",
+        "contadorRow&Sequence_3",
+        "placaTemp&Sequence_3",
+        "tipoTemp&Sequence_3",
+        "Ind&Sequence_3",
+        "Existencia&Sequence_3",
+        "rutaExcel&Sequence_2",
+        "nombreExcel&Sequence_2",
+        "datos&Sequence_2",
+        "ValuePay&Sequence_3"
+      ],
+      "ArgumentsSectionElementsOrder": [],
+      "ConstantsSectionElementsOrder": [],
+      "AddedNamespaces": null
+    }
+  ]
+}
