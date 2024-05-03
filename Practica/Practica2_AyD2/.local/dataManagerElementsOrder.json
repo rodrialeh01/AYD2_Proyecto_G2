@@ -12,6 +12,8 @@
       "Path": "Main.xaml",
       "SortBy": 0,
       "VariablesSectionElementsOrder": [
+        "ruta&Sequence_30",
+        "correoDest&Sequence_30",
         "valueTest&Sequence_10",
         "existencia&Sequence_10",
         "existe&Sequence_10",
