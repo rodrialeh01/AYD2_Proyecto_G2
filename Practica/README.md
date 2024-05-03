@@ -28,8 +28,9 @@
 - [Funcionamiento UiPath](#funcionamiento-uipath)
   - [Orquestador](#orquestador)
   - [Configuraciones Iniciales](#configuraciones-iniciales)
+  - [Página Antigua Guatemala](#página-villa-nueva)
   - [Página PNC](#página-pnc)
-  - [Página Villa Nueva](#página-villa-nueva)
+  
 
 ## Introducción
 
@@ -74,73 +75,6 @@ El orquestador es el encargado de guardar datos sensibles y datos dinámicos com
 
 ![Variable](./img/img6.png)
 
-### Página PNC
-
-### Página PNC
-
-1. Entra a la página de la PNC.
-
-![pag](./img/img15.png)
-
-2. Obtiene las variables del orquestador
-
-![orq](./img/img16.png)
-
-3. Lee el archivo de entrada.
-
-![Leer](./img/img7.png)
-
-4. Guarda los datos del archivo de entrada en un DataTable.
-
-![DT](./img/img8.png)
-
-5. Se asignan las variables:
-![variables](./img/img9.png)
-
-6. Selecciona el tipo de placa obtenido desde la columna de placa:
-![tipo](./img/img10.png)
-
-7. Se guarda en tipoTemp el tipo de Placa Actual
-
-![tipotemp](./img/img11.png)
-
-8. Escribe la placa en el input del html
-
-![placa](./img/img12.png)
-
-9. Se guarda en la variable placaTemp la placa
-
-![placatemp](./img/img13.png)
-
-10. Selecciona el click de "No es un robot"
-
-![captcha](./img/img14.png)
-
-11. Resuelva el captcha de forma manual.
-
-12. Una vez ingresado el número de placa, se da click en el botón de consultar multa.
-    
-    ![Consultar multa](./img/11.png)
-
-13. Al darle click en el botón de consultar multa, se obtiene la información de la multa, en este caso se verifica si existe multa o no. Esto se realiza validando con un Element Exist, donde se obtiene la información *"No Existen Remisiones"*.
-
-    ![Consultar mult](./img/12.png)
-
-14. Se escriben los datos en el excel sobre la placa que se consultó. En este escribe el tipo de placa y la institucion donde se esta consultando y se debe pagar la multa que en este caso es la PNC.
-
-    ![Consultar mult](./img/13.png)
-    ![Consultar mult](./img/14.png)
-
-15. Si existe el texto *"No Existen Remisiones"*, se escribe en el excel en la columna de Estado *"Free"* y en la columna de Valor total *"Q0.00"*.
-    ![Consultar mult](./img/17.png)
-
-16. Si no existe el texto *"No Existen Remisiones"*, significa que si hay multa y se obtiene la información de la multa, en este caso se obtiene el valor total a pagar, esto se hace con un Get Attribute. Posteriormente se escribe en el excel en la columna de Valor total el valor obtenido y en la columna de Estado *"Busted"*.
-    
-    ![Consultar mult](./img/15.png)
-
-17. Se da click en el botón de limpiar para limpiar la información de la placa consultada y poder ingresar una nueva placa y se repite el proceso hasta que se terminen de consultar todas las placas del archivo de entrada.
-
-    ![Consultar mult](./img/16.png)
 
 ### Página Antigua Guatemala
 
@@ -211,6 +145,75 @@ El orquestador es el encargado de guardar datos sensibles y datos dinámicos com
 - 10.7 Si la variable Existencia es verdadera significa que no tiene multas y es anotado en el archivo .xlsx de salida, mientras si es falsa es anotada la multa con el total a pagar.
 
 ![alt text](img/exist2.png)
+
+### Página PNC
+
+1. Entra a la página de la PNC.
+
+![pag](./img/img15.png)
+
+2. Obtiene las variables del orquestador
+
+![orq](./img/img16.png)
+
+3. Lee el archivo de entrada.
+
+![Leer](./img/img7.png)
+
+4. Guarda los datos del archivo de entrada en un DataTable.
+
+![DT](./img/img8.png)
+
+5. Se asignan las variables:
+
+![variables](./img/img9.png)
+
+6. Selecciona el tipo de placa obtenido desde la columna de placa:
+
+![tipo](./img/img10.png)
+
+7. Se guarda en tipoTemp el tipo de Placa Actual
+
+![tipotemp](./img/img11.png)
+
+8. Escribe la placa en el input del html
+
+![placa](./img/img12.png)
+
+9. Se guarda en la variable placaTemp la placa
+
+![placatemp](./img/img13.png)
+
+10. Selecciona el click de "No es un robot"
+
+![captcha](./img/img14.png)
+
+11. Resuelva el captcha de forma manual.
+
+12. Una vez ingresado el número de placa, se da click en el botón de consultar multa.
+    
+    ![Consultar multa](./img/11.png)
+
+13. Al darle click en el botón de consultar multa, se obtiene la información de la multa, en este caso se verifica si existe multa o no. Esto se realiza validando con un Element Exist, donde se obtiene la información *"No Existen Remisiones"*.
+
+    ![Consultar mult](./img/12.png)
+
+14. Se escriben los datos en el excel sobre la placa que se consultó. En este escribe el tipo de placa y la institucion donde se esta consultando y se debe pagar la multa que en este caso es la PNC.
+
+    ![Consultar mult](./img/13.png)
+    ![Consultar mult](./img/14.png)
+
+15. Si existe el texto *"No Existen Remisiones"*, se escribe en el excel en la columna de Estado *"Free"* y en la columna de Valor total *"Q0.00"*.
+    ![Consultar mult](./img/17.png)
+
+16. Si no existe el texto *"No Existen Remisiones"*, significa que si hay multa y se obtiene la información de la multa, en este caso se obtiene el valor total a pagar, esto se hace con un Get Attribute. Posteriormente se escribe en el excel en la columna de Valor total el valor obtenido y en la columna de Estado *"Busted"*.
+    
+    ![Consultar mult](./img/15.png)
+
+17. Se da click en el botón de limpiar para limpiar la información de la placa consultada y poder ingresar una nueva placa y se repite el proceso hasta que se terminen de consultar todas las placas del archivo de entrada.
+
+    ![Consultar mult](./img/16.png)
+
 
 ### Envío de Correos
 
