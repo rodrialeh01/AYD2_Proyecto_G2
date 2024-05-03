@@ -99,7 +99,7 @@ El orquestador es el encargado de guardar datos sensibles y datos dinámicos com
 
     ![Consultar mult](./img/16.png)
 
-### Página Villa Nueva
+### Página Antigua Guatemala
 
 1. Abre google chrome con la [Página SAT de Multas](https://portal.sat.gob.gt/portal/multas/)
 
