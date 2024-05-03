@@ -1,14 +1,12 @@
-# Practica
-
 # Manual Técnico
 
-# 📱 Proyecto
+# 🚗 Práctica
 ```json
 {
   "Curso": "Analisis y Diseño de Sistemas 2",
   "Sección": "B",
   "Periodo": "Primer Semestre 2024",
-  "Actividad": "Proyecto"
+  "Actividad": "Práctica"
 }
 ```
 
