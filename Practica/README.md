@@ -71,3 +71,28 @@ El orquestador es el encargado de guardar datos sensibles y datos dinámicos com
 10. 
 
 
+
+### Página Villa Nueva
+
+1. Abre google chrome con la [Página SAT de Multas](https://portal.sat.gob.gt/portal/multas/)
+
+![Página SAT de Multas](./img/img1.png)
+
+2. Se un delay de 3 segundos para que cargue la página en donde se buscara el numero de placa.
+
+![Página SAT de Multas](./img/img2.png)
+
+3. Del orquestador se agarra la variable de la carpeta donde se leerá el archivo de entrada y donde se guardará el archivo de salida.
+
+4. Crea el archivo excel de salida.
+
+5. Escribe los encabezados en el archivo de salida.
+
+    | No. Placa | Lugar a Pagar | Valor total | Estado |
+    | --------- | ------------- | ----------- | ------ |
+
+
+6. Obtiene la variable del nombre del archivo de entrada.
+7. Lee el archivo de entrada.
+8. Lo guarda en una variable de tipo DataTable.
+9. Lee cada columna del DataTable.
