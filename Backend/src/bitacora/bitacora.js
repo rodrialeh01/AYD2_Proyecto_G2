@@ -20,7 +20,6 @@ export class Bitacora {
         // Write to file
         try {
             fs.writeFileSync('Bitacora.txt', JSON.stringify(this.bitacora));
-            console.log(JSON.stringify(this.bitacora))
         } catch (error) {
             console.error('Error writing to file:', error);
         }

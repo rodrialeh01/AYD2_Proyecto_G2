@@ -51,7 +51,9 @@ const IncomeContainer = () => {
           <div className="flex-1 overflow-y-auto scrollbar-hide">
             <div className="mt-5 flex flex-col items-center justify-center">
               <div className="flex items-center justify-between w-full px-5">
-                <h1 className="text-4xl font-bold text-black px-8">
+                <h1 className="text-4xl font-bold text-black px-8"
+                  data-test-id="title"
+                >
                   INGRESOS TOTALES
                 </h1>
                 <h1 className="text-4xl font-bold text-black px-8">

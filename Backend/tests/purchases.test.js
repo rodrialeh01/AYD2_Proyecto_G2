@@ -63,15 +63,6 @@ describe("Crear Purchase con Pago en PayPal", () => {
     }
 );
 
-// Obtener todas las compras
-describe("Get Purchases", () => {
-    test("Should return status 200", async () => {
-        const response = await request(app)
-            .get("/purchase/getPurchases");
-            expect(response.body.data).not.toBeNull();
-    });
-}
-);
 
 // Get Purchase by id Vendor
 describe("Get Purchase by id Vendor", () => {

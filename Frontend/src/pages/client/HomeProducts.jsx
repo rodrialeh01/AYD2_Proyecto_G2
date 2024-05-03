@@ -21,7 +21,7 @@ const HomeProducts = () => {
                 </h1>
                 <div className="flex flex-wrap gap-4">
                     {products.map((product, index) => (
-                        <ProductCard key={index} product={product}/>))}
+                        <ProductCard key={index} product={product} index={index}/>))}
                 </div>
             </div>
         </div>

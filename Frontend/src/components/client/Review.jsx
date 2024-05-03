@@ -165,6 +165,7 @@ function Review({ id }) {
         )}
 
         <button
+          data-test-id="cypress-button-review"
           className="bg-violet-800 text-white font-semibold py-3 px-16 rounded-xl h-full"
           onClick={() => setShowModal(true)}
         >
@@ -181,6 +182,7 @@ function Review({ id }) {
               <textarea
                 className="w-full border rounded p-2 my-2"
                 placeholder="Deja un comentario..."
+                data-test-id="cypress-input-comment"
                 value={comment}
                 onChange={handleCommentChange}
               ></textarea>
@@ -212,6 +214,7 @@ function Review({ id }) {
             
         <br />
               <button
+                data-test-id="cypress-button-submit"
                 className="bg-violet-800 text-white font-semibold py-2 px-4 rounded"
                 onClick={handleSubmit}
               >
@@ -301,13 +304,16 @@ function Review({ id }) {
                   )}
                 </div>
                 <div className="flex flex-col lg:flex-row gap-4 mb-2">
-                  {/* <div className="flex-shrink-0">
+              {comment.idUser.pathImage && (
+                <div className="flex-shrink-0">
                 <img
-                  src={comment.photo}
-                  alt={comment.name}
+                  src={comment.idUser.pathImage}
+                  alt={comment.idUser.name}
                   className="w-12 h-12 rounded-full object-cover"
                 />
-              </div> */}
+              </div>)
+                }
+                
                   <div className="flex-grow">
                     <div className="mb-0 flex items-center">
                       <div className="flex mr-2">
@@ -321,6 +327,7 @@ function Review({ id }) {
                   </div>
                 </div>
                 <p className="mb-0">{comment.comment}</p>
+                
               </div>
               
 

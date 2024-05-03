@@ -1,27 +1,43 @@
 import React, { useEffect, useState } from "react";
 import { Pie } from 'react-chartjs-2';
+import {
+    ArcElement,
+    CategoryScale,
+    Chart,
+    Legend,
+    Title,
+    Tooltip,
+} from 'chart.js';
 import Service from "../../Service/Service";
 
 const Report4 = () => {
     const [data, setData] = useState([]);
     const [labels, setLabels] = useState([]);
+    Chart.register(ArcElement, Tooltip, Legend);
+
+    console.log(labels);
+    console.log(data);
 
     useEffect(() => {
         Service.getReportUserTypes()
         .then((res) => {
             console.log(res.data);
-
-            const userData = res.data;
-            const labels = Object.keys(userData);
-            const data = Object.values(userData);
-
+    
+            const { labels, data } = res.data;
+    
             setData(data);
             setLabels(labels);
+            console.log(labels);
+            console.log(data);
         })
         .catch((err) => {
             console.log(err)
         });
     }, []);
+    
+
+    console.log(labels);
+    console.log(data);
 
     return (
         <>
@@ -35,28 +51,28 @@ const Report4 = () => {
                                 </h1>
                             </div>
                             <div className='w-800 h-800 mt-20'>
-                                <Pie 
-                                    data={{
-                                        labels: labels,
-                                        datasets: [{
-                                            label: 'Cantidad',
-                                            data: data,
-                                            backgroundColor: ['rgba(75, 192, 192, 0.8)', 'rgba(54, 162, 235, 0.8)', 'rgba(255, 159, 64, 0.8)'],
-                                            hoverOffset: 7,
-                                            hoverBackgroundColor: ['rgba(75, 192, 192, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 159, 64, 1)'],
-                                        }]
-                                    }}
-                                    width={500}
-                                    height={500}
-                                    options={{
-                                        responsive: true,
-                                        plugins: {
-                                            legend: {
-                                                position: 'top',
+                                {labels.length > 0 && data.length > 0 && (
+                                    <Pie 
+                                        data={{
+                                            labels: labels,
+                                            datasets: [{
+                                                label: 'Cantidad',
+                                                data: data,
+                                                backgroundColor: ['rgba(75, 192, 192, 0.8)', 'rgba(54, 162, 235, 0.8)', 'rgba(255, 159, 64, 0.8)'],
+                                                hoverOffset: 7,
+                                                hoverBackgroundColor: ['rgba(75, 192, 192, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 159, 64, 1)'],
+                                            }]
+                                        }}
+                                        options={{
+                                            responsive: true,
+                                            plugins: {
+                                                legend: {
+                                                    position: 'top',
+                                                }
                                             }
-                                        }
-                                    }}
-                                />
+                                        }}
+                                    />
+                                )}
                             </div>
                         </div>
                     </div>
@@ -64,6 +80,7 @@ const Report4 = () => {
             </div>
         </>
     )
+    
 }
 
 export default Report4;

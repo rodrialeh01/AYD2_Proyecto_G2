@@ -20,7 +20,6 @@ export class LogBack {
         // Write to file
         try {
             fs.writeFileSync('logsBack.txt', JSON.stringify(this.bitacora));
-            console.log(JSON.stringify(this.bitacora))
         } catch (error) {
             console.error('Error writing to file:', error);
         }

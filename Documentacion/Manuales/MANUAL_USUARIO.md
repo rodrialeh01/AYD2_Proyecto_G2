@@ -30,6 +30,7 @@ Para registrarse, deberá ingresar:
     - Crear Productos
     - Visualizar detalle de algún producto en específico.
     - Visualizar su perfil.
+    - Visualizar consultas.
 
 Para tener una mejor guía de esto, siga las siguientes secciones del manual:
 
@@ -60,6 +61,16 @@ Igualmente, esta opción podrá usted utilizarla solamente con iniciar sesión y
 Esta opción se encuentra en la sidebar izquierda, una vez ingresa a esta, los datos de su perfil cargarán automaticamente.
 ![Visualizar Producto Esp](./img/perfil.png)
 
+## Consultas
+Un vendedor puede realizar dos tipos de consultas: 
+![Consultas](./img/consultas.png)
+
+
+- Vista de ingresos: Se visualizarán los ingresos obtenidos de las ventas realizadas.
+![Consultas](./img/consultas_ingresos.png)
+
+- Vista de Ventas: Se visualizarán las ventas realizadas.
+![Consultas](./img/consultas_ventas.png)
 
 ## Valoraciones
 
