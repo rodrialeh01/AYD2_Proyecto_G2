@@ -3,23 +3,23 @@
 # Manual Técnico
 
 # 📱 Proyecto
-json
+```json
 {
   "Curso": "Analisis y Diseño de Sistemas 2",
   "Sección": "B",
   "Periodo": "Primer Semestre 2024",
   "Actividad": "Proyecto"
 }
-
+```
 
 ## Grupo 2
 | Carnet | Nombre |
 | ------ | ------ |
-| [201900042](https://github.com/rodrialeh01) | Rodrigo Alejandro Hernández De León | 
-| [201901604](https://github.com/BelenContrerasOrozco) | Ana Belén Contreras Orozco |
-| [201901772](https://github.com/DanielDubonDR) | Daniel Reginaldo Dubón Rodríguez |
-| [202004745](https://github.com/Allenrovas) | Allen Giankarlo Román Vásquez |
-| [202010918](https://github.com/AndreaCabrera01) | Andrea María Cabrera Rosito |
+| [`201900042`](https://github.com/rodrialeh01) | Rodrigo Alejandro Hernández De León | 
+| [`201901604`](https://github.com/BelenContrerasOrozco) | Ana Belén Contreras Orozco |
+| [`201901772`](https://github.com/DanielDubonDR) | Daniel Reginaldo Dubón Rodríguez |
+| [`202004745`](https://github.com/Allenrovas) | Allen Giankarlo Román Vásquez |
+| [`202010918`](https://github.com/AndreaCabrera01) | Andrea María Cabrera Rosito |
 ---
 
 # Manual Técnico
@@ -30,7 +30,7 @@ json
 - [Manual Técnico](#manual-técnico)
 - [📱 Proyecto](#-proyecto)
   - [Grupo 2](#grupo-2)
-  - [| 202010918 | Andrea María Cabrera Rosito |](#-202010918--andrea-maría-cabrera-rosito-)
+  - [| `202010918` | Andrea María Cabrera Rosito |](#-202010918--andrea-maría-cabrera-rosito-)
 - [Manual Técnico](#manual-técnico-1)
   - [📚 Contenido](#-contenido)
   - [Introducción](#introducción)
@@ -79,7 +79,7 @@ El orquestador es el encargado de guardar datos sensibles y datos dinámicos com
     
     ![Consultar multa](./img/11.png)
 
-11. Al darle click en el botón de consultar multa, se obtiene la información de la multa, en este caso se verifica si existe multa o no. Esto se realiza validando con un Element Exist, donde se obtiene la información "No Existen Remisiones".
+11. Al darle click en el botón de consultar multa, se obtiene la información de la multa, en este caso se verifica si existe multa o no. Esto se realiza validando con un Element Exist, donde se obtiene la información *"No Existen Remisiones"*.
 
     ![Consultar mult](./img/12.png)
 
@@ -88,10 +88,10 @@ El orquestador es el encargado de guardar datos sensibles y datos dinámicos com
     ![Consultar mult](./img/13.png)
     ![Consultar mult](./img/14.png)
 
-13. Si existe el texto "No Existen Remisiones", se escribe en el excel en la columna de Estado "Free" y en la columna de Valor total "Q0.00".
+13. Si existe el texto *"No Existen Remisiones"*, se escribe en el excel en la columna de Estado *"Free"* y en la columna de Valor total *"Q0.00"*.
     ![Consultar mult](./img/17.png)
 
-14. Si no existe el texto "No Existen Remisiones", significa que si hay multa y se obtiene la información de la multa, en este caso se obtiene el valor total a pagar, esto se hace con un Get Attribute. Posteriormente se escribe en el excel en la columna de Valor total el valor obtenido y en la columna de Estado "Busted".
+14. Si no existe el texto *"No Existen Remisiones"*, significa que si hay multa y se obtiene la información de la multa, en este caso se obtiene el valor total a pagar, esto se hace con un Get Attribute. Posteriormente se escribe en el excel en la columna de Valor total el valor obtenido y en la columna de Estado *"Busted"*.
     
     ![Consultar mult](./img/15.png)
 
