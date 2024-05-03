@@ -26,12 +26,19 @@
 
 ## 📚 Contenido
 
-1. [Introducción](#introducción)
-2. [Objetivos](#objetivos)
-3. [Funcionamiento UiPath](#funcionamiento-uipath)
-  1. [Orquestador](#orquestador)
-  2. [Página PNC](#página-pnc)
-  3. [Página Villa Nueva](#página-villa-nueva)
+- [Practica](#practica)
+- [Manual Técnico](#manual-técnico)
+- [📱 Proyecto](#-proyecto)
+  - [Grupo 2](#grupo-2)
+  - [| `202010918` | Andrea María Cabrera Rosito |](#-202010918--andrea-maría-cabrera-rosito-)
+- [Manual Técnico](#manual-técnico-1)
+  - [📚 Contenido](#-contenido)
+  - [Introducción](#introducción)
+  - [Objetivos](#objetivos)
+  - [Funcionamiento UiPath](#funcionamiento-uipath)
+    - [Orquestador](#orquestador)
+    - [Página PNC](#página-pnc)
+    - [Página Villa Nueva](#página-villa-nueva)
 
 ## Introducción
 
@@ -55,8 +62,8 @@ El orquestador es el encargado de guardar datos sensibles y datos dinámicos com
 
 1. Abre google chrome con la [Página SAT de Multas](https://portal.sat.gob.gt/portal/multas/)
 
-![Página SAT de Multas](
-  ./img/img1.png)
+![Página SAT de Multas](./img/img1.png)
+
 2. Se un delay de 3 segundos para que cargue la página.
 3. Del orquestador se agarra la variable de la carpeta donde se leerá el archivo de entrada y donde se guardará el archivo de salida.
 4. Crea el archivo excel de salida.
@@ -68,9 +75,29 @@ El orquestador es el encargado de guardar datos sensibles y datos dinámicos com
 7. Lee el archivo de entrada.
 8. Lo guarda en una variable de tipo DataTable.
 9. Lee cada columna del DataTable.
-10. 
+10. Una vez ingresado el número de placa, se da click en el botón de consultar multa.
+    
+    ![Consultar multa](./img/11.png)
 
+11. Al darle click en el botón de consultar multa, se obtiene la información de la multa, en este caso se verifica si existe multa o no. Esto se realiza validando con un Element Exist, donde se obtiene la información *"No Existen Remisiones"*.
 
+    ![Consultar mult](./img/12.png)
+
+12. Se escriben los datos en el excel sobre la placa que se consultó. En este escribe el tipo de placa y la institucion donde se esta consultando y se debe pagar la multa que en este caso es la PNC.
+
+    ![Consultar mult](./img/13.png)
+    ![Consultar mult](./img/14.png)
+
+13. Si existe el texto *"No Existen Remisiones"*, se escribe en el excel en la columna de Estado *"Free"* y en la columna de Valor total *"Q0.00"*.
+    ![Consultar mult](./img/17.png)
+
+14. Si no existe el texto *"No Existen Remisiones"*, significa que si hay multa y se obtiene la información de la multa, en este caso se obtiene el valor total a pagar, esto se hace con un Get Attribute. Posteriormente se escribe en el excel en la columna de Valor total el valor obtenido y en la columna de Estado *"Busted"*.
+    
+    ![Consultar mult](./img/15.png)
+
+15. Se da click en el botón de limpiar para limpiar la información de la placa consultada y poder ingresar una nueva placa y se repite el proceso hasta que se terminen de consultar todas las placas del archivo de entrada.
+
+    ![Consultar mult](./img/16.png)
 
 ### Página Villa Nueva
 
