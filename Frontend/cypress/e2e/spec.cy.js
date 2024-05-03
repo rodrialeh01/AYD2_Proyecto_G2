@@ -329,11 +329,115 @@ describe('TEST 7 - EDICION DE PRODUCTO', () => {
     cy.wait('@product').then((interception) => {
       expect(interception.response.statusCode).to.eq(200);
     });
-
-
-
   })
 }
 )
 
+//TEST 8 - Revisión de reporte de vendedor
+describe('TEST 8 - REVISIÓN CONSULTAS (REPORTE DE INGRESOS)', () => {
+  it('passes', () => {
+    cy.visit('/')
+    cy.get('[data-test-id="cypress-header-login"]').should('exist').should('be.visible');
+    cy.get('[data-test-id="cypress-email-login"]').as('loginEmail');
+    cy.get('[data-test-id="cypress-password-login"]').as('loginPassword');
 
+    // datos correctos
+    cy.visit('/')
+    cy.get('[data-test-id="cypress-header-login"]').should('exist').should('be.visible');
+    cy.get('[data-test-id="cypress-email-login"]').as('loginEmail');
+    cy.get('[data-test-id="cypress-password-login"]').as('loginPassword');
+
+    // datos correctos
+    cy.get('@loginEmail').type('correotest@gmail.com');
+    cy.get('@loginPassword').type('Hackerdaniel123+');
+    cy.wait(500);
+
+    // click en el botón de login
+    cy.get('[data-test-id="cypress-button-login"]').as('loginButton');
+    cy.get('@loginButton').click();
+    cy.wait(1500);
+
+    cy.visit('/vendor/info');
+    cy.wait(500);
+
+    cy.intercept('GET', '/vendor/ingresos').as('report');
+    cy.visit('/vendor/ingresos');
+
+    cy.wait('@report').then(({ request, response }) => {
+      expect(response.statusCode).to.eq(200);
+    }
+    );
+    cy.get('[data-test-id="title"]').should('exist').should('be.visible');
+  }
+  )
+}
+)
+
+
+// TEST 9 - DESDE ADMIN ELIMINAR REVIEW
+describe('TEST 9 - REVISIÓN REPORTE ADMIN (TOP)', () => {
+  it('passes', () => {
+    cy.visit('/')
+    cy.get('[data-test-id="cypress-header-login"]').should('exist').should('be.visible');
+    cy.get('[data-test-id="cypress-email-login"]').as('loginEmail');
+    cy.get('[data-test-id="cypress-password-login"]').as('loginPassword');
+
+    // datos correctos
+    cy.get('@loginEmail').type('admin@gmail.com');
+    cy.get('@loginPassword').type('Hacker123+');
+    cy.wait(500);
+
+    // click en el botón de login
+    cy.get('[data-test-id="cypress-button-login"]').as('loginButton');
+    cy.get('@loginButton').click();
+    cy.wait(1500);
+
+
+    cy.visit('/admin/reports');
+    cy.wait(500);
+
+    cy.intercept('GET', '/admin/report3').as('report');
+
+
+    cy.visit('/admin/report3');
+
+    cy.wait('@report').then(({ request, response }) => {
+      expect(response.statusCode).to.eq(200);
+    }
+    );
+  })
+})
+
+// TEST 10 - Revision de reporte de top vendedores
+describe('TEST 10 - REVISIÓN REPORTE ADMIN (TOP VENDEDORES)', () => {
+  it('passes', () => {
+    cy.visit('/')
+    cy.get('[data-test-id="cypress-header-login"]').should('exist').should('be.visible');
+    cy.get('[data-test-id="cypress-email-login"]').as('loginEmail');
+    cy.get('[data-test-id="cypress-password-login"]').as('loginPassword');
+
+    // datos correctos
+    cy.get('@loginEmail').type('admin@gmail.com');
+    cy.get('@loginPassword').type('Hacker123+');
+    cy.wait(500);
+
+    // click en el botón de login
+    cy.get('[data-test-id="cypress-button-login"]').as('loginButton');
+    cy.get('@loginButton').click();
+    cy.wait(1500);
+
+
+    cy.visit('/admin/reports');
+    cy.wait(500);
+
+    cy.intercept('GET', '/admin/report5').as('report');
+
+
+    cy.visit('/admin/report5');
+
+    cy.wait('@report').then(({ request, response }) => {
+      expect(response.statusCode).to.eq(200);
+    }
+    );
+  })
+})
