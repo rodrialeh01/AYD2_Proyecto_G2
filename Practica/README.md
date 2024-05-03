@@ -58,94 +58,44 @@ El orquestador es el encargado de guardar datos sensibles y datos dinámicos com
 - Nombres de archivos.
 - Usuarios y contraseñas.
 
-### Configuraciones Iniciales
+### Página PNC
 
 1. Abre google chrome con la [Página SAT de Multas](https://portal.sat.gob.gt/portal/multas/)
 
 ![Página SAT de Multas](./img/img1.png)
 
 2. Se un delay de 3 segundos para que cargue la página.
-
-![Delay](./img/img3.png)
-
 3. Del orquestador se agarra la variable de la carpeta donde se leerá el archivo de entrada y donde se guardará el archivo de salida.
+4. Crea el archivo excel de salida.
+5. Escribe los encabezados en el archivo de salida.
 
-![Orquestador](./img/img4.png)
-
-4. Crea el archivo excel de salida y escribe los encabezados en el archivo de salida.
-
-| No. Placa | Lugar a Pagar | Valor total | Estado |
+  | No. Placa | Lugar a Pagar | Valor total | Estado |
   | --------- | ------------- | ----------- | ------ |
-
-![Excel](./img/img5.png)
-
-5. Obtiene la variable del nombre del archivo de entrada.
-
-![Variable](./img/img6.png)
-
-### Página PNC
-
-1. Entra a la página de la PNC.
-
-![pag](./img/img15.png)
-
-2. Obtiene las variables del orquestador
-
-![orq](./img/img16.png)
-
-3. Lee el archivo de entrada.
-
-![Leer](./img/img7.png)
-
-4. Guarda los datos del archivo de entrada en un DataTable.
-
-![DT](./img/img8.png)
-
-5. Se asignan las variables:
-![variables](./img/img9.png)
-
-6. Selecciona el tipo de placa obtenido desde la columna de placa:
-![tipo](./img/img10.png)
-
-7. Se guarda en tipoTemp el tipo de Placa Actual
-
-![tipotemp](./img/img11.png)
-
-8. Escribe la placa en el input del html
-
-![placa](./img/img12.png)
-
-9. Se guarda en la variable placaTemp la placa
-
-![placatemp](./img/img13.png)
-
-10. Selecciona el click de "No es un robot"
-
-![captcha](./img/img14.png)
-
-11. Resuelva el captcha de forma manual.
-
-12. Una vez ingresado el número de placa, se da click en el botón de consultar multa.
+6. Obtiene la variable del nombre del archivo de entrada.
+7. Lee el archivo de entrada.
+8. Lo guarda en una variable de tipo DataTable.
+9. Lee cada columna del DataTable.
+10. Una vez ingresado el número de placa, se da click en el botón de consultar multa.
     
     ![Consultar multa](./img/11.png)
 
-13. Al darle click en el botón de consultar multa, se obtiene la información de la multa, en este caso se verifica si existe multa o no. Esto se realiza validando con un Element Exist, donde se obtiene la información *"No Existen Remisiones"*.
+11. Al darle click en el botón de consultar multa, se obtiene la información de la multa, en este caso se verifica si existe multa o no. Esto se realiza validando con un Element Exist, donde se obtiene la información *"No Existen Remisiones"*.
 
     ![Consultar mult](./img/12.png)
 
-14. Se escriben los datos en el excel sobre la placa que se consultó. En este escribe el tipo de placa y la institucion donde se esta consultando y se debe pagar la multa que en este caso es la PNC.
+12. Se escriben los datos en el excel sobre la placa que se consultó. En este escribe el tipo de placa y la institucion donde se esta consultando y se debe pagar la multa que en este caso es la PNC.
 
     ![Consultar mult](./img/13.png)
     ![Consultar mult](./img/14.png)
 
-15. Si existe el texto *"No Existen Remisiones"*, se escribe en el excel en la columna de Estado *"Free"* y en la columna de Valor total *"Q0.00"*.
+13. Si existe el texto *"No Existen Remisiones"*, se escribe en el excel en la columna de Estado *"Free"* y en la columna de Valor total *"Q0.00"*.
     ![Consultar mult](./img/17.png)
 
-16. Si no existe el texto *"No Existen Remisiones"*, significa que si hay multa y se obtiene la información de la multa, en este caso se obtiene el valor total a pagar, esto se hace con un Get Attribute. Posteriormente se escribe en el excel en la columna de Valor total el valor obtenido y en la columna de Estado *"Busted"*.
+14. Si no existe el texto *"No Existen Remisiones"*, significa que si hay multa y se obtiene la información de la multa, en este caso se obtiene el valor total a pagar, esto se hace con un Get Attribute. Posteriormente se escribe en el excel en la columna de Valor total el valor obtenido y en la columna de Estado *"Busted"*.
     
     ![Consultar mult](./img/15.png)
 
-17. Se da click en el botón de limpiar para limpiar la información de la placa consultada y poder ingresar una nueva placa y se repite el proceso hasta que se terminen de consultar todas las placas del archivo de entrada.
+15. Se da click en el botón de limpiar para limpiar la información de la placa consultada y poder ingresar una nueva placa y se repite el proceso hasta que se terminen de consultar todas las placas del archivo de entrada.
 
     ![Consultar mult](./img/16.png)
 
