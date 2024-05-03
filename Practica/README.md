@@ -53,8 +53,11 @@ El orquestador es el encargado de guardar datos sensibles y datos dinámicos com
 
 ### Página PNC
 
-1. abre google chrome con la página de la SAT.
-2. Da un delay de 3 segundos para que cargue la página.
+1. Abre google chrome con la [Página SAT de Multas](https://portal.sat.gob.gt/portal/multas/)
+
+![Página SAT de Multas](
+  ./img/img1.png)
+2. Se un delay de 3 segundos para que cargue la página.
 3. Del orquestador se agarra la variable de la carpeta donde se leerá el archivo de entrada y donde se guardará el archivo de salida.
 4. Crea el archivo excel de salida.
 5. Escribe los encabezados en el archivo de salida.
