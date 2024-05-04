@@ -125,7 +125,7 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="846.4,10884" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="846.4,11006.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="contadorGlobal" />
     </Sequence.Variables>
@@ -684,19 +684,19 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <Sequence sap:VirtualizedContainerService.HintSize="784,5144" sap2010:WorkflowViewState.IdRef="Sequence_32">
+    <Sequence sap:VirtualizedContainerService.HintSize="784,5266.4" sap2010:WorkflowViewState.IdRef="Sequence_32">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: Portal SAT | Multas de Tránsito - Guatemala" sap:VirtualizedContainerService.HintSize="721.6,5023.2" sap2010:WorkflowViewState.IdRef="NApplicationCard_8" InteractionMode="DebuggerApi" ScopeGuid="c6386b0f-37fc-4bb1-8733-e223aec81ef6" Version="V2">
+      <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: Portal SAT | Multas de Tránsito - Guatemala" sap:VirtualizedContainerService.HintSize="721.6,5145.6" sap2010:WorkflowViewState.IdRef="NApplicationCard_8" InteractionMode="DebuggerApi" ScopeGuid="c6386b0f-37fc-4bb1-8733-e223aec81ef6" Version="V2">
         <uix:NApplicationCard.Body>
           <ActivityAction x:TypeArguments="x:Object">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="688,4783.2" sap2010:WorkflowViewState.IdRef="Sequence_33">
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="688,4905.6" sap2010:WorkflowViewState.IdRef="Sequence_33">
               <Sequence.Variables>
                 <Variable x:TypeArguments="x:String" Name="rutaExcel" />
                 <Variable x:TypeArguments="x:String" Name="nombreExcel" />
@@ -741,13 +741,13 @@
                 </ui:GetRobotAsset.Value>
               </ui:GetRobotAsset>
               <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[datos]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="625.6,120" sap2010:WorkflowViewState.IdRef="ReadRange_3" SheetName="Hoja1" WorkbookPath="[rutaExcel + &quot;\&quot; + nombreExcel]" />
-              <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[datos]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="625.6,3766.4" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
+              <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[datos]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="625.6,3888.8" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
                 <ui:ForEachRow.Body>
                   <ActivityAction x:TypeArguments="sd:DataRow">
                     <ActivityAction.Argument>
                       <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
                     </ActivityAction.Argument>
-                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="592,3576" sap2010:WorkflowViewState.IdRef="Sequence_36">
+                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="592,3698.4" sap2010:WorkflowViewState.IdRef="Sequence_36">
                       <Sequence.Variables>
                         <Variable x:TypeArguments="x:String" Name="ValuePay" />
                         <Variable x:TypeArguments="x:Boolean" Name="Existencia" />
@@ -797,6 +797,7 @@
                           <InArgument x:TypeArguments="x:String">[contadorRow.ToString]</InArgument>
                         </Assign.Value>
                       </Assign>
+                      <Delay Duration="00:00:01" sap:VirtualizedContainerService.HintSize="529.6,122.4" sap2010:WorkflowViewState.IdRef="Delay_5" />
                       <uix:NSelectItem DisplayName="Select Item 'TipoC'" sap:VirtualizedContainerService.HintSize="529.6,189.6" sap2010:WorkflowViewState.IdRef="NSelectItem_3" Item="[CurrentRow(&quot;tipo&quot;).ToString]" ScopeIdentifier="c6386b0f-37fc-4bb1-8733-e223aec81ef6" Version="V3">
                         <uix:NSelectItem.Items>
                           <scg:List x:TypeArguments="x:String" Capacity="15">
