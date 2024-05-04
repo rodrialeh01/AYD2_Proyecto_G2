@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap2010:Annotation.AnnotationText="UPTF00000088eyI8SGVscExpbms+a19fQmFja2luZ0ZpZWxkIjpudWxsLCI8SW5pdGlhbFRvb2x0aXA+a19fQmFja2luZ0ZpZWxkIjpudWxsLCI8VmVyc2lvbj5rX19CYWNraW5nRmllbGQiOjF9" sap:VirtualizedContainerService.HintSize="882.4,12740.8" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap2010:Annotation.AnnotationText="UPTF00000088eyI8SGVscExpbms+a19fQmFja2luZ0ZpZWxkIjpudWxsLCI8SW5pdGlhbFRvb2x0aXA+a19fQmFja2luZ0ZpZWxkIjpudWxsLCI8VmVyc2lvbj5rX19CYWNraW5nRmllbGQiOjF9" sap:VirtualizedContainerService.HintSize="916,8624.8" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -125,7 +125,7 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="766.4,12676" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="846.4,10884" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="contadorGlobal" />
     </Sequence.Variables>
@@ -134,7 +134,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign sap:VirtualizedContainerService.HintSize="704,56.8" sap2010:WorkflowViewState.IdRef="Assign_13">
+    <Assign sap:VirtualizedContainerService.HintSize="784,56.8" sap2010:WorkflowViewState.IdRef="Assign_13">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Int32">[contadorGlobal]</OutArgument>
       </Assign.To>
@@ -148,7 +148,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: Portal SAT | Multas de Tránsito - Guatemala" sap:VirtualizedContainerService.HintSize="704,5489.6" sap2010:WorkflowViewState.IdRef="NApplicationCard_6" InteractionMode="DebuggerApi" ScopeGuid="2748e4b0-7551-4778-b110-db32bac18fe2" Version="V2" WindowResize="Maximize">
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Always" DisplayName="Use Browser Chrome: Portal SAT | Multas de Tránsito - Guatemala" sap:VirtualizedContainerService.HintSize="784,5489.6" sap2010:WorkflowViewState.IdRef="NApplicationCard_9" InteractionMode="DebuggerApi" ScopeGuid="2748e4b0-7551-4778-b110-db32bac18fe2" Version="V2" WindowResize="Maximize">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
@@ -345,7 +345,7 @@
                           <OutArgument x:TypeArguments="x:String">[valueNumberTemp]</OutArgument>
                         </Assign.To>
                         <Assign.Value>
-                          <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(ValuePay.ToString, "\d+(\.\d+)?").ToString]</InArgument>
+                          <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(ValuePay.ToString, "\d+(,\d{3})*(\.\d+)?").ToString]</InArgument>
                         </Assign.Value>
                       </Assign>
                       <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="449.6,56.8" sap2010:WorkflowViewState.IdRef="CommentOut_1">
@@ -431,199 +431,168 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </uix:NApplicationCard>
-    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: Sistema de Administración de Remisiones y Solvencias de Tránsito" sap:VirtualizedContainerService.HintSize="704,4420.8" sap2010:WorkflowViewState.IdRef="NApplicationCard_7" InteractionMode="DebuggerApi" ScopeGuid="802253e3-2871-44e9-b341-a29a8be48c20" Version="V2" WindowResize="Maximize">
-      <uix:NApplicationCard.Body>
-        <ActivityAction x:TypeArguments="x:Object">
-          <ActivityAction.Argument>
-            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
-          </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="608,4172" sap2010:WorkflowViewState.IdRef="Sequence_9">
-            <Sequence.Variables>
-              <Variable x:TypeArguments="x:String" Name="rutaExcel" />
-              <Variable x:TypeArguments="x:String" Name="nombreExcel" />
-              <Variable x:TypeArguments="sd:DataTable" Name="datos" />
-            </Sequence.Variables>
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="545.6,56.8" sap2010:WorkflowViewState.IdRef="MaximizeWindow_2" />
-            <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="ayd2_ruta" CacheStrategy="None" DisplayName="Get Asset" FolderPath="cabreraandreatareas@gmail.com's workspace" sap:VirtualizedContainerService.HintSize="545.6,175.2" sap2010:WorkflowViewState.IdRef="GetRobotAsset_3">
-              <ui:GetRobotAsset.Value>
-                <OutArgument x:TypeArguments="x:String">[rutaExcel]</OutArgument>
-              </ui:GetRobotAsset.Value>
-            </ui:GetRobotAsset>
-            <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="ayd2_nombreExcel" CacheStrategy="None" DisplayName="Get Asset" FolderPath="cabreraandreatareas@gmail.com's workspace" sap:VirtualizedContainerService.HintSize="545.6,175.2" sap2010:WorkflowViewState.IdRef="GetRobotAsset_4">
-              <ui:GetRobotAsset.Value>
-                <OutArgument x:TypeArguments="x:String">[nombreExcel]</OutArgument>
-              </ui:GetRobotAsset.Value>
-            </ui:GetRobotAsset>
-            <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[datos]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="545.6,120" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Hoja1" WorkbookPath="[rutaExcel + &quot;\&quot; + nombreExcel]" />
-            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[datos]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="545.6,3556.8" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
-              <ui:ForEachRow.Body>
-                <ActivityAction x:TypeArguments="sd:DataRow">
-                  <ActivityAction.Argument>
-                    <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
-                  </ActivityAction.Argument>
-                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="512,3366.4" sap2010:WorkflowViewState.IdRef="Sequence_10">
-                    <Sequence.Variables>
-                      <Variable x:TypeArguments="x:String" Name="ValuePay" />
-                      <Variable x:TypeArguments="x:Boolean" Name="Existencia" />
-                      <Variable x:TypeArguments="x:String" Name="Ind" />
-                      <Variable x:TypeArguments="x:String" Name="tipoTemp" />
-                      <Variable x:TypeArguments="x:String" Name="placaTemp" />
-                      <Variable x:TypeArguments="x:Int32" Name="contadorRow" />
-                      <Variable x:TypeArguments="x:String" Name="valueNumberTemp" />
-                      <Variable x:TypeArguments="x:String" Name="valueTest" />
-                      <Variable x:TypeArguments="x:Boolean" Name="existencia" />
-                      <Variable x:TypeArguments="x:Boolean" Name="existe" />
-                      <Variable x:TypeArguments="x:String" Name="contadorString" />
-                    </Sequence.Variables>
-                    <sap:WorkflowViewStateService.ViewState>
-                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                      </scg:Dictionary>
-                    </sap:WorkflowViewStateService.ViewState>
-                    <Assign sap:VirtualizedContainerService.HintSize="449.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_15">
-                      <Assign.To>
-                        <OutArgument x:TypeArguments="x:Int32">[contadorGlobal]</OutArgument>
-                      </Assign.To>
-                      <Assign.Value>
-                        <InArgument x:TypeArguments="x:Int32">[contadorGlobal + 1]</InArgument>
-                      </Assign.Value>
-                    </Assign>
-                    <Assign sap:VirtualizedContainerService.HintSize="449.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_6">
-                      <Assign.To>
-                        <OutArgument x:TypeArguments="x:Int32">[contadorRow]</OutArgument>
-                      </Assign.To>
-                      <Assign.Value>
-                        <InArgument x:TypeArguments="x:Int32">[datos.Rows.IndexOf(CurrentRow) + 2]</InArgument>
-                      </Assign.Value>
-                    </Assign>
-                    <Assign sap:VirtualizedContainerService.HintSize="449.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_16">
-                      <Assign.To>
-                        <OutArgument x:TypeArguments="x:String">[contadorString]</OutArgument>
-                      </Assign.To>
-                      <Assign.Value>
-                        <InArgument x:TypeArguments="x:String">[contadorGlobal.ToString]</InArgument>
-                      </Assign.Value>
-                    </Assign>
-                    <uix:NSelectItem DisplayName="Select Item 'TipoC'" sap:VirtualizedContainerService.HintSize="449.6,189.6" sap2010:WorkflowViewState.IdRef="NSelectItem_2" Item="[CurrentRow(&quot;tipo&quot;).ToString]" ScopeIdentifier="802253e3-2871-44e9-b341-a29a8be48c20" Version="V3">
-                      <uix:NSelectItem.Items>
-                        <scg:List x:TypeArguments="x:String" Capacity="14">
-                          <x:String>P</x:String>
-                          <x:String>C</x:String>
-                          <x:String>A</x:String>
-                          <x:String>M</x:String>
-                          <x:String>CD</x:String>
-                          <x:String>CC</x:String>
-                          <x:String>DIS</x:String>
-                          <x:String>TC</x:String>
-                          <x:String>O</x:String>
-                          <x:String>U</x:String>
-                          <x:String>MI</x:String>
-                          <x:String>STP</x:String>
-                          <x:String>TRC</x:String>
-                          <x:String>PNC</x:String>
-                        </scg:List>
-                      </uix:NSelectItem.Items>
-                      <uix:NSelectItem.Target>
-                        <uix:TargetAnchorable BrowserURL="https://sistemas.transito.gob.gt/consultaremisiones/consultaremisiones" CvElementArea="787, 486, 353, 51" CvType="InputBox" DesignTimeRectangle="789, 487, 350, 48" DesignTimeScaleFactor="1.25" ElementType="DropDown" FullSelectorArgument="&lt;webctrl id='MainContent_cmbTipoPlaca' tag='SELECT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='MainContent_cmbTipoPlaca' tag='SELECT' type='' class='form-control' aaname='' /&gt;" Guid="46520310-ee03-4880-be0c-01bcf3977b82" InformativeScreenshot="61a62c2efcca7317d28dd554a6d61bfb.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Sistema de Administración de Remisiones y Solvencias de Tránsito' /&gt;" SearchSteps="FuzzySelector, CV" Version="V3" Visibility="Interactive">
-                          <uix:TargetAnchorable.Anchors>
-                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
-                              <uix:Target CvTextArea="786, 453, 124, 23" CvTextArgument="Tipo de Placa:" CvType="Text" DesignTimeRectangle="770, 447, 398, 30" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='LABEL' type='' class='col-md-12 control-label' aaname='Tipo de Placa:' check:innerText='Tipo de Placa:' /&gt;" SearchSteps="FuzzySelector, CV" />
-                            </scg:List>
-                          </uix:TargetAnchorable.Anchors>
-                        </uix:TargetAnchorable>
-                      </uix:NSelectItem.Target>
-                    </uix:NSelectItem>
-                    <Assign sap:VirtualizedContainerService.HintSize="449.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_8">
-                      <Assign.To>
-                        <OutArgument x:TypeArguments="x:String">[tipoTemp]</OutArgument>
-                      </Assign.To>
-                      <Assign.Value>
-                        <InArgument x:TypeArguments="x:String">[CurrentRow("tipo").ToString]</InArgument>
-                      </Assign.Value>
-                    </Assign>
-                    <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Placa'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="449.6,250.4" sap2010:WorkflowViewState.IdRef="NTypeInto_3" ScopeIdentifier="802253e3-2871-44e9-b341-a29a8be48c20" Text="[CurrentRow(&quot;número de placa&quot;).ToString]" Version="V3">
-                      <uix:NTypeInto.Target>
-                        <uix:TargetAnchorable BrowserURL="https://sistemas.transito.gob.gt/consultaremisiones/consultaremisiones" CvElementArea="787, 594, 353, 51" CvType="InputBox" DesignTimeRectangle="789, 595, 350, 47" DesignTimeScaleFactor="1.25" ElementType="InputBox" FullSelectorArgument="&lt;webctrl id='MainContent_txtPlaca' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='MainContent_txtPlaca' tag='INPUT' type='text' class='form-control' aaname='' /&gt;" Guid="b86e95f2-0c5b-4b2d-a937-aa032bcca527" InformativeScreenshot="1ab61402996bf42c4f1c53ef96128c12.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Sistema de Administración de Remisiones y Solvencias de Tránsito' /&gt;" SearchSteps="FuzzySelector, CV" Version="V3" Visibility="Interactive">
-                          <uix:TargetAnchorable.Anchors>
-                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
-                              <uix:Target CvTextArea="788, 562, 51, 17" CvTextArgument="Placa:" CvType="Text" DesignTimeRectangle="770, 555, 398, 30" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname='Placa:' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Placa:' tag='LABEL' type='' class='col-md-12 control-label' check:innerText='Placa:' /&gt;" SearchSteps="FuzzySelector, CV" />
-                            </scg:List>
-                          </uix:TargetAnchorable.Anchors>
-                        </uix:TargetAnchorable>
-                      </uix:NTypeInto.Target>
-                    </uix:NTypeInto>
-                    <Assign sap:VirtualizedContainerService.HintSize="449.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_9">
-                      <Assign.To>
-                        <OutArgument x:TypeArguments="x:String">[placaTemp]</OutArgument>
-                      </Assign.To>
-                      <Assign.Value>
-                        <InArgument x:TypeArguments="x:String">[CurrentRow("número de placa").ToString]</InArgument>
-                      </Assign.Value>
-                    </Assign>
-                    <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'No soy un robot'" sap:VirtualizedContainerService.HintSize="449.6,189.6" sap2010:WorkflowViewState.IdRef="NClick_4" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="802253e3-2871-44e9-b341-a29a8be48c20" Version="V3">
-                      <uix:NClick.Target>
-                        <uix:TargetAnchorable BrowserURL="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LdykuQUAAAAALZdP6dpjUaUf1LNd6827SdWwsrP&amp;co=aHR0cHM6Ly9zaXN0ZW1hcy50cmFuc2l0by5nb2IuZ3Q6NDQz&amp;hl=es&amp;v=V6_85qpc2Xf2sbe3xTnRte7m&amp;size=normal&amp;cb=pw1ls9lbgsvx" CvElementArea="804, 704, 35, 35" CvType="CheckBox" DesignTimeRectangle="805, 703, 34, 34" DesignTimeScaleFactor="1.25" FullSelectorArgument="&lt;webctrl name='a-fyjd9gns37hf' tag='IFRAME' /&gt;&lt;webctrl aria-role='presentation' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl name='a-fyjd9gns37hf' tag='IFRAME' /&gt;&lt;webctrl aria-role='presentation' tag='DIV' type='' class='recaptcha-checkbox-border' aaname='' /&gt;" Guid="773bba98-4341-4bf8-ad24-c06243036f60" InformativeScreenshot="da368be6f3987feb538e2ebddb6f0df4.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Sistema de Administración de Remisiones y Solvencias de Tránsito' /&gt;" SearchSteps="FuzzySelector, CV" Version="V3" Visibility="Interactive">
-                          <uix:TargetAnchorable.Anchors>
-                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
-                              <uix:Target CvTextArea="854, 712, 123, 20" CvTextArgument="No soy un robot" CvType="Text" DesignTimeRectangle="854, 712, 124, 20" ElementType="Text" SearchSteps="CV" TargetType="ComputerVisionBased" />
-                            </scg:List>
-                          </uix:TargetAnchorable.Anchors>
-                        </uix:TargetAnchorable>
-                      </uix:NClick.Target>
-                    </uix:NClick>
-                    <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Buscar'" sap:VirtualizedContainerService.HintSize="449.6,189.6" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="802253e3-2871-44e9-b341-a29a8be48c20" Version="V3">
-                      <uix:NClick.Target>
-                        <uix:TargetAnchorable BrowserURL="https://sistemas.transito.gob.gt/consultaremisiones/consultaremisiones" CvElementArea="787, 779, 118, 50" CvTextArea="803, 795, 86, 18" CvTextArgument="Consultar" CvType="Button" DesignTimeRectangle="789, 780, 116, 47" DesignTimeScaleFactor="1.25" ElementType="Button" FullSelectorArgument="&lt;webctrl id='MainContent_cmdConsultar' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='MainContent_cmdConsultar' tag='INPUT' type='submit' class='btn btn-info' aaname='Consultar' check:text='Consultar' /&gt;" Guid="83d7f89f-bdda-49fb-9972-e493c01fbeed" InformativeScreenshot="2f838eeb2e78600fa50c6f296cb0a3a1.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Sistema de Administración de Remisiones y Solvencias de Tránsito' /&gt;" SearchSteps="FuzzySelector, CV" Version="V3" Visibility="Interactive" />
-                      </uix:NClick.Target>
-                    </uix:NClick>
-                    <ui:UiElementExists DisplayName="Element Exists 'TD'" Exists="[existe]" sap:VirtualizedContainerService.HintSize="449.6,139.2" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
-                      <ui:UiElementExists.Target>
-                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="1389a464-eaae-46c4-a79c-499f5c0a8038" InformativeScreenshot="df882b01fdb92ea5ea6983432643110d" Selector="&lt;webctrl id='MainContent_grdRemisiones' tag='TABLE' /&gt;&lt;webctrl tableRow='2' tag='TD' aaname='                     No Existen Remisiones                 ' /&gt;">
-                          <ui:Target.TimeoutMS>
-                            <InArgument x:TypeArguments="x:Int32" />
-                          </ui:Target.TimeoutMS>
-                          <ui:Target.WaitForReady>
-                            <InArgument x:TypeArguments="ui:WaitForReady" />
-                          </ui:Target.WaitForReady>
-                        </ui:Target>
-                      </ui:UiElementExists.Target>
-                    </ui:UiElementExists>
-                    <ui:WriteCell Cell="[&quot;A&quot; + contadorString]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="449.6,148" sap2010:WorkflowViewState.IdRef="WriteCell_17" SheetName="Hoja1" Text="[tipoTemp + placaTemp]" WorkbookPath="[rutaExcel + &quot;\Salida.xlsx&quot;]" />
-                    <ui:WriteCell Cell="[&quot;B&quot; + contadorString]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="449.6,148" sap2010:WorkflowViewState.IdRef="WriteCell_18" SheetName="Hoja1" Text="PNC" WorkbookPath="[rutaExcel + &quot;\Salida.xlsx&quot;]" />
-                    <If Condition="[existe]" sap:VirtualizedContainerService.HintSize="449.6,1154.4" sap2010:WorkflowViewState.IdRef="If_3">
-                      <If.Then>
-                        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,373.6" sap2010:WorkflowViewState.IdRef="Sequence_23">
-                          <sap:WorkflowViewStateService.ViewState>
-                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                            </scg:Dictionary>
-                          </sap:WorkflowViewStateService.ViewState>
-                          <ui:WriteCell Cell="[&quot;C&quot; + contadorString]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="353.6,148" sap2010:WorkflowViewState.IdRef="WriteCell_19" SheetName="Hoja1" Text="0.00" WorkbookPath="[rutaExcel + &quot;\Salida.xlsx&quot;]" />
-                          <ui:WriteCell Cell="[&quot;D&quot; + contadorString]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="353.6,139.2" sap2010:WorkflowViewState.IdRef="WriteCell_20" SheetName="Hoja1" Text="Free" WorkbookPath="[rutaExcel + &quot;\Salida.xlsx&quot;]" />
-                        </Sequence>
-                      </If.Then>
-                      <If.Else>
-                        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,610.4" sap2010:WorkflowViewState.IdRef="Sequence_24">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="784,56.8" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="704,4498.4" sap2010:WorkflowViewState.IdRef="Sequence_31">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: Sistema de Administración de Remisiones y Solvencias de Tránsito" sap:VirtualizedContainerService.HintSize="641.6,4412" sap2010:WorkflowViewState.IdRef="NApplicationCard_7" InteractionMode="DebuggerApi" ScopeGuid="802253e3-2871-44e9-b341-a29a8be48c20" Version="V2" WindowResize="Maximize">
+            <uix:NApplicationCard.Body>
+              <ActivityAction x:TypeArguments="x:Object">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="608,4172" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="x:String" Name="rutaExcel" />
+                    <Variable x:TypeArguments="x:String" Name="nombreExcel" />
+                    <Variable x:TypeArguments="sd:DataTable" Name="datos" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:MaximizeWindow Window="{x:Null}" DisplayName="Maximize Window" sap:VirtualizedContainerService.HintSize="545.6,56.8" sap2010:WorkflowViewState.IdRef="MaximizeWindow_2" />
+                  <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="ayd2_ruta" CacheStrategy="None" DisplayName="Get Asset" FolderPath="cabreraandreatareas@gmail.com's workspace" sap:VirtualizedContainerService.HintSize="545.6,175.2" sap2010:WorkflowViewState.IdRef="GetRobotAsset_3">
+                    <ui:GetRobotAsset.Value>
+                      <OutArgument x:TypeArguments="x:String">[rutaExcel]</OutArgument>
+                    </ui:GetRobotAsset.Value>
+                  </ui:GetRobotAsset>
+                  <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="ayd2_nombreExcel" CacheStrategy="None" DisplayName="Get Asset" FolderPath="cabreraandreatareas@gmail.com's workspace" sap:VirtualizedContainerService.HintSize="545.6,175.2" sap2010:WorkflowViewState.IdRef="GetRobotAsset_4">
+                    <ui:GetRobotAsset.Value>
+                      <OutArgument x:TypeArguments="x:String">[nombreExcel]</OutArgument>
+                    </ui:GetRobotAsset.Value>
+                  </ui:GetRobotAsset>
+                  <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[datos]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="545.6,120" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Hoja1" WorkbookPath="[rutaExcel + &quot;\&quot; + nombreExcel]" />
+                  <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[datos]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="545.6,3556.8" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+                    <ui:ForEachRow.Body>
+                      <ActivityAction x:TypeArguments="sd:DataRow">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+                        </ActivityAction.Argument>
+                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="512,3366.4" sap2010:WorkflowViewState.IdRef="Sequence_10">
                           <Sequence.Variables>
-                            <Variable x:TypeArguments="x:String" Name="valorPagar" />
+                            <Variable x:TypeArguments="x:String" Name="ValuePay" />
+                            <Variable x:TypeArguments="x:Boolean" Name="Existencia" />
+                            <Variable x:TypeArguments="x:String" Name="Ind" />
+                            <Variable x:TypeArguments="x:String" Name="tipoTemp" />
+                            <Variable x:TypeArguments="x:String" Name="placaTemp" />
+                            <Variable x:TypeArguments="x:Int32" Name="contadorRow" />
+                            <Variable x:TypeArguments="x:String" Name="valueNumberTemp" />
+                            <Variable x:TypeArguments="x:String" Name="valueTest" />
+                            <Variable x:TypeArguments="x:Boolean" Name="existencia" />
+                            <Variable x:TypeArguments="x:Boolean" Name="existe" />
+                            <Variable x:TypeArguments="x:String" Name="contadorString" />
                           </Sequence.Variables>
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="innerText" DisplayName="Get Attribute 'TD'" sap:VirtualizedContainerService.HintSize="353.6,236.8" sap2010:WorkflowViewState.IdRef="GetAttribute_1">
-                            <ui:GetAttribute.Result>
-                              <OutArgument x:TypeArguments="x:String">[valorPagar]</OutArgument>
-                            </ui:GetAttribute.Result>
-                            <ui:GetAttribute.Target>
-                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0ba9adc4-246c-44fe-a53e-14406915a237" InformativeScreenshot="e18402903e0520ef187cc55419280d47" Selector="&lt;webctrl id='MainContent_grdRemisiones' tag='TABLE' /&gt;&lt;webctrl tableCol='7' tableRow='2' tag='TD' innertext='*' /&gt;">
+                          <Assign sap:VirtualizedContainerService.HintSize="449.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_15">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Int32">[contadorGlobal]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Int32">[contadorGlobal + 1]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <Assign sap:VirtualizedContainerService.HintSize="449.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_6">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Int32">[contadorRow]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Int32">[datos.Rows.IndexOf(CurrentRow) + 2]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <Assign sap:VirtualizedContainerService.HintSize="449.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_16">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[contadorString]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">[contadorGlobal.ToString]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <uix:NSelectItem DisplayName="Select Item 'TipoC'" sap:VirtualizedContainerService.HintSize="449.6,189.6" sap2010:WorkflowViewState.IdRef="NSelectItem_2" Item="[CurrentRow(&quot;tipo&quot;).ToString]" ScopeIdentifier="802253e3-2871-44e9-b341-a29a8be48c20" Version="V3">
+                            <uix:NSelectItem.Items>
+                              <scg:List x:TypeArguments="x:String" Capacity="14">
+                                <x:String>P</x:String>
+                                <x:String>C</x:String>
+                                <x:String>A</x:String>
+                                <x:String>M</x:String>
+                                <x:String>CD</x:String>
+                                <x:String>CC</x:String>
+                                <x:String>DIS</x:String>
+                                <x:String>TC</x:String>
+                                <x:String>O</x:String>
+                                <x:String>U</x:String>
+                                <x:String>MI</x:String>
+                                <x:String>STP</x:String>
+                                <x:String>TRC</x:String>
+                                <x:String>PNC</x:String>
+                              </scg:List>
+                            </uix:NSelectItem.Items>
+                            <uix:NSelectItem.Target>
+                              <uix:TargetAnchorable BrowserURL="https://sistemas.transito.gob.gt/consultaremisiones/consultaremisiones" CvElementArea="787, 486, 353, 51" CvType="InputBox" DesignTimeRectangle="789, 487, 350, 48" DesignTimeScaleFactor="1.25" ElementType="DropDown" FullSelectorArgument="&lt;webctrl id='MainContent_cmbTipoPlaca' tag='SELECT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='MainContent_cmbTipoPlaca' tag='SELECT' type='' class='form-control' aaname='' /&gt;" Guid="46520310-ee03-4880-be0c-01bcf3977b82" InformativeScreenshot="61a62c2efcca7317d28dd554a6d61bfb.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Sistema de Administración de Remisiones y Solvencias de Tránsito' /&gt;" SearchSteps="FuzzySelector, CV" Version="V3" Visibility="Interactive">
+                                <uix:TargetAnchorable.Anchors>
+                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                    <uix:Target CvTextArea="786, 453, 124, 23" CvTextArgument="Tipo de Placa:" CvType="Text" DesignTimeRectangle="770, 447, 398, 30" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='LABEL' type='' class='col-md-12 control-label' aaname='Tipo de Placa:' check:innerText='Tipo de Placa:' /&gt;" SearchSteps="FuzzySelector, CV" />
+                                  </scg:List>
+                                </uix:TargetAnchorable.Anchors>
+                              </uix:TargetAnchorable>
+                            </uix:NSelectItem.Target>
+                          </uix:NSelectItem>
+                          <Assign sap:VirtualizedContainerService.HintSize="449.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_8">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[tipoTemp]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">[CurrentRow("tipo").ToString]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Placa'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="449.6,250.4" sap2010:WorkflowViewState.IdRef="NTypeInto_3" ScopeIdentifier="802253e3-2871-44e9-b341-a29a8be48c20" Text="[CurrentRow(&quot;número de placa&quot;).ToString]" Version="V3">
+                            <uix:NTypeInto.Target>
+                              <uix:TargetAnchorable BrowserURL="https://sistemas.transito.gob.gt/consultaremisiones/consultaremisiones" CvElementArea="787, 594, 353, 51" CvType="InputBox" DesignTimeRectangle="789, 595, 350, 47" DesignTimeScaleFactor="1.25" ElementType="InputBox" FullSelectorArgument="&lt;webctrl id='MainContent_txtPlaca' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='MainContent_txtPlaca' tag='INPUT' type='text' class='form-control' aaname='' /&gt;" Guid="b86e95f2-0c5b-4b2d-a937-aa032bcca527" InformativeScreenshot="1ab61402996bf42c4f1c53ef96128c12.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Sistema de Administración de Remisiones y Solvencias de Tránsito' /&gt;" SearchSteps="FuzzySelector, CV" Version="V3" Visibility="Interactive">
+                                <uix:TargetAnchorable.Anchors>
+                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                    <uix:Target CvTextArea="788, 562, 51, 17" CvTextArgument="Placa:" CvType="Text" DesignTimeRectangle="770, 555, 398, 30" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname='Placa:' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Placa:' tag='LABEL' type='' class='col-md-12 control-label' check:innerText='Placa:' /&gt;" SearchSteps="FuzzySelector, CV" />
+                                  </scg:List>
+                                </uix:TargetAnchorable.Anchors>
+                              </uix:TargetAnchorable>
+                            </uix:NTypeInto.Target>
+                          </uix:NTypeInto>
+                          <Assign sap:VirtualizedContainerService.HintSize="449.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_9">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:String">[placaTemp]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:String">[CurrentRow("número de placa").ToString]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'No soy un robot'" sap:VirtualizedContainerService.HintSize="449.6,189.6" sap2010:WorkflowViewState.IdRef="NClick_4" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="802253e3-2871-44e9-b341-a29a8be48c20" Version="V3">
+                            <uix:NClick.Target>
+                              <uix:TargetAnchorable BrowserURL="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LdykuQUAAAAALZdP6dpjUaUf1LNd6827SdWwsrP&amp;co=aHR0cHM6Ly9zaXN0ZW1hcy50cmFuc2l0by5nb2IuZ3Q6NDQz&amp;hl=es&amp;v=V6_85qpc2Xf2sbe3xTnRte7m&amp;size=normal&amp;cb=pw1ls9lbgsvx" CvElementArea="804, 704, 35, 35" CvType="CheckBox" DesignTimeRectangle="805, 703, 34, 34" DesignTimeScaleFactor="1.25" FullSelectorArgument="&lt;webctrl name='a-fyjd9gns37hf' tag='IFRAME' /&gt;&lt;webctrl aria-role='presentation' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl name='a-fyjd9gns37hf' tag='IFRAME' /&gt;&lt;webctrl aria-role='presentation' tag='DIV' type='' class='recaptcha-checkbox-border' aaname='' /&gt;" Guid="773bba98-4341-4bf8-ad24-c06243036f60" InformativeScreenshot="da368be6f3987feb538e2ebddb6f0df4.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Sistema de Administración de Remisiones y Solvencias de Tránsito' /&gt;" SearchSteps="FuzzySelector, CV" Version="V3" Visibility="Interactive">
+                                <uix:TargetAnchorable.Anchors>
+                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                    <uix:Target CvTextArea="854, 712, 123, 20" CvTextArgument="No soy un robot" CvType="Text" DesignTimeRectangle="854, 712, 124, 20" ElementType="Text" SearchSteps="CV" TargetType="ComputerVisionBased" />
+                                  </scg:List>
+                                </uix:TargetAnchorable.Anchors>
+                              </uix:TargetAnchorable>
+                            </uix:NClick.Target>
+                          </uix:NClick>
+                          <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Buscar'" sap:VirtualizedContainerService.HintSize="449.6,189.6" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="802253e3-2871-44e9-b341-a29a8be48c20" Version="V3">
+                            <uix:NClick.Target>
+                              <uix:TargetAnchorable BrowserURL="https://sistemas.transito.gob.gt/consultaremisiones/consultaremisiones" CvElementArea="787, 779, 118, 50" CvTextArea="803, 795, 86, 18" CvTextArgument="Consultar" CvType="Button" DesignTimeRectangle="789, 780, 116, 47" DesignTimeScaleFactor="1.25" ElementType="Button" FullSelectorArgument="&lt;webctrl id='MainContent_cmdConsultar' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='MainContent_cmdConsultar' tag='INPUT' type='submit' class='btn btn-info' aaname='Consultar' check:text='Consultar' /&gt;" Guid="83d7f89f-bdda-49fb-9972-e493c01fbeed" InformativeScreenshot="2f838eeb2e78600fa50c6f296cb0a3a1.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Sistema de Administración de Remisiones y Solvencias de Tránsito' /&gt;" SearchSteps="FuzzySelector, CV" Version="V3" Visibility="Interactive" />
+                            </uix:NClick.Target>
+                          </uix:NClick>
+                          <ui:UiElementExists DisplayName="Element Exists 'TD'" Exists="[existe]" sap:VirtualizedContainerService.HintSize="449.6,139.2" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
+                            <ui:UiElementExists.Target>
+                              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="1389a464-eaae-46c4-a79c-499f5c0a8038" InformativeScreenshot="df882b01fdb92ea5ea6983432643110d" Selector="&lt;webctrl id='MainContent_grdRemisiones' tag='TABLE' /&gt;&lt;webctrl tableRow='2' tag='TD' aaname='                     No Existen Remisiones                 ' /&gt;">
                                 <ui:Target.TimeoutMS>
                                   <InArgument x:TypeArguments="x:Int32" />
                                 </ui:Target.TimeoutMS>
@@ -631,56 +600,384 @@
                                   <InArgument x:TypeArguments="ui:WaitForReady" />
                                 </ui:Target.WaitForReady>
                               </ui:Target>
-                            </ui:GetAttribute.Target>
-                          </ui:GetAttribute>
-                          <ui:WriteCell Cell="[&quot;C&quot; + contadorString]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="353.6,148" sap2010:WorkflowViewState.IdRef="WriteCell_21" SheetName="Hoja1" Text="[valorPagar]" WorkbookPath="[rutaExcel + &quot;\Salida.xlsx&quot;]" />
-                          <ui:WriteCell Cell="[&quot;D&quot; + contadorString]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="353.6,139.2" sap2010:WorkflowViewState.IdRef="WriteCell_22" SheetName="Hoja1" Text="Busted" WorkbookPath="[rutaExcel + &quot;\Salida.xlsx&quot;]" />
+                            </ui:UiElementExists.Target>
+                          </ui:UiElementExists>
+                          <ui:WriteCell Cell="[&quot;A&quot; + contadorString]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="449.6,148" sap2010:WorkflowViewState.IdRef="WriteCell_17" SheetName="Hoja1" Text="[tipoTemp + placaTemp]" WorkbookPath="[rutaExcel + &quot;\Salida.xlsx&quot;]" />
+                          <ui:WriteCell Cell="[&quot;B&quot; + contadorString]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="449.6,148" sap2010:WorkflowViewState.IdRef="WriteCell_18" SheetName="Hoja1" Text="PNC" WorkbookPath="[rutaExcel + &quot;\Salida.xlsx&quot;]" />
+                          <If Condition="[existe]" sap:VirtualizedContainerService.HintSize="449.6,1154.4" sap2010:WorkflowViewState.IdRef="If_3">
+                            <If.Then>
+                              <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,373.6" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:WriteCell Cell="[&quot;C&quot; + contadorString]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="353.6,148" sap2010:WorkflowViewState.IdRef="WriteCell_19" SheetName="Hoja1" Text="0.00" WorkbookPath="[rutaExcel + &quot;\Salida.xlsx&quot;]" />
+                                <ui:WriteCell Cell="[&quot;D&quot; + contadorString]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="353.6,139.2" sap2010:WorkflowViewState.IdRef="WriteCell_20" SheetName="Hoja1" Text="Free" WorkbookPath="[rutaExcel + &quot;\Salida.xlsx&quot;]" />
+                              </Sequence>
+                            </If.Then>
+                            <If.Else>
+                              <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="416,610.4" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                                <Sequence.Variables>
+                                  <Variable x:TypeArguments="x:String" Name="valorPagar" />
+                                </Sequence.Variables>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="innerText" DisplayName="Get Attribute 'TD'" sap:VirtualizedContainerService.HintSize="353.6,236.8" sap2010:WorkflowViewState.IdRef="GetAttribute_1">
+                                  <ui:GetAttribute.Result>
+                                    <OutArgument x:TypeArguments="x:String">[valorPagar]</OutArgument>
+                                  </ui:GetAttribute.Result>
+                                  <ui:GetAttribute.Target>
+                                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="0ba9adc4-246c-44fe-a53e-14406915a237" InformativeScreenshot="e18402903e0520ef187cc55419280d47" Selector="&lt;webctrl id='MainContent_grdRemisiones' tag='TABLE' /&gt;&lt;webctrl tableCol='7' tableRow='2' tag='TD' innertext='*' /&gt;">
+                                      <ui:Target.TimeoutMS>
+                                        <InArgument x:TypeArguments="x:Int32" />
+                                      </ui:Target.TimeoutMS>
+                                      <ui:Target.WaitForReady>
+                                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                                      </ui:Target.WaitForReady>
+                                    </ui:Target>
+                                  </ui:GetAttribute.Target>
+                                </ui:GetAttribute>
+                                <ui:WriteCell Cell="[&quot;C&quot; + contadorString]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="353.6,148" sap2010:WorkflowViewState.IdRef="WriteCell_21" SheetName="Hoja1" Text="[valorPagar]" WorkbookPath="[rutaExcel + &quot;\Salida.xlsx&quot;]" />
+                                <ui:WriteCell Cell="[&quot;D&quot; + contadorString]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="353.6,139.2" sap2010:WorkflowViewState.IdRef="WriteCell_22" SheetName="Hoja1" Text="Busted" WorkbookPath="[rutaExcel + &quot;\Salida.xlsx&quot;]" />
+                              </Sequence>
+                            </If.Else>
+                          </If>
+                          <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Limpiar'" sap:VirtualizedContainerService.HintSize="449.6,189.6" sap2010:WorkflowViewState.IdRef="NClick_5" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="802253e3-2871-44e9-b341-a29a8be48c20" Version="V3">
+                            <uix:NClick.Target>
+                              <uix:TargetAnchorable BrowserURL="https://sistemas.transito.gob.gt/consultaremisiones/consultaremisiones" CvElementArea="907, 779, 101, 51" CvTextArea="924, 793, 67, 23" CvTextArgument="Limpiar" CvType="Button" DesignTimeRectangle="910, 780, 97, 47" DesignTimeScaleFactor="1.25" ElementType="Button" FullSelectorArgument="&lt;webctrl id='MainContent_cmdLimpiar' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='MainContent_cmdLimpiar' tag='INPUT' type='submit' class='btn btn-info' aaname='Limpiar' check:text='Limpiar' /&gt;" Guid="40a16ad0-591f-41f7-a256-7b9c9f8ab395" InformativeScreenshot="35447274b1aa64455036a7164a4e9c43.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Sistema de Administración de Remisiones y Solvencias de Tránsito' /&gt;" SearchSteps="FuzzySelector, CV" Version="V3" Visibility="Interactive" />
+                            </uix:NClick.Target>
+                          </uix:NClick>
+                          <Delay Duration="00:00:05" sap:VirtualizedContainerService.HintSize="449.6,113.6" sap2010:WorkflowViewState.IdRef="Delay_2" />
                         </Sequence>
-                      </If.Else>
-                    </If>
-                    <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Limpiar'" sap:VirtualizedContainerService.HintSize="449.6,189.6" sap2010:WorkflowViewState.IdRef="NClick_5" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="802253e3-2871-44e9-b341-a29a8be48c20" Version="V3">
-                      <uix:NClick.Target>
-                        <uix:TargetAnchorable BrowserURL="https://sistemas.transito.gob.gt/consultaremisiones/consultaremisiones" CvElementArea="907, 779, 101, 51" CvTextArea="924, 793, 67, 23" CvTextArgument="Limpiar" CvType="Button" DesignTimeRectangle="910, 780, 97, 47" DesignTimeScaleFactor="1.25" ElementType="Button" FullSelectorArgument="&lt;webctrl id='MainContent_cmdLimpiar' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='MainContent_cmdLimpiar' tag='INPUT' type='submit' class='btn btn-info' aaname='Limpiar' check:text='Limpiar' /&gt;" Guid="40a16ad0-591f-41f7-a256-7b9c9f8ab395" InformativeScreenshot="35447274b1aa64455036a7164a4e9c43.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Sistema de Administración de Remisiones y Solvencias de Tránsito' /&gt;" SearchSteps="FuzzySelector, CV" Version="V3" Visibility="Interactive" />
-                      </uix:NClick.Target>
-                    </uix:NClick>
-                    <Delay Duration="00:00:05" sap:VirtualizedContainerService.HintSize="449.6,113.6" sap2010:WorkflowViewState.IdRef="Delay_2" />
-                  </Sequence>
-                </ActivityAction>
-              </ui:ForEachRow.Body>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </ui:ForEachRow>
-          </Sequence>
-        </ActivityAction>
-      </uix:NApplicationCard.Body>
-      <uix:NApplicationCard.TargetApp>
-        <uix:TargetApp Area="-9, -9, 1938, 1038" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="6c4bb49012905d6f2c4aec6de7874ef9.jpg" Selector="&lt;html app='chrome.exe' title='Sistema de Administración de Remisiones y Solvencias de Tránsito' /&gt;" Title="Sistema de Administración de Remisiones y Solvencias de Tránsito" Url="https://sistemas.transito.gob.gt/consultaremisiones/consultaremisiones" />
-      </uix:NApplicationCard.TargetApp>
+                      </ActivityAction>
+                    </ui:ForEachRow.Body>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:ForEachRow>
+                </Sequence>
+              </ActivityAction>
+            </uix:NApplicationCard.Body>
+            <uix:NApplicationCard.TargetApp>
+              <uix:TargetApp Area="-9, -9, 1938, 1038" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAz2SURBVGhDvZcJdJTVFYAHEjAkQBYgCZBlJplsM5msQIBAFgIkrIm1KggJad1PrRwXTqkKwVqKC5iYAFEIBETUihJET6tlGatgi7JojxSPBRIhBDGQCXEhYcK7vfct//wTfza1fed859533/vnfe/N+7OYfo42wNcnaFZ4SPkT8ZGV9Y7Yhv1jUxqPjk9znZkwAs5MGAlHc9JdH49JbmzISHA+ERdZWTgkqCTCr6+5V+/egQEBAWVDQkO3DRs+/PPIqKgOAvMjWGvAsVKaI5f5eRtJ3x0ZNr8hLd6pREXU5fmqL/gqP5NzeHwGLHAksFiz+VK02QxXIio6+kJwSEhVbx+fMLn0T2skvsA8rOI/41PbzuRnMi6Wl+EdSRyhqK8RW0YlsySLxVD2SuA3c76fv3+x1PhxbYF5KIqrq0FCdKIeOV7LzWDqpE9jfjo3nfdP5WbAH1KTDOWuFfw2WGBg4GOo0ksYXWOj+7prhP0QnSaHBHtEJcpjHsa8DAnNyYT1I+yGUj+GgP79fyXVrt5uCRs874txqS5NEKW4oCaql5XgabcQOemsJSeNbR/lgBgDET14uoa5ETh+0c/Pb5JUvHx7ODq8QskqMXW6JCdimog4RuNcHmstuekyZsDcpDhDEQUJW2JiICIykkP51TZBP7mkpnF7KCq8Qn+6SkacrMxzUBLjqfFSmHKsEXwM+Vd2qqGAgkTN+FIPHjIE4hMSOJRT7UqbwDHm4+MzVOp6t1vCBs1r4VK66yD7QlQKyiik02gjIh+XylSsSb/yi0unTcJ33nUXnDx5knP7HXfwGo0ZPaPoP2DAPVLZ0+iFPTLG0cYFUZokSFR/qkIaZbmoiM0q55tIg2aMRHF8LDNaXEFXxhoXB19//TWodvr0aYi1WulHp+EzitCwsHektqfty7I1ep0iCVEuhfSR59kpTMlqjCNSebRZjBdX0Abi4uPh7NmzUh94TpuiMaNnFLjBdqkt2oORYRXaKRI6cW9BktNBm+hROymj1WBhgu43QScdFBwMs2bPhsOHD8Nnn30Gt9x6K6/RmJp3mc/olOomU9/B/uZnHsjznCZKnUT4BjQhT05jPCrGOlhzUTacX1cLnQc/BnfLKX6adLpGiytCBg2C1LQ0mDN3LlTX1EB1dTXMmTOH12jM6BmF1zdgvidjQ86GEjg4daR2et6CUjg7RaLyVDj9yyIubdTGZmcbLk4/ZULDw2HhwoXQ2toqZ3savRMLFiyge87nGn0G/QHI5fsO8jdnvPwLyETu/eNkTewEnqq3tOCEYkwyc1U9BZc6OuSyorW4GLz9SResdXbCxBt/bbj48IgIsNnt0NXVxZ9hjPFITeUXLlyAJJuNzzX6DO13QUhOVHna5mKWvrkEMjbfCH+5OUsKOhiPYxUOLk35lxjb61bzhVR761AX3LPhWxhZ0Q6jlpzn0X7zSsPFScqRkgJNTU3gcrk47e3tHNWnsZTU1MtuQPsxmrg0/1DaS8WM5GkjZU8XCVkp/eVoksaoGOOAtqonpTad+CW4u16Ij1jSDiOREZQjafMPGi6uXswU3ATddyNog/q5PfHx9TXz65O6aSZLxQ2kv1QCaQjFlXdnsy9H2xmeNBemvEn2m0smM3VtSH5GZYcmTGQu9kB969jZhgIkRqeLd9kQGruc/O03xUJQQO8g08DMsOK0TcXQk+x1M+FwjoM1ZZE4bSIZKDZl2dg3b2/j8tTuWv8Nirp0oDhKZ+hqqfcfgOgY77+H9GL0khphNJeIs5rhxFuJUDYlsNw07DZ7ZeqLM0FQzCNtIOXFGezJ347XpBuz7NA42g7NN06W6gDb8c6TqDFiEwrbbfVeEj+FV5fFgfvDRFhxf2iVKXbhGGfKxpng2DiD6Tfh2DidUX3fpDTg8pJzzy6T+gDTVpyH9EUuDyjq1e9Bwsw/GQpdD8sfjAX33gTm3psIbyyL2GZKWl7QmLJxBhjh2DCdzV5awBpHJrHjSOMoG1w48BGX//x0N6ShFEFyKr8ybWCbtxWi467/nxt7khnerbGifBzKx7HuvfFw7HVLoyl5wzSWsgGFEQdnOs+pTjnVthen8w0cxw2ol3f3vy9CKgpxHpMRIVER9TV93QWOBw5DbHapoagR5SUWOPEmyu+xMvcevD4Yu/daofWvFpfJUT8dkutRFuPlKKguguMjEtmxzATtt03t7guQguIKJetVM8j5ZmVuu3MHXqtlkDe9FPLz8/kvraQEM+SONkPpTDNb/oAF9tbFAsm698Sw7j2Y77HyPs8xmuz1U1kySnozDZLXI5jb109lNqTq9tFwLDNR28DqXd9rcnocV+j3HFM1+izVSNQjq4gR7MX7j9H9gQW/AYyYm5JWFrps66cwOwkjlFO0r5vK+1S3rZvCRtUWwafZNvwjrZkvtO1gJzgebYPkR8/xSCI86vMeUc1NppquvguvI2/u81yKZN0fmHEjFuxb5AYwxxqPIuc1k/XpvEaSJJJQVBPHqKA6sXB+Nny/fx9f6xT+AiMhgZAzpufYD+ceaenmn8na/8GlulGOBD1EMap56lGMOPra8EZTxG8yGmx1U/GUhaytbopXnlRXxAhex3n7X1/DF6NWXnce7ChgRykRr5/Jy9vlpwFcOvY4ykWjqDcoC+73I1GawFz2d1aHOU3hs2yVQk7I8s3IPpG4thA3QLGIEbMqi+VyAA0HusD2yDmwoQgHc5Litaug5jUc6JSfBtD90RgUjMDTJkGKESRNsrwvogTrK+4LrDIFjhleTpJcdG0REHwzaxWiJhD9fS2fyiUB5q3tgCQUUZBU0iNnNVH9mPecc/jsefkpeH3ObFGikuEoPAyhGAHdvEZ9zD8QzBznV2zy6ecbxOXWFEHCmsl8E4k8x01h1EM1mlPwyjzo6PqWL9zcdgkmPu2CRJQm8cTfi+jJz2k1mqNqE59xQTO+R9Q6Or/F088iWSH696E8p9itj5xhcnwoM4f5mPmf05EPjXQmrimUooWQ8MJklMf+C6om6rwva0s/rOWLU6NNlOFpktwPkBvQU4pz6RnV2r/Au8+lSC6ccd4fSjVdPxw3MRQ3KOoH6gYf4vLUggqi5iegmCL++UnM05/sVedjz4tazf5NUkG0rfs7YcJTbRCPkgmIiorSNe2wVXfnqb3x6Tpoc9L10IR1hKG0vi/oRkoL/eZJfZOpt59vkLUy3xWHcgQXlJIU4yU0RlFfo2+CroC+HTnVDTsOd0H1ju+gZud3uLELXidOraPzG1i6txa2bE9CqVA6ZYxhMg9DScoVodgPBfd7QxhBY9r1US1kekyFkoqvRdnaiSy+dhLmCNassm9djVH24+R47ktz2BufvyvVrt7+eeoTyN00h+XW5aAsiineG4yCiNYfwpHyyCDaAKz73YB6qe1p9C3ELM9rU2JxqxGKPJ/o1SdprU9jsp+3aS4s3VPLBU92fCV1gedUq/7oRchcXyKexeeaduBPFU1sMEZClzsp9xrjRIX19j591YKnxVTgCfMFYlcXME2cR4Xox66icf6NaDnVrasEVFNRjOtrE9iClzNQJgSvA4mFkKiQdAbLnAjxjji2uNyvQuoat8iFWYeUhELJW1cVSPTjPfv6mppfADErJ3B5yjNq86Dpb/gySiku6CTJEKyJ6HYGMV5zBmMfwXj0lYHHpeblm2+In9nyTI4rdmUBKGhRfSQZEfOZEqMoyOdjip792JUToPK1RJQLRlkSC2IXnYHYJ4JkLZBRvLh7IK8RrW8NdJkvd3V6tgGjwsstNfmMUIsKMK/BSGA/BqNnjhijvlbHSLn+uXEvZEspj5zIA6VwILi1OIBhzmNxdp8SqXdtLWRKzBJa3AhLdZ4mqdWr838wT2HG+fQM8dpW/FOZxJSgcyCKiyhk+6P0ANqUAPNFZTcskVrX14KmmCu4GCIkRCSUmPk5zKtpU/kcbVz2VSRmrRvBhfR0O0nWu+beHcB4fXd/WDyvz5Vf2qs1/+TBJVFPjnOhqCZieS4fop/LRflcRrmqWXAO1Qnq0zP6ftM7+FKiHIl5E4D4Yz0ALu7qx9xI63Z/V1mhb7nU+GnNN9jPHLE4q5ELVqF4lYzY55KYR1flIGJMQxvPYQ9uTBZyXNQfSJKLi5qIu/pRhI/X+B0yh/W6thf2elpgUXSFEotCKXNVLheNqqRcRJVHV4oxInvVaDx9/OlCokJW4qdJu3fdwFrf7OtaVOb74+77tTb6NgbNTqgnUZLUE7liPN9AZOV4PoY5r6/9M/4biIIoTNKCnTdoeeubfdoWlflUBAX0CpLL/O8bbaT/yPDyoQ9nHiJxLvxsjoao5cDYlaNJ3gOJ7+zLENj5bB/nfTf5zP+/ihs12gy97EElMZVD7nU4hz02qpE2EbF8HHt1y3A8YV/XF5t9G19/3Ldh+b0+laWFveb9PNIm038Bouv4qnV2hdUAAAAASUVORK5CYII=" InformativeScreenshot="6c4bb49012905d6f2c4aec6de7874ef9.jpg" Selector="&lt;html app='chrome.exe' title='Sistema de Administración de Remisiones y Solvencias de Tránsito' /&gt;" Title="Sistema de Administración de Remisiones y Solvencias de Tránsito" Url="https://sistemas.transito.gob.gt/consultaremisiones/consultaremisiones" />
+            </uix:NApplicationCard.TargetApp>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </uix:NApplicationCard>
+        </Sequence>
+      </ui:CommentOut.Body>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-    </uix:NApplicationCard>
-    <Sequence sap:VirtualizedContainerService.HintSize="704,2620" sap2010:WorkflowViewState.IdRef="Sequence_26">
+    </ui:CommentOut>
+    <Sequence sap:VirtualizedContainerService.HintSize="784,5144" sap2010:WorkflowViewState.IdRef="Sequence_32">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-          <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: Recibidos * - 3774322450101@ingenieria.usac.edu.gt - Correo de Facultad de I" sap:VirtualizedContainerService.HintSize="543.2,2508" sap2010:WorkflowViewState.IdRef="NApplicationCard_5" InteractionMode="DebuggerApi" ScopeGuid="b72ff6dd-0552-4add-b0a1-8565b123149a" Version="V2" WindowResize="Maximize">
+      <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: Portal SAT | Multas de Tránsito - Guatemala" sap:VirtualizedContainerService.HintSize="721.6,5023.2" sap2010:WorkflowViewState.IdRef="NApplicationCard_8" InteractionMode="DebuggerApi" ScopeGuid="c6386b0f-37fc-4bb1-8733-e223aec81ef6" Version="V2">
         <uix:NApplicationCard.Body>
           <ActivityAction x:TypeArguments="x:Object">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416,2268" sap2010:WorkflowViewState.IdRef="Sequence_30">
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="688,4783.2" sap2010:WorkflowViewState.IdRef="Sequence_33">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:String" Name="rutaExcel" />
+                <Variable x:TypeArguments="x:String" Name="nombreExcel" />
+                <Variable x:TypeArguments="sd:DataTable" Name="datos" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <uix:NMouseScroll KeyModifiers="{x:Null}" Direction="Down" DisplayName="Mouse Scroll" sap:VirtualizedContainerService.HintSize="625.6,270.4" sap2010:WorkflowViewState.IdRef="NMouseScroll_4" InteractionMode="HardwareEvents" MovementUnits="10" Version="V3">
+                <uix:NMouseScroll.SearchedElement>
+                  <uix:SearchedElement>
+                    <uix:SearchedElement.Target>
+                      <uix:TargetAnchorable BrowserURL="https://portal.sat.gob.gt/portal/multas/" DesignTimeRectangle="618, 351, 303, 212" DesignTimeScaleFactor="1.25" FullSelectorArgument="&lt;webctrl id='Info-box-wrap-6156' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl id='Info-box-wrap-6156' tag='DIV' type='' class='aio-icon-box top-icon' aaname=' ' check:innerText='Multas Santa Catarina Pinula' /&gt;" Guid="186656b6-2efc-4348-9465-eeecde87d32e" InformativeScreenshot="11d3a5acd012eda68845bf7b658dae86.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Portal SAT | Multas de Tránsito - Guatemala' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive" />
+                    </uix:SearchedElement.Target>
+                    <uix:SearchedElement.Timeout>
+                      <InArgument x:TypeArguments="x:Double" />
+                    </uix:SearchedElement.Timeout>
+                  </uix:SearchedElement>
+                </uix:NMouseScroll.SearchedElement>
+              </uix:NMouseScroll>
+              <uix:NClick ActivateBefore="True" ClickType="Double" DisplayName="Click 'IMG'" sap:VirtualizedContainerService.HintSize="625.6,189.6" sap2010:WorkflowViewState.IdRef="NClick_9" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="c6386b0f-37fc-4bb1-8733-e223aec81ef6" Version="V3">
+                <uix:NClick.Target>
+                  <uix:TargetAnchorable BrowserURL="https://portal.sat.gob.gt/portal/multas/" DesignTimeRectangle="618, 979, 303, 24" DesignTimeScaleFactor="1.25" ElementType="Text" FullSelectorArgument="&lt;webctrl parentid='Info-box-wrap-6156' tag='H3' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='Info-box-wrap-6156' tag='H3' type='' class='aio-icon-title ult-responsive' aaname='Multas Santa Catarina Pinula' check:innerText='Multas Santa Catarina Pinula' /&gt;" Guid="63cbdd5f-54e6-4e37-89d9-d45d4b30e107" InformativeScreenshot="998a97495e0c6e9464e315bdd3a753df.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Portal SAT | Multas de Tránsito - Guatemala' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                    <uix:TargetAnchorable.Anchors>
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                        <uix:Target DesignTimeRectangle="618, 791, 303, 156" FullSelectorArgument="&lt;webctrl class='align-icon' parentid='Info-box-wrap-6156' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl class='align-icon' parentid='Info-box-wrap-6156' tag='DIV' type='' aaname=' ' check:text='&amp;lt;img decoding=&amp;quot;async&amp;quot; class=&amp;quot;img-icon&amp;quot; alt=&amp;quot;null&amp;quot; src=&amp;quot;https://portal.sat.gob.gt/portal/wp-content' /&gt;" SearchSteps="FuzzySelector" />
+                      </scg:List>
+                    </uix:TargetAnchorable.Anchors>
+                  </uix:TargetAnchorable>
+                </uix:NClick.Target>
+              </uix:NClick>
+              <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="ayd2_ruta" CacheStrategy="None" DisplayName="Get Asset" FolderPath="cabreraandreatareas@gmail.com's workspace" sap:VirtualizedContainerService.HintSize="625.6,175.2" sap2010:WorkflowViewState.IdRef="GetRobotAsset_7">
+                <ui:GetRobotAsset.Value>
+                  <OutArgument x:TypeArguments="x:String">[rutaExcel]</OutArgument>
+                </ui:GetRobotAsset.Value>
+              </ui:GetRobotAsset>
+              <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="ayd2_nombreExcel" CacheStrategy="None" DisplayName="Get Asset" FolderPath="cabreraandreatareas@gmail.com's workspace" sap:VirtualizedContainerService.HintSize="625.6,175.2" sap2010:WorkflowViewState.IdRef="GetRobotAsset_8">
+                <ui:GetRobotAsset.Value>
+                  <OutArgument x:TypeArguments="x:String">[nombreExcel]</OutArgument>
+                </ui:GetRobotAsset.Value>
+              </ui:GetRobotAsset>
+              <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[datos]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="625.6,120" sap2010:WorkflowViewState.IdRef="ReadRange_3" SheetName="Hoja1" WorkbookPath="[rutaExcel + &quot;\&quot; + nombreExcel]" />
+              <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[datos]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="625.6,3766.4" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
+                <ui:ForEachRow.Body>
+                  <ActivityAction x:TypeArguments="sd:DataRow">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+                    </ActivityAction.Argument>
+                    <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="592,3576" sap2010:WorkflowViewState.IdRef="Sequence_36">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="x:String" Name="ValuePay" />
+                        <Variable x:TypeArguments="x:Boolean" Name="Existencia" />
+                        <Variable x:TypeArguments="x:String" Name="Ind" />
+                        <Variable x:TypeArguments="x:String" Name="tipoTemp" />
+                        <Variable x:TypeArguments="x:String" Name="placaTemp" />
+                        <Variable x:TypeArguments="x:Int32" Name="contadorRow" />
+                        <Variable x:TypeArguments="x:String" Name="valueNumberTemp" />
+                        <Variable x:TypeArguments="x:Boolean" Name="sinMulta" />
+                        <Variable x:TypeArguments="x:String" Name="contadorString" />
+                      </Sequence.Variables>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign sap:VirtualizedContainerService.HintSize="529.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_21">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Int32">[contadorGlobal]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Int32">[contadorGlobal + 1]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Assign sap:VirtualizedContainerService.HintSize="529.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_22">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[contadorString]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">[contadorGlobal.ToString]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Assign sap:VirtualizedContainerService.HintSize="529.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_17">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Int32">[contadorRow]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Int32">[datos.Rows.IndexOf(CurrentRow) + 2]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Assign sap:VirtualizedContainerService.HintSize="529.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_18">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[Ind]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">[contadorRow.ToString]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <uix:NSelectItem DisplayName="Select Item 'TipoC'" sap:VirtualizedContainerService.HintSize="529.6,189.6" sap2010:WorkflowViewState.IdRef="NSelectItem_3" Item="[CurrentRow(&quot;tipo&quot;).ToString]" ScopeIdentifier="c6386b0f-37fc-4bb1-8733-e223aec81ef6" Version="V3">
+                        <uix:NSelectItem.Items>
+                          <scg:List x:TypeArguments="x:String" Capacity="15">
+                            <x:String>Seleccione Tipo de Placa</x:String>
+                            <x:String>A</x:String>
+                            <x:String>C</x:String>
+                            <x:String>CC</x:String>
+                            <x:String>CD</x:String>
+                            <x:String>DIS</x:String>
+                            <x:String>E</x:String>
+                            <x:String>M</x:String>
+                            <x:String>MI</x:String>
+                            <x:String>O</x:String>
+                            <x:String>P</x:String>
+                            <x:String>SP</x:String>
+                            <x:String>TC</x:String>
+                            <x:String>TRC</x:String>
+                            <x:String>U</x:String>
+                          </scg:List>
+                        </uix:NSelectItem.Items>
+                        <uix:NSelectItem.Target>
+                          <uix:TargetAnchorable BrowserURL="http://www.consultas.scp.gob.gt/transito/" CvElementArea="426, 833, 514, 60" CvType="InputBox" DesignTimeRectangle="430, 835, 509, 55" DesignTimeScaleFactor="1.25" ElementType="DropDown" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl id='tipoplaca' tableRow='1' tag='SELECT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl id='tipoplaca' type='' tag='SELECT' class='' aaname='' /&gt;" Guid="0f42990d-b2b6-44ea-a741-7ad1e519f15a" ImageBase64="" InformativeScreenshot="137cdc78cb94981235e6c321e3a0b591.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Municipalidad de Santa Catarina Pinula' /&gt;" SearchSteps="FuzzySelector, CV" Version="V3" Visibility="Interactive">
+                            <uix:TargetAnchorable.Anchors>
+                              <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                                <uix:Target CvTextArea="193, 855, 92, 21" CvTextArgument="Tipo Placa:" CvType="Text" DesignTimeRectangle="180, 820, 235, 85" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='' aaname='&amp;#x9; Tipo Placa: &amp;#x9;&amp;#x9;' check:innerText='Tipo Placa:' /&gt;" SearchSteps="FuzzySelector, CV" />
+                              </scg:List>
+                            </uix:TargetAnchorable.Anchors>
+                          </uix:TargetAnchorable>
+                        </uix:NSelectItem.Target>
+                      </uix:NSelectItem>
+                      <Assign sap:VirtualizedContainerService.HintSize="529.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_19">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[tipoTemp]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">[CurrentRow("tipo").ToString]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Placa'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="529.6,250.4" sap2010:WorkflowViewState.IdRef="NTypeInto_8" ScopeIdentifier="c6386b0f-37fc-4bb1-8733-e223aec81ef6" Text="[CurrentRow(&quot;número de placa&quot;).ToString]" Version="V3">
+                        <uix:NTypeInto.Target>
+                          <uix:TargetAnchorable BrowserURL="http://www.consultas.scp.gob.gt/transito/" DesignTimeRectangle="1183, 835, 540, 55" DesignTimeScaleFactor="1.25" ElementType="InputBox" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl id='placa' tableRow='1' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl id='placa' type='text' tag='INPUT' class='input' placeholder='Ingrese Placa' aaname='' /&gt;" Guid="52db4f3a-a7f5-4d50-bcbb-d0afae4db7fb" InformativeScreenshot="4aaa05f6fc4fa72089ca718493597376.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Municipalidad de Santa Catarina Pinula' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                            <uix:TargetAnchorable.Anchors>
+                              <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                                <uix:Target DesignTimeRectangle="1012, 820, 156, 85" ElementType="Text" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl isleaf='1' tableCol='4' tableRow='1' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl isleaf='1' type='' class='' tag='TD' aaname=' Placa:&amp;#x9;&amp;#x9; &amp;#x9;&amp;#x9;' check:innerText='Placa:' /&gt;" SearchSteps="FuzzySelector" />
+                              </scg:List>
+                            </uix:TargetAnchorable.Anchors>
+                          </uix:TargetAnchorable>
+                        </uix:NTypeInto.Target>
+                      </uix:NTypeInto>
+                      <Assign sap:VirtualizedContainerService.HintSize="529.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_20">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[placaTemp]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">[CurrentRow("número de placa").ToString]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Buscar'" sap:VirtualizedContainerService.HintSize="529.6,189.6" sap2010:WorkflowViewState.IdRef="NClick_11" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="c6386b0f-37fc-4bb1-8733-e223aec81ef6" Version="V3">
+                        <uix:NClick.Target>
+                          <uix:TargetAnchorable BrowserURL="http://www.consultas.scp.gob.gt/transito/" DesignTimeRectangle="180, 945, 158, 58" DesignTimeScaleFactor="1.25" ElementType="Button" FullSelectorArgument="&lt;webctrl id='boton' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='boton' tag='INPUT' type='button' class='' aaname='Consultar' check:text='Consultar' /&gt;" Guid="804517d3-ab47-474a-96f7-03e294fbe3d2" InformativeScreenshot="6faed6ec04c60e84a2a6cbbd340cff4d.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Municipalidad de Santa Catarina Pinula' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive" />
+                        </uix:NClick.Target>
+                      </uix:NClick>
+                      <Delay Duration="00:00:40" sap:VirtualizedContainerService.HintSize="529.6,122.4" sap2010:WorkflowViewState.IdRef="Delay_4" />
+                      <uix:NMouseScroll KeyModifiers="{x:Null}" Direction="Down" DisplayName="Mouse Scroll" sap:VirtualizedContainerService.HintSize="529.6,168.8" sap2010:WorkflowViewState.IdRef="NMouseScroll_3" InteractionMode="HardwareEvents" MovementUnits="5" Version="V3" />
+                      <ui:UiElementExists DisplayName="Element Exists 'DIV  txtHint'" Exists="[sinMulta]" sap:VirtualizedContainerService.HintSize="529.6,139.2" sap2010:WorkflowViewState.IdRef="UiElementExists_5">
+                        <ui:UiElementExists.Target>
+                          <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f3ff329a-7e46-4a36-ad91-c9cee91f0e1f" InformativeScreenshot="847b694bc51924d9be63516b51e02289" Selector="&lt;html app='chrome.exe' title='Municipalidad de Santa Catarina Pinula' /&gt;&lt;webctrl id='txtHint' tag='DIV' aaname='La placa * no está registrada en el sistema o no tiene multas pendientes' /&gt;">
+                            <ui:Target.TimeoutMS>
+                              <InArgument x:TypeArguments="x:Int32" />
+                            </ui:Target.TimeoutMS>
+                            <ui:Target.WaitForReady>
+                              <InArgument x:TypeArguments="ui:WaitForReady" />
+                            </ui:Target.WaitForReady>
+                          </ui:Target>
+                        </ui:UiElementExists.Target>
+                      </ui:UiElementExists>
+                      <ui:WriteCell Cell="[&quot;A&quot; + contadorString]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="529.6,148" sap2010:WorkflowViewState.IdRef="WriteCell_23" SheetName="Hoja1" Text="[tipoTemp + placaTemp]" WorkbookPath="[rutaExcel + &quot;\Salida.xlsx&quot;]" />
+                      <ui:WriteCell Cell="[&quot;B&quot; + contadorString]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="529.6,148" sap2010:WorkflowViewState.IdRef="WriteCell_24" SheetName="Hoja1" Text="Santa Catarina Pinula" WorkbookPath="[rutaExcel + &quot;\Salida.xlsx&quot;]" />
+                      <If Condition="[sinMulta]" sap:VirtualizedContainerService.HintSize="529.6,1271.2" sap2010:WorkflowViewState.IdRef="If_5">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <If.Then>
+                          <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="416,373.6" sap2010:WorkflowViewState.IdRef="Sequence_38">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:WriteCell Cell="[&quot;C&quot; + contadorString]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="353.6,148" sap2010:WorkflowViewState.IdRef="WriteCell_25" SheetName="Hoja1" Text="0.00" WorkbookPath="[rutaExcel + &quot;\Salida.xlsx&quot;]" />
+                            <ui:WriteCell Cell="[&quot;D&quot; + contadorString]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="353.6,139.2" sap2010:WorkflowViewState.IdRef="WriteCell_26" SheetName="Hoja1" Text="Free" WorkbookPath="[rutaExcel + &quot;\Salida.xlsx&quot;]" />
+                          </Sequence>
+                        </If.Then>
+                        <If.Else>
+                          <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="496,727.2" sap2010:WorkflowViewState.IdRef="Sequence_39">
+                            <Sequence.Variables>
+                              <Variable x:TypeArguments="x:String" Name="salidaValor" />
+                            </Sequence.Variables>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <uix:NGetAttributeGeneric x:TypeArguments="x:String" Attribute="aaname" DisplayName="Get Attribute 'Q 450.00'" sap:VirtualizedContainerService.HintSize="433.6,240" sap2010:WorkflowViewState.IdRef="NGetAttributeGeneric`1_3" Result="[salidaValor]" ScopeIdentifier="c6386b0f-37fc-4bb1-8733-e223aec81ef6" Version="V3">
+                              <uix:NGetAttributeGeneric.Target>
+                                <uix:TargetAnchorable BrowserURL="http://www.consultas.scp.gob.gt/transito/" DesignTimeRectangle="1534, 821, 204, 43" DesignTimeScaleFactor="1.25" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname='Fecha Fotografía Detalle Valor' parentid='txtHint' tag='TABLE' /&gt;&lt;webctrl tableCol='2' tableRow='4' tag='TD' aaname='Q *' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Fecha Fotografía Detalle Valor' parentid='txtHint' tag='TABLE' /&gt;&lt;webctrl type='' class='' tag='TD' aaname='Q *' check:innerText='Q *' /&gt;" Guid="db1852ab-e643-4210-a513-712531d02674" InformativeScreenshot="1f47a1a23980dc28e85e0019749265b5.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Municipalidad de Santa Catarina Pinula' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
+                                  <uix:TargetAnchorable.Anchors>
+                                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                                      <uix:Target DesignTimeRectangle="180, 821, 1354, 43" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname='Fecha Fotografía Detalle Valor' parentid='txtHint' tag='TABLE' /&gt;&lt;webctrl tableRow='4' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Fecha Fotografía Detalle Valor' parentid='txtHint' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='' aaname='Total a Pagar' check:innerText='Total a Pagar' /&gt;" SearchSteps="FuzzySelector" />
+                                    </scg:List>
+                                  </uix:TargetAnchorable.Anchors>
+                                </uix:TargetAnchorable>
+                              </uix:NGetAttributeGeneric.Target>
+                            </uix:NGetAttributeGeneric>
+                            <Assign sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_23">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[valueNumberTemp]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(salidaValor.ToString, "\d+(,\d{3})*(\.\d+)?").ToString]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <ui:WriteCell Cell="[&quot;C&quot; + contadorString]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="433.6,148" sap2010:WorkflowViewState.IdRef="WriteCell_28" SheetName="Hoja1" Text="[valueNumberTemp]" WorkbookPath="[rutaExcel + &quot;\Salida.xlsx&quot;]">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:WriteCell>
+                            <ui:WriteCell Cell="[&quot;D&quot; + contadorString]" DisplayName="Write Cell Workbook" sap:VirtualizedContainerService.HintSize="433.6,139.2" sap2010:WorkflowViewState.IdRef="WriteCell_29" SheetName="Hoja1" Text="Busted" WorkbookPath="[rutaExcel + &quot;\Salida.xlsx&quot;]">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:WriteCell>
+                          </Sequence>
+                        </If.Else>
+                      </If>
+                      <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Volver a cargar'" sap:VirtualizedContainerService.HintSize="529.6,180.8" sap2010:WorkflowViewState.IdRef="NClick_12" InteractionMode="HardwareEvents" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="c6386b0f-37fc-4bb1-8733-e223aec81ef6" Version="V3">
+                        <uix:NClick.Target>
+                          <uix:TargetAnchorable DesignTimeRectangle="105, 66, 43, 43" DesignTimeScaleFactor="1.25" ElementType="Button" FullSelectorArgument="&lt;ctrl name='Municipalidad de Santa Catarina Pinula - *' role='pane' /&gt;&lt;ctrl name='Volver a cargar' role='push button' /&gt;" FuzzySelectorArgument="&lt;ctrl name='Municipalidad de Santa Catarina Pinula - *' role='pane' /&gt;&lt;ctrl name='Volver a cargar' role='push button' automationid='' check:text='Volver a cargar' /&gt;" Guid="e0514aec-0e54-45c2-9337-0932f6111a9b" ImageBase64="" InformativeScreenshot="770bd15906bf771019d251ac0de160bd.png" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='Municipalidad de Santa Catarina Pinula - Google Chrome' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V3" Visibility="Interactive" />
+                        </uix:NClick.Target>
+                      </uix:NClick>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:ForEachRow.Body>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:ForEachRow>
+            </Sequence>
+          </ActivityAction>
+        </uix:NApplicationCard.Body>
+        <uix:NApplicationCard.TargetApp>
+          <uix:TargetApp Area="-9, -9, 1938, 1038" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAAEUAAABDCAYAAADK1Mg0AAAABGdBTUEAALGPC/xhBQAAA4NJREFUeF7tl9uV2zAMRNcFpav8pJv0sC2kkhSSFhLeY00M0yObL9tUmI+rpUYUCIAg5P34+PZ5OjA/Er87+bXB+HvidOSkxIQosFp+JqKNs+2/g2MRE/Jl01qgMmTnol/dHIOviREJ4V1v5+pmfmIgJMfNKUV2zn0kciPMDeeeQDg+7nkp6iWXPhKx4pz481/P4+NnxfkYeWweV5sV50NVQtm756XEKnHPz1hxPrS7z2uuESvOhXbXN8VyyqoErDgXCmbUF+d+lYAV50L95HEw++z/UHNYcS5GJKXuCFpxLlT2PU1W/yuVJdaK81BX9vuU9xOw4jxoh3ubrBJbVm1WnIP4Ce2pkno7Vnw/aq7Q00tAR6f817AV34t2liB6KgTaepIVx4IzQLARqkHkz5ydFvTvQXmVgBXbUVA0RhyRU7Xwfm9y1KShruKsWA6LsdPRgZG4NUvo60lWvI8SoQb2LOpK/kJfQsCKHiWDxVqPRSmtv0tixeKrm/MYK94Ss+9gV3GIeeorsbmiC83TWHCv95wP9+CdWLnYcfPKsOIFFturCpwgkNYg+hy/gA/yCV9b/LnGimdwOiZBkIyegBQE1eGel4IPsTqw6+bVY8Xr7Ed6d5dEYKcnIfggO7KFv+jCvVeOETGqBQU70lOW+TFk3NusSQa+kpDcVp+/mYChaFwLxDktEACOY0vonmelaL4qg3Hur2ivmEzIDeNEfD4SNiAGXAo+5X46hlQKC+aGryePh90kyFryREWoovaEwDZwx6a9/I7ONsi/NuzG7eRy1ABH8rpN2gZ59+5xgBKOtkZCctyaY0kXd3Raz6SzNRq37ljShezHRXuPDu9HeyOhCt2aY0mXvNxHLHz4npLvLA74yauQLnmT/Z+UdIkJgRHHh8RSgTXwTt+PrlGkS14p4CeXkdtz9vd0tPcnJl2cc61NbcQneYqkuB9bJMq/8BhnrxSOkbP5WtKFqhjtYMsn+XWf3EdsA5cUoGLmcfZVbIO9agESU/J1cM/QHPm8uQg39xKTo88o/UNjUMD85V7zXTMf8el/DplAYlwAJVBJ2CAh7rljzsRY8RxgbXLUe/7ZpAgC1RFxQeXoPZLqnkdI+pz9xYoeAgASRdBAwvQXYpCau0e0PRdWXB0rro4VV8eKq2PF1bHi6lhxday4OlZcHSuujhVXx4qrY8XVseLSfJ7+ABch4UK5/RhGAAAAAElFTkSuQmCC" InformativeScreenshot="449c5a6032885d01498426a64d07cc11.jpg" Selector="&lt;html app='chrome.exe' title='Portal SAT | Multas de Tránsito - Guatemala' /&gt;" Title="Portal SAT | Multas de Tránsito - Guatemala" Url="https://portal.sat.gob.gt/portal/multas/" />
+        </uix:NApplicationCard.TargetApp>
+      </uix:NApplicationCard>
+    </Sequence>
+    <Sequence sap:VirtualizedContainerService.HintSize="784,48" sap2010:WorkflowViewState.IdRef="Sequence_41">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: Recibidos * - 3774322450101@ingenieria.usac.edu.gt - Correo de Facultad de I" sap:VirtualizedContainerService.HintSize="449.6,2509.6" sap2010:WorkflowViewState.IdRef="NApplicationCard_5" InteractionMode="DebuggerApi" ScopeGuid="b72ff6dd-0552-4add-b0a1-8565b123149a" Version="V2" WindowResize="Maximize">
+        <uix:NApplicationCard.Body>
+          <ActivityAction x:TypeArguments="x:Object">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="416,2269.6" sap2010:WorkflowViewState.IdRef="Sequence_30">
               <Sequence.Variables>
                 <Variable x:TypeArguments="x:String" Name="correoDest" />
                 <Variable x:TypeArguments="x:String" Name="ruta" />
@@ -705,7 +1002,7 @@
                 <uix:NClick.Target>
                   <uix:TargetAnchorable BrowserURL="https://mail.google.com/mail/u/1/#inbox" CvElementArea="106, 204, 175, 76" CvTextArea="173, 232, 77, 17" CvTextArgument="Redactar" CvType="Button" DesignTimeRectangle="109, 207, 170, 70" DesignTimeScaleFactor="1.25" ElementType="Text" FullSelectorArgument="&lt;webctrl aaname='Redactar' aria-role='button' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Redactar' aria-role='button' tag='DIV' type='' class='T-I T-I-KE L3' check:innerText='Redactar' /&gt;" Guid="f3bd28f0-c159-471a-a0ad-03bc6f367319" InformativeScreenshot="a6feea15cd0a0b750760050e16a6752f.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Recibidos (683) - 3774322450101@ingenieria.usac.edu.gt - Correo de Facultad de Ingeniería, USAC' /&gt;" SearchSteps="FuzzySelector, CV" Version="V3" Visibility="Interactive">
                     <uix:TargetAnchorable.Anchors>
-                      <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                         <uix:Target CvElementArea="124, 225, 34, 33" CvType="Icon" DesignTimeRectangle="122, 223, 38, 37" ElementType="Icon" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACYAAAAlCAYAAAAuqZsAAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAQASURBVFhH7ZdtTNVlGMZ5O6Bw3ngTeQsc2sy11tzaauosQ8OQEcyXcSRRyYnY3HKOzWZOXR8KdDaKxBSVCDTnGwoieDicw8iXVKZi6lDDQCE3a9WWilpXz/WwwxQfPP6BU304H64vHJ77/zvXfd338z9ejV3A/1EeMK3ygGmVB0yr/hUwx82/UHn+Z+xt7kD1pV+V/9NXbgVzdP4Na9tdFFefwIr8YuSuLsDqTRXYdeIaGm48UJ5xyq1g1ut3UWq/gFfffBsGUzC8vLwQHZ+A7Lx1OHCuS8A9VJ6j3AbG9n1VcwqTpqchyGCCj4+PBPP180N4ZAzeX7sRe063K89SbgFjCwv32ZGcsRCm4NBeKKf8/HSIGz0WH5fsxZErfyhruAWs6GAT3pmfK515FKivmLuqi7eVNYYUzNZ+H9tt5wTUEpGl0QgYNlzK29v7MSAfX1+ERkRhTfEu9ztma++W05Y0Owth4qGhEZEY8+LLSBj3EnQBAb1wbKvRHIIZlvdQ2tCirEUNCRgztc16VkIZRaZMIWGYs3g5thw5hYKKGsQmPA+dzl+C8bPXZ8xExXetqBdfRlWPGjQYoT7f70DK3EXSKT44c9lKbK07g6pLv+DLQ8cQN+YF6Pz9ERw2AolpGdh8+CTqr99T1nNqUGBcCYX7HEidl4PI2HjZPjpFKG54Lta0BUthDg2XUFPTLdJBV8uVGjBY/U/3sKX2NJIt2RJqpFBK5iJUHGtFTetvEoqQQQYj9EYzJien49OyQ7B13FfW66sBgRGqvOmyzAqdoFOE2n+2U3zWja8dP0inCDU8SI/xE6ZIZzm1qnoqaQZj++gUofQms1ygdIZOEWr3921ImjVPto9OEaqkrhl1P/6JRpFHVU2VNIHZBdRne2yYPme+dIoPz1z2ocwU20enCMXFGhIeIeHpFKE4JKqa/emZwQi1cbdVXDPZiIiJQ9jIaGTk5qHkaPMTQSfU1PS5yP+muqd9GqGoZwKzitHmiE+b+S5GRMUi8rlRSM3KkQu1pvX3x4JuMAfjjZRZyC8/jIYO19PXn1yCMehljRcxMSlVukGnCFXZcqsn6HZn0E0I1BvxyuRpKKpsGhQU5RJsa+0ZCaU3miQY20enCLXz+FW8JVzk37nxX0tMxg7beRxtu6OspUUuwdbvrJUP5R1nWZonrx4GnQDMUbhwkOuCG31T1XEJpTXoKrkE+6T0YO9bwZrN38qg85rhtueqIBQncYP4AvanvJFqlSawrA8+wqovypAuMhWoN8h7MTHNIqGe9po8EGkCc4ptZeaYPU7kUDrl1IDAmDlCcVr5g0N1brByCXZA/B4k3KPiQHBauUpUZ4ZCLsH+K3nAtMoDpk3AP1wyYHJn7s6pAAAAAElFTkSuQmCC" SearchSteps="CV" TargetType="ComputerVisionBased" />
                       </scg:List>
                     </uix:TargetAnchorable.Anchors>
@@ -716,7 +1013,7 @@
                 <uix:NTypeInto.Target>
                   <uix:TargetAnchorable BrowserURL="https://mail.google.com/mail/u/1/#inbox?compose=new" DesignTimeRectangle="1256, 469, 468, 45" DesignTimeScaleFactor="1.25" ElementType="InputBox" FullSelectorArgument="&lt;webctrl parentid=':ps' tableRow='1' tag='TABLE' /&gt;&lt;webctrl id=':ul' tableRow='1' tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid=':ps' tag='TABLE' /&gt;&lt;webctrl id=':ul' type='text' tag='INPUT' class='agP aFw' aaname='' /&gt;" Guid="26bb8c53-6285-4c13-b50c-4fdcc78738be" InformativeScreenshot="e60f0f2a63b19ab579e67616bf7fd0b2.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Recibidos (683) - 3774322450101@ingenieria.usac.edu.gt - Correo de Facultad de Ingeniería, USAC' /&gt;" SearchSteps="FuzzySelector" Version="V3" Visibility="Interactive">
                     <uix:TargetAnchorable.Anchors>
-                      <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                         <uix:Target CvTextArea="1208, 482, 36, 16" CvTextArgument="Para" CvType="Text" DesignTimeRectangle="1209, 480, 36, 22" ElementType="Text" FullSelectorArgument="&lt;webctrl parentid=':ps' tableRow='1' tag='TABLE' /&gt;&lt;webctrl id=':nd' tableRow='1' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid=':ps' tag='TABLE' /&gt;&lt;webctrl id=':nd' type='' tag='SPAN' class='gO aQY' aaname='Para' check:innerText='Para' /&gt;" SearchSteps="FuzzySelector, CV" />
                       </scg:List>
                     </uix:TargetAnchorable.Anchors>
@@ -759,7 +1056,7 @@
                 <uix:NTypeInto.Target>
                   <uix:TargetAnchorable CvElementArea="293, 504, 390, 32" CvType="InputBox" DesignTimeRectangle="298, 511, 359, 20" DesignTimeScaleFactor="1.25" ElementType="InputBox" FullSelectorArgument="&lt;wnd ctrlid='1148' /&gt;&lt;wnd ctrlid='1148' /&gt;&lt;wnd ctrlid='1148' /&gt;" FuzzySelectorArgument="&lt;wnd ctrlid='1148' /&gt;&lt;wnd ctrlid='1148' /&gt;&lt;wnd ctrlid='1148' /&gt;" Guid="c7e46fd4-5e19-4dc3-b203-707787ed09bb" InformativeScreenshot="4392d00a931aa8b397f70a4a10c924a7.png" IsResponsive="True" ScopeSelectorArgument="&lt;wnd app='chrome.exe' cls='#32770' title='Abrir' /&gt;" SearchSteps="Selector, FuzzySelector, CV" Version="V3" Visibility="Interactive">
                     <uix:TargetAnchorable.Anchors>
-                      <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                      <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                         <uix:Target CvTextArea="155, 512, 133, 15" CvTextArgument="Nombre de archivo:" CvType="Text" DesignTimeRectangle="157, 511, 131, 20" ElementType="Text" FullSelectorArgument="&lt;wnd ctrlid='1090' title='&amp;amp;Nombre de archivo:' /&gt;" FuzzySelectorArgument="&lt;wnd ctrlid='1090' title='&amp;amp;Nombre de archivo:' check:text='&amp;amp;Nombre de archivo:' /&gt;" SearchSteps="Selector, FuzzySelector, CV" />
                       </scg:List>
                     </uix:TargetAnchorable.Anchors>
