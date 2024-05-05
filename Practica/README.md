@@ -25,13 +25,16 @@
 # Manual Técnico
 
 ## 📚 Contenido
+
+1. [Introducción](#intro
 - [Introducción](#introducción)
 - [Objetivos](#objetivos)
 - [Funcionamiento UiPath](#funcionamiento-uipath)
   - [Orquestador](#orquestador)
   - [Configuraciones Iniciales](#configuraciones-iniciales)
   - [Página PNC](#página-pnc)
-  - [Página Villa Nueva](#página-villa-nueva)
+  - [Página Santa Catarina Pinula](#página-santa-catarina-pinula)
+  - [Envío de Correos](#envío-de-correos) Nueva](#página-villa-nueva)
 
 ## Introducción
 
@@ -75,8 +78,6 @@ El orquestador es el encargado de guardar datos sensibles y datos dinámicos com
 5. Obtiene la variable del nombre del archivo de entrada.
 
 ![Variable](./img/img6.png)
-
-### Página PNC
 
 ### Página PNC
 
@@ -213,6 +214,68 @@ El orquestador es el encargado de guardar datos sensibles y datos dinámicos com
 - 10.7 Si la variable Existencia es verdadera significa que no tiene multas y es anotado en el archivo .xlsx de salida, mientras si es falsa es anotada la multa con el total a pagar.
 
 ![alt text](img/exist2.png)
+
+### Página Santa Catarina Pinula
+
+1. Abre google chrome con la [Página SAT de Multas](https://portal.sat.gob.gt/portal/multas/)
+
+![Multas Santa Catarina Pinula](./img/18.png)
+
+2. Busca y selecciona la opción de "Multas Santa Catarina Pinula".
+
+![Multas Santa Catarina Pinula](./img/19.png)
+
+3. Obtiene las variables del orquestador.
+
+![Orquestador](./img/20.png)
+
+4. Lee el archivo de entrada.
+
+![Leer](./img/21.png)
+
+5. Por cada fila del archivo de entrada, se obtiene el tipo de placa y el número de placa.
+
+![Tipo de placa y número de placa](./img/22.png)
+
+6. Se hace un delay de 1 segundo para que cargue la página.
+
+![Delay](./img/23.png)
+
+7. Se escribe el tipo de placa en el input de la página.
+
+![Número de placa](./img/24.png)
+
+8. Se escribe el número de placa en el input de la página.
+
+![Número de placa](./img/25.png)
+
+9. Se da click en el botón de "Consultar".
+
+![Consultar](./img/26.png)
+
+10. Se da un delay de 40 segundos para que cargue la información de la multa.
+
+![Delay](./img/27.png)
+
+11. Se obtiene la información de la multa, en este caso se verifica si existe multa o no. Esto se realiza validando con un Element Exist, donde se obtiene la información *"La Placa ... no existen remisiones de multa"*.
+
+![Consultar](./img/28.png)
+
+12. Se escribe en el excel el numero de placa y el lugar de procedencia de la multa.
+
+![Consultar](./img/30.png)
+
+13. Existe una condición que verifica si existe la multa o no. Si no existe la multa, se escribe en el excel en la columna de Estado *"Free"* y en la columna de Valor total *"Q0.00"*.
+
+![Consultar](./img/31.png)
+
+14. Si existe la multa, se obtiene la información de la multa, en este caso se obtiene el valor total a pagar. Esto se hace con un Get Text. Posteriormente se escribe en el excel en la columna de Valor total el valor obtenido y en la columna de Estado *"Busted"*.
+
+![Consultar](./img/32.png)
+
+15. Se recarga la página para poder ingresar una nueva placa y se repite el proceso hasta que se terminen de consultar todas las placas del archivo de entrada.
+
+![Consultar](./img/33.png)
 
 ### Envío de Correos
 
